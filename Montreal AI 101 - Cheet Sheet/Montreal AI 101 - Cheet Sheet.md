@@ -13,5 +13,5 @@ AI-First 혁신의 장점을 개척하기 위해서는 AI를 전혀 생각하지
   \- Danny Kahenman -
   
 Gary Marcus의 인공지능은 다음 10년 동안 인지 모델 중심의 복합적 지식, 추론 기반 접근 방식을 제안했다.
-이는 현재 가능한 것보다 더 풍부하고 강력한 AI를 위한 기질을 제공할 수 있다.
-` **The Next Decade in AI: Four Steps Towards Robust Artificial Intelligence** `
+이는 현재 가능한 것보다 더 풍부하고 강력한 AI를 위한 기질을 제공할 수 있다. <br>
+`The Next Decade in AI: Four Steps Towards Robust Artificial Intelligence`
