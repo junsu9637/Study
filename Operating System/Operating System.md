@@ -17,13 +17,13 @@
 1940s 컴퓨터 개발
 입력장치 - 메모리 - 프로세서 - 출력장치
 
-+ 운영체제
+\+ 운영체제
 
 Batch Processing System (일괄처리)
 연속되는 과정을 메모리에 저장 -> 운영 과정 단순화
 *Resident Monitor : 최초의 운영체제*
 
-+ 보조기억장치
+\+ 보조기억장치
 
 Multiprogramming System (다중프로그래밍)
 느린 하드웨어로 인한 CPU 작업 중지(Idle) -> 메모리에 여러 프로그램 
