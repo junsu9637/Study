@@ -14,24 +14,24 @@
 
 ## 역사
 
-**1940s 컴퓨터 개발** <br>
+- **1940s 컴퓨터 개발** <br>
 입력장치 - 메모리 - 프로세서 - 출력장치
 
 \+ 운영체제
 
-**Batch Processing System (일괄처리)** <br> 
+- **Batch Processing System (일괄처리)** <br> 
 연속되는 과정을 메모리에 저장 -> 운영 과정 단순화 <br>
 *Resident Monitor : 최초의 운영체제*
 
 \+ 보조기억장치
 
-**Multiprogramming System (다중프로그래밍)** <br>
+- **Multiprogramming System (다중프로그래밍)** <br>
 느린 하드웨어로 인한 CPU 작업 중지(Idle) -> 메모리에 여러 프로그램 <br>
 *CPU scheduling, 메모리 관리 및 보호*
 
 \+ 모니터, 키보드
 
-**Time-Sharing System (시공유 시스템)** <br>
+- **Time-Sharing System (시공유 시스템)** <br>
 일정시간이 지나면 프로그램 강제 전환 -> 여러 프로그램 동시 수행
 *가상 메모리, 프로세스간 통신, 동기화*
 
