@@ -4,8 +4,8 @@
 
 부팅
 ```markdown
-**1. POST를 실행**
+** 1. POST를 실행**
    컴퓨터 하드웨어 상태 확인(프로세서 - 메모리(ROM, RAM) - 보조기억장치)
-**2. Boot loader 실행**
+** 2. Boot loader 실행**
    보조기억장치에 있는 OS를 RAM으로 옮겨옴
 ```
