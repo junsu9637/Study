@@ -33,7 +33,8 @@
   \+ 모니터, 키보드
 
 - **Time-Sharing System (시공유 시스템)**       
-일정시간이 지나면 프로그램 강제 전환 -> 여러 프로그램 동시 수행      
+일정시간이 지나면 프로그램 강제 전환 -> 여러 프로그램 동시 수행    
+대화형 시스템    
 *가상 메모리, 프로세스간 통신, 동기화*       
 *Unix, Linux 기반 기술*
 
@@ -186,6 +187,62 @@
   **Communication**     
   socket, send, receive
   
+  # 프로세스 관리
   
+  CPU 자원을 효과적으로 나누는 방법      
+  프로세스가 실행되는 동안 text(code), data, stack, pc, register 등의 값이 변화
+  
+  **프로세스 상태**
+  > **new** : 보조기억장치에서 메모리로 올라온 상태    
+    **ready** : 메모리에서 초기화 진행 후 실행 준비 완료된 상태    
+    **running** : 실제 동작     
+    **waiting** : 다른 프로세스 진행 과정 동안 기다림(다시 running)      
+    **terminated** : 프로세스 종료
+    
+  > Multiprogramming System : running -> waiting       
+    Time-Sharing System : running -> waitting or ready
+  
+**PCB(Process Control Block)**
+
+프로세스에 대한 모든 정보 (프로세스 상태, PC, register, CPU time ...)      
+프로세스 상태 결정을 위해 참조하는 자료
+
+## Queues
+
+프로세스가 다음 과정을 위해 기다리는 과정
+
+> **job Queue** : 보조기억장치 -> 메모리      
+  - Job scheduler : 메모리 적재 순서 결정      
+  프로세스가 끝날때까지 기다려야 하므로 Long-term scheduler이라고도 부름 
+> **Ready Queue** : 메모리 -> CPU      
+  - CPU scheduler : CPU 서비스 사용 순서 결정        
+  프로세스 상태가 끝날때까지 기다려야 하므로 Short-term schduler이라고도 부름
+> **Device Queue** : 주변기기 사용 
+  - Device scheduler : 주변기기 사용 순서 결정
+
+## Multiprogramming
+
+멀티프로그래밍의 정도는 메모리에 적재되는 프로세스의 수에 영향        
+전체 프로세스가 하는 일의 종류에 의해 멀티프로그래밍의 종류 결정
+> **I/O bound process**      
+  주로 디바이스 동작 (예: word)
+  **CPU bound process**     
+  계산량이 많은 동작 (예: 일기예보)
+
+### Mudium-term scheduler
+
+메모리에 적재된 프로그램들 중 Swapping 순서 결정
+
+**Swapping**      
+메모리에 있지만 작업을 수행하지 않는 프로그램을 보조기억장치로 보냄
+> **Swap in** : Swapping된 프로그램을 다시 메모리로 가져옴       
+  **Swap out** : 메모리에 적재된 프로그램을 보조기억장치로 보냄
+
+
+
+
+
+
+
 
 
