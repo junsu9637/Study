@@ -209,7 +209,7 @@
 
 ## Queues
 
-프로세스가 다음 과정을 위해 기다리는 과정
+프로세스가 다음 과정을 위해 자신의 순서를 기다리는 과정
 
 > **job Queue** : 보조기억장치 -> 메모리      
   - Job scheduler : 메모리 적재 순서 결정      
@@ -238,10 +238,29 @@
 > **Swap in** : Swapping된 프로그램을 다시 메모리로 가져옴       
   **Swap out** : 메모리에 적재된 프로그램을 보조기억장치로 보냄
 
+### Context switching (문맥전환)
 
+프로세스를 진행 중 프로세스를 다른 프로그램으로 바꿔서 실행하는 것
 
+> **Scheduler** : Ready Queue 상태의 프로그램 CPU 서비스 사용 순서 결정      
+  **Dispatcher** : Scheduler가 선택한 프로세서 실행을 위한 값 변환       
+  현재 프로세서 : OS에 지금까지 결과 저장     
+  다음 프로세서 : 실행 환경 초기화 및 복원             
+  **Context switching overhead** : 문맥 전환을 진행하는 동안 발생하는 부담     
 
+# CPU Scheduling
 
+상황에 따라 기존 프로세스를 강제 중지 할 수 있다. 
+
+> **Preemptive(선점)** : CPU 실행 중인 프로세스를 강제 중지하고 Scheduning을 진행하는 것       
+  **Non-Preemptive(비선점)** : 프로세스가 끝난 후 Scheduling을 진행하는 것
+
+## Scheduling criteria (성능 척도)
+- **CPU Utilization (CPU 이용률)** : CPU의 실제 동작 시간의 비율
+- **Throughput (처리율)** : 시간 당 프로그램 처리 개수
+- **Turnaround time (반환시간)** : 작업 시작 ~ 작업 종료의 전체 시간
+- **Waiting time (대기시간)** : Ready Queue의 시간
+- **Response time (응답시간)** : 명령 후 첫 응답이 출력되는 
 
 
 
