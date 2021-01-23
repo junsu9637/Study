@@ -264,34 +264,45 @@
 
 ### CPU Scheduling Algorithms
 
-> FCFS(First-Come, First-Served)     
+> **FCFS(First-Come, First-Served)     
   SJF(Shortest-Job-First)      
   Priority      
   RR(Round-Robin)     
   Multilevel Queue      
-  Multilevel Feedback Queue      
+  Multilevel Feedback Queue**      
 
 #### FCFS(First-Come, First-Served)
 
-먼저 온 프로그램부터 먼저 서비스    
+먼저 온 프로그램부터 먼저 서비스하는 방식으로 Non-Preemptive Scheduling에 해당한다.    
 가장 간단하고 공평한 방법이지만 가장 좋은 방법은 아니다.
 
-> | Process | Burst Time |
-  |:-:|:-:|
-  | P1 | 24 |
-  | P2 | 3 |
-  | P3 | 3 |
-  이 경우의 Waiting Time은 아래와 같이 0+24+27이다.      
-  | P1 | P2 | P3 |
-  |:-:|:-:|:-:|
-  | 24 | 3 | 3 |
-  Average Waiting Time(평균 대기 시간) : AWT = (0+24+27)/3 = 17
+| Process | Burst Time |
+|:-:|:-:|
+| P1 | 24 |
+| P2 | 3 |
+| P3 | 3 |
+
+아래 경우의 Waiting Time은 0+24+27이다.      
+| P1 | P2 | P3 |
+|:-:|:-:|:-:|
+| 24 | 3 | 3 |
+
+아래 경우의 Waiting Time은 0+3+6이다.      
+| P2 | P3 | P1 |
+|:-:|:-:|:-:|
+| 3 | 3 | 24 |
+
+따라서 Waiting Time을 고려할 때, Waiting timed이 짧은 것부터 처리하는 것이 좋다.
+**Convey Effect(호위효과)** : Waitiing Time이 긴 프로그램이 앞에 위치하여 뒤에 위치한 프로그램들이 오래 기다리는 상태
+
+#### Shortest-Job_First
+
+작업시간이 짧은 프로그램부터 서비스하는 방식
 
 
 
 
 
-작업시간이 짧은 프로그램부터 서비스
 우선순위가 높은 프로그램부터 서비스
 원형의 순서로 순서대로 서비스
 
