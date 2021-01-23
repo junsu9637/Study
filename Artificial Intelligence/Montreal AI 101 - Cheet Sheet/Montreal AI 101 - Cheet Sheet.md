@@ -16,7 +16,7 @@ Gary Marcus의 인공지능은 다음 10년 동안 인지 모델 중심의 복�
 이는 현재 가능한 것보다 더 풍부하고 강력한 AI를 위한 기질을 제공할 수 있다.
 
 인공지능의 다음 10년 : 강력한 인공지능을 향한 4단계 <br>
-`The Next Decade in AI: Four Steps Towards Robust Artificial Intelligence - Gary Marcus`
+`[The Next Decade in AI: Four Steps Towards Robust Artificial Intelligence - Gary Marcus](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/AI-First/The%20Next%20Decade%20in%20AI:%20Four%20Steps%20Towards%20Robust%20Artificial%20Intelligence.md)`
 
 지능의 척도에 관하여 <br>
 `On the Measure of Intelligence - Franc¸ois Chollet`
