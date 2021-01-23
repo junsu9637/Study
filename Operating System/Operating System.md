@@ -187,20 +187,20 @@
   **Communication**     
   socket, send, receive
   
-  # 프로세스 관리
+# 프로세스 관리
   
-  CPU 자원을 효과적으로 나누는 방법      
-  프로세스가 실행되는 동안 text(code), data, stack, pc, register 등의 값이 변화
+CPU 자원을 효과적으로 나누는 방법      
+프로세스가 실행되는 동안 text(code), data, stack, pc, register 등의 값이 변화
   
-  **프로세스 상태**
-  > **new** : 보조기억장치에서 메모리로 올라온 상태    
-    **ready** : 메모리에서 초기화 진행 후 실행 준비 완료된 상태    
-    **running** : 실제 동작     
-    **waiting** : 다른 프로세스 진행 과정 동안 기다림(다시 running)      
-    **terminated** : 프로세스 종료
+**프로세스 상태**
+> **new** : 보조기억장치에서 메모리로 올라온 상태    
+  **ready** : 메모리에서 초기화 진행 후 실행 준비 완료된 상태    
+  **running** : 실제 동작     
+  **waiting** : 다른 프로세스 진행 과정 동안 기다림(다시 running)      
+  **terminated** : 프로세스 종료
     
-  > Multiprogramming System : running -> waiting       
-    Time-Sharing System : running -> waitting or ready
+> Multiprogramming System : running -> waiting       
+  Time-Sharing System : running -> waitting or ready
   
 **PCB(Process Control Block)**
 
@@ -248,21 +248,21 @@
   다음 프로세서 : 실행 환경 초기화 및 복원             
   **Context switching overhead** : 문맥 전환을 진행하는 동안 발생하는 부담     
 
-## CPU Scheduling
+# CPU Scheduling
 
 상황에 따라 기존 프로세스를 강제 중지 할 수 있다. 
 
 > **Preemptive(선점)** : CPU 실행 중인 프로세스를 강제 중지하고 Scheduning을 진행하는 것       
   **Non-Preemptive(비선점)** : 프로세스가 끝난 후 Scheduling을 진행하는 것
 
-### Scheduling criteria (성능 척도)
+## Scheduling criteria (성능 척도)
 - **CPU Utilization (CPU 이용률)** : CPU의 실제 동작 시간의 비율
 - **Throughput (처리율)** : 시간 당 프로그램 처리 개수
 - **Turnaround time (반환시간)** : 작업 시작 ~ 작업 종료의 전체 시간
 - **Waiting time (대기시간)** : Ready Queue의 시간
 - **Response time (응답시간)** : 명령 후 첫 응답이 출력되는 
 
-### CPU Scheduling Algorithms
+## CPU Scheduling Algorithms
 
 > **FCFS(First-Come, First-Served)     
   SJF(Shortest-Job-First)      
@@ -271,7 +271,7 @@
   Multilevel Queue      
   Multilevel Feedback Queue**      
 
-#### FCFS(First-Come, First-Served)
+### FCFS(First-Come, First-Served)
 
 먼저 온 프로그램부터 먼저 서비스하는 방식으로 Non-Preemptive Scheduling에 해당한다.    
 가장 간단하고 공평한 방법이지만 가장 좋은 방법은 아니다.
@@ -298,7 +298,7 @@
 따라서 프로세스가 시작되는 순서에 따라 Waiting time이 달라진다.
 **Convey Effect(호위효과)** : Waitiing Time이 긴 프로그램이 앞에 위치하여 뒤에 위치한 프로그램들이 오래 기다리는 상태
 
-#### SJF(Shortest-Job_First)
+### SJF(Shortest-Job_First)
 
 작업시간이 짧은 프로그램부터 서비스하는 방식으로 Preemptive Scheduling과 Non-Preemptive Scheduling 둘 다 해당한다.        
 실제 환경에서는 프로그램의 작업시간을 알 수 없기 때문에 완벽하게 구현할 수 없다.     
@@ -380,7 +380,7 @@ Priority Scheduling 방식으로 계산하면 아래와 같다.
 |:-:|:-:|:-:|:-:|
 | 1 | 5 | 10 | 2 |
 
-#### Round-Robin
+### Round-Robin
 
 **Time Quantum(=Time Slice)** 를 통해 원형의 순서를 지정하고, 이 순서대로 서비스하는 방식이다.    
 Time Quantum이 프로세스 중 가장 동작시간이 긴 프로그램보다 길게 설정하면 FCFS와 같게된다. 
@@ -406,4 +406,31 @@ Time Quantum이 3인 RR로 계산하면 아래와 같이 Waiting time은 8+0+0=8
 | 3 | 2 | 3 | 21 |
    
 따라서 Time Quantum에 의해 성능이 결정된다. 
+
+### Multilevel Queue Schduling
+
+Quaue를 한개가 아닌 여러개를 동시에 진행한다.
+> 각각의 Quaue에 절대적 우선순위 지정 
+  CPU time을 각 Quaue에 차등분배
+  각 Quaue에 독립된 Scheduming
+
+프로세스는 여러 종류가 있고, 필요한 업무 조건이 다르다.
+> system Processes : OS가 하는 프로세스
+  Interactive Processes : 사용자외의 대화형 프로세스
+  Interactive Editing Processes : 편집기능의 대화형 프로세스
+  Batch Processes : 일괄 처리 프로세스
+  Student Processes
+
+### Multilevel *Feadback* Queue Schduling
+
+특정 상태의 Quaue를 다른 Quaue로 점직적으로 이동시킨다.
+> 많은 CPU time 사용 시 다른 Quaue로 이동
+  기아 상태 우려 시 우선순위 높은 Quaue로 이동
+
+---
+
+# Process 생성 및 종료 
+
+## Process 생성
+
 
