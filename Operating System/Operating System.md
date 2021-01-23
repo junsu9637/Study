@@ -248,20 +248,43 @@
   다음 프로세서 : 실행 환경 초기화 및 복원             
   **Context switching overhead** : 문맥 전환을 진행하는 동안 발생하는 부담     
 
-# CPU Scheduling
+## CPU Scheduling
 
 상황에 따라 기존 프로세스를 강제 중지 할 수 있다. 
 
 > **Preemptive(선점)** : CPU 실행 중인 프로세스를 강제 중지하고 Scheduning을 진행하는 것       
   **Non-Preemptive(비선점)** : 프로세스가 끝난 후 Scheduling을 진행하는 것
 
-## Scheduling criteria (성능 척도)
+### Scheduling criteria (성능 척도)
 - **CPU Utilization (CPU 이용률)** : CPU의 실제 동작 시간의 비율
 - **Throughput (처리율)** : 시간 당 프로그램 처리 개수
 - **Turnaround time (반환시간)** : 작업 시작 ~ 작업 종료의 전체 시간
 - **Waiting time (대기시간)** : Ready Queue의 시간
 - **Response time (응답시간)** : 명령 후 첫 응답이 출력되는 
 
+### CPU Scheduling Algorithms
+
+> FCFS(First-Come, First-Served)     
+  SJF(Shortest-Job-First)      
+  Priority      
+  RR(Round-Robin)     
+  Multilevel Queue      
+  Multilevel Feedback Queue      
+
+#### FCFS(First-Come, First-Served)
+
+먼저 온 프로그램부터 먼저 서비스    
+가장 간단하고 공평한 방법이지만 가장 좋은 방법은 아니다.
+
+| Process | Burst Time |
+|-|-|
+| $P_1$ | 24 |
+| $P_2$ | 3 |
+| $P_3$ | 3 |
+
+작업시간이 짧은 프로그램부터 서비스
+우선순위가 높은 프로그램부터 서비스
+원형의 순서로 순서대로 서비스
 
 
 
