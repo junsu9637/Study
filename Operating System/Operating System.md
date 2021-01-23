@@ -276,6 +276,7 @@
 먼저 온 프로그램부터 먼저 서비스하는 방식으로 Non-Preemptive Scheduling에 해당한다.    
 가장 간단하고 공평한 방법이지만 가장 좋은 방법은 아니다.
 
+아래와 같이 3개의 프로세스를 가정해보자.
 | Process | Burst Time |
 |:-:|:-:|
 | P1 | 24 |
@@ -292,18 +293,91 @@
 |:-:|:-:|:-:|
 | 3 | 3 | 24 |
 
-따라서 Waiting Time을 고려할 때, Waiting timed이 짧은 것부터 처리하는 것이 좋다.
+따라서 프로세스가 시작되는 순서에 따라 Waiting time이 달라진다.
 **Convey Effect(호위효과)** : Waitiing Time이 긴 프로그램이 앞에 위치하여 뒤에 위치한 프로그램들이 오래 기다리는 상태
 
-#### Shortest-Job_First
+#### SJF(Shortest-Job_First)
 
-작업시간이 짧은 프로그램부터 서비스하는 방식
+작업시간이 짧은 프로그램부터 서비스하는 방식으로 Preemptive Scheduling과 Non-Preemptive Scheduling 둘 다 해당한다.        
+실제 환경에서는 프로그램의 작업시간을 알 수 없기 때문에 완벽하게 구현할 수 없다.     
+프로그램이 실행 되었던 기록을 바탕으로 작업시간을 예측하며 SJF를 구현한다.  
 
+---
 
+아래와 같이 4개의 프로세스를 가정해보자.
+| Process | Burst Time |
+|:-:|:-:|
+| P1 | 6 |
+| P2 | 8 |
+| P3 | 7 |
+| P4 | 3 |
 
+아래와 같이 SJF로 계산하면 Waiting time은 0+3+9+16 = 28이다.
+| P4 | P1 | P3 | P4 |
+|:-:|:-:|:-:|:-:|
+| 3 | 6 | 7 | 8 |
 
+아래와 같이 FCFS로 계산하면 Waiting time은 0+6+14+21 = 41이다. 
+| P1 | P2 | P3 | P4 |
+|:-:|:-:|:-:|:-:|
+| 6 | 8 | 7 | 3 |
 
-우선순위가 높은 프로그램부터 서비스
+따라서 SJF를 사용하면 Waiting time을 최소화할 수 있다.      
+
+---
+
+아래와 같이 4개의 프로세스를 가정하고 SJF의 Preemptive Scheduling과 Non-Preemptive Scheduling을 구현해보자
+| Process | Burst Time | Arrival Time |
+|:-:|:-:|:-:|
+| P1 | 8 | 0 |
+| P2 | 4 | 1 |
+| P3 | 9 | 2 |
+| P4 | 5 | 3 |
+
+**Non-Preemptive Scheduling**
+
+| P1 | P2 | P4 | P3 |
+|:-:|:-:|:-:|:-:|
+| 8 | 4 | 5 | 9 |
+
+Arrival Time(도착지연시간)이 없는 P1부터 시작하고, Waiting time은 0+8+12+19=39
+
+**Preemptive Scheduling**
+
+| P1 | P2 | P2 | P2 | P3 | P1 | P4 |
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| 1 | 1 | 1 | 2 | 5 | 7 | 9 |
+
+Arrival Time에 의해 P1이 먼저 시작하고 1초 후 P1보다 작동시간이 작은 P2를 실행한다.      
+P3,P4에 정해진 Arrival Time이 끝나도 P2보다 작동시간이 크기 때문에 P2를 실행한다.     
+P2 종료 후 P3, P4와 남은 P1을 SJF 방식으로 진행한다.     
+
+**Priority Scheduling**
+
+우선순위가 높은 프로그램부터 서비스하는 방식으로 Preemptive Scheduling과 Non-Preemptive Scheduling 둘 다 해당한다.     
+> **Priority(우선순위)** : 정수로 표시하며 숫자가 작을수록 우선순위 높음
+  Internal(내부적 요소) : time limit, memory requirement, i/o to CPU burst …
+  External(외부적 요소) : amount of unds being paid, politcal factors …
+  
+> Starvation : 계속 프로그램들이 메모리로 적재되기 때문에 우선순위가 낮은 프로그램은 작동 못하는 문제        
+  Againg : 프로그램이 메모리에 적재되어있는 시간에 비례하여 우선순위에 가산점을 주는 방식
+
+아래와 같이 4개의 프로세스를 가정해보자.
+| Process | Burst Time | Priority |
+|:-:|:-:|:-:|
+| P1 | 10 | 3 |
+| P2 | 1 | 1 |
+| P3 | 2 | 4 |
+| P4 | 5 | 2 |
+
+Priority Scheduling 방식으로 계산하면 아래와 같다. 
+
+| P2 | P4 | P1 | P3 |
+|:-:|:-:|:-:|:-:|
+| 1 | 5 | 10 | 2 |
+
+#### 
+
 원형의 순서로 순서대로 서비스
 
 
