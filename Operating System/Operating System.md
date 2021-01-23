@@ -397,7 +397,7 @@ Time Quantum이 작으면 Switching overhead가 발생한다.
 
 Time Quantum이 1인 RR로 계산하면 아래와 같이 Waiting time은 8+7+4=19
 | P1 | P2 | P3 | P1 | P2 | P3 | P1 | P3 | P1 |
-|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 21 |
 
 Time Quantum이 3인 RR로 계산하면 아래와 같이 Waiting time은 8+0+0=8
