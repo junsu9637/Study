@@ -445,7 +445,7 @@ Quaue를 한개가 아닌 여러개를 동시에 진행한다.
 > 쓰래드 구조
   - Stack을 제외한 프로세스의 메모리 공간 공유 (Code, Data)        
   - 프로세스의 자원 공유 (File, I/O ...)          
-  - 비공유 : 개별 PC, SP, Registers, Stack
+  - 비공유 : 개별 PC, Stack Pointer, Registers, Stack
 
 ## MultiThread
 
@@ -454,12 +454,79 @@ Quaue를 한개가 아닌 여러개를 동시에 진행한다.
 > Concurrent : 한 번에 한 동작만 진행하지만 빠른 스위칭으로 동시에 작업을 수행하는 것처럼 보이는 상태              
   Simultaneous : 동시에 여러 작업을 수행하는 상태
 
+# Proces Synchronization(프로세스 동기화)
+
+공유 데이터의 동시 접근 문제를 해결하기 위해 프로세스를 순차적으로 실행하여 데이터 일관성을 유지한다.             
+틀린 답이 나오지 않도록 임계구역 문제를 해결해야한다.          
+원하는대로 프로세스 실행 순서를 제어해야한다.       
+**임계구역 문제** : 여러 쓰래드가 공통변수에 동시 업데이트를 진행하여 생기는 시간 지연            
+
+> Independent Process : 같은 시스템 내의 다른 프로그램과 아무런 관계도 없는 프로세스          
+  Coperating Process : 같은 시스템 내의 다른 프로그램과 영향을 주고 받는 프로세스
+
+## The Critcal-Section Problem(임계구역 문제)
+
+여러개의 쓰래드로 이루어진 시스템에서 여러 쓰래드가 공통변수에 동시 업데이트를 진행하는 문제
+Critical Section(임계구역) : 각 쓰래드 내부에 있는 쓰레드가 공통 변수를 변경할 수 있는 코드 영역
+
+> Mutual exclusion (상호배타) : 임계구역에는 한 번에 한 쓰래드만 진입해야 한다.             
+  Progres (진행): 어떤 쓰래드가 먼저 진입할 것인가        
+  Bounded waitng (유한대기): 어느 쓰레드라도 유한 시간 내에 들어갈 수 있다.             
 
 
+## Synchronization Tools(동기화 도구)
 
+> Semaphores     
+  Monitors      
+  Misc     
 
+### Semaphores
 
+동기화 문제 해결을 위한 소프트웨어 도구 (Mutual exclusion, Ordering 등에 사용)
+구조 : 정수형 변수 + P 동작 + V 동작
 
+> P 동작 : acquire() 정수값 검사를 통한 프로세스 감금
+  ```Java
+  void acquire()
+  {
+     value--;
+     if(value < 0)
+     {
+        add this process/thread to list;
+        block;
+     }
+  }
+  ```
+> V 동작 : release() 정수값 증가를 통한 프로세스 복귀        
+  ```Java
+  void release() 
+  {
+     value++;
+     if(value <= 0)
+     {
+        remove a process P from list;
+        wakeup P;
+     }
+  }
+  ```
+---
+
+#### Mutual exclusion
+세마포를 이용하여 임계구역에 한 쓰래드만 접근하게 하여 지연시간에 관계없이 정확히 동작
+sem.value = 1
+| sem. acquire() |
+|:-:|
+| *Critical-Section* |
+| sem.release() |
+
+#### Ordering
+
+sem.value = 0
+| P1 | P2 |
+|:-:|:-:|
+|| sem.acquire() |
+|S1|S2|
+|sem.release()||
 
 
 
