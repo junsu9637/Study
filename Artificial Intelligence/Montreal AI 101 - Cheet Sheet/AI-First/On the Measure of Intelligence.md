@@ -558,7 +558,7 @@ No Free Lunch 정리는 모든 가능한 문제에 걸쳐 성능을 평균화할
 
 개발자 인식 일반화는 초기 시스템과 최단 훈련 시간 솔루션 측면에서 (즉, 사용자가 원하는 대로 사용할 수 있다는 점에서) 가장 짧은 평가 시간 솔루션에 대한 불확실성의 양을 나타냅니다. 평가 시간 솔루션을 얻기 위해 가장 짧은 교육 시간 솔루션을 수정해야 하는 양은 초기 시스템의 내용을 활용할 수 있다.
 
-마찬가지로 과제 T<sub>1</sub>에서 과제 T<sub>2</sub>(충분한 경우)까지의 일반화 난이도를 *H(Sol<sup>θ<sub>T<sub>2</sub></sub></sup><sub>T<sub>2</sub></sub>|Sol<sup>θ<sub>T<sub>1</sub></sub></sup><sub>T<sub>1</sub></sub>)/H(Sol<sup>θ<sub>T<sub>2</sub></sub></sup><sub>T<sub>2</sub></sub)*로 정의할 수 있다.
+마찬가지로 과제 T<sub>1</sub>에서 과제 T<sub>2</sub>(충분한 경우)까지의 일반화 난이도를 *H(Sol<sup>θ<sub>T<sub>2</sub></sub></sup><sub>T<sub>2</sub></sub>|Sol<sup>θ<sub>T<sub>1</sub></sub></sup><sub>T<sub>1</sub></sub>) / H(Sol<sup>θ<sub>T<sub>2</sub></sub></sup><sub>T<sub>2</sub></sub>)* 로 정의할 수 있다.
 
 
 ### 2.2.2 계산 효율성, 시간 효율성, 에너지 효율성 및 위험 효율성
