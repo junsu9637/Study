@@ -512,15 +512,21 @@ Critical Section(임계구역) : 각 쓰래드 내부에 있는 쓰레드가 공
 ---
 
 #### Mutual exclusion
-세마포를 이용하여 임계구역에 한 쓰래드만 접근하게 하여 지연시간에 관계없이 정확히 동작
-sem.value = 1
+세마포를 이용하여 임계구역에 sem.value 수만큼의 쓰래드만 접근하게 하여 지연시간에 관계없이 정확히 동작
+sem.value = 1 (*1개의 쓰래드만 접근 가능*)        
 | sem. acquire() |
 |:-:|
 | *Critical-Section* |
 | sem.release() |
 
-#### Ordering
+> 1. P<sub>1</sub>이 실행되면서 acquire() 실행 -> sem.value = 0           
+  2. P<sub>1</sub>이 끝나기 전에 스위칭            
+  3. P<sub>2</sub>가 실행되기 위해 acquire()을 실행하지만 sem.value로 인해 잡힘           
+  4. P<sub>1</sub>이 끝나면서 release() 실행 -> sem.value = 0         
+  5. P<sub>2</sub> 실행
 
+#### Ordering
+프로세스 실행 순서 제어
 sem.value = 0
 | P1 | P2 |
 |:-:|:-:|
@@ -528,7 +534,10 @@ sem.value = 0
 |S1|S2|
 |sem.release()||
 
-
+> 1. P<sub>2</sub>가 실행되기 위해 acquire() 실행하지만 sem.value로 인해 잡힘        
+  2. P<sub>1</sub> 실행         
+  3. P<sub>1</sub>이 끝나면서 release() 실행 -> sem.value = 1          
+  4. P<sub>2</sub> 실행           
 
 
 
