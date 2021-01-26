@@ -537,7 +537,7 @@ sem.value = 0
 |sem.release()||
 
 ```markdown
-1. P<sub>2</sub>가 실행되기 위해 acquire() 실행하지만 sem.value로 인해 잡힘        
+1. P_2가 실행되기 위해 acquire() 실행하지만 sem.value로 인해 잡힘        
 2. P<sub>1</sub> 실행         
 3. P<sub>1</sub>이 끝나면서 release() 실행 -> sem.value = 1          
 4. P<sub>2</sub> 실행           
