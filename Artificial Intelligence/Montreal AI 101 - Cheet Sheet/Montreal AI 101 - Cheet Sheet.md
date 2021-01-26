@@ -24,6 +24,6 @@ Gary Marcus의 인공지능은 다음 10년 동안 인지 모델 중심의 복�
 ---
 
 **지능의 척도에 관하여**             
-[**On the Measure of Intelligence - Franc¸ois Chollet**](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/AI-First/On%20the%20Measure%20of%20Intelligence.md)
+[**On the Measure of Intelligence - Francois Chollet**](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/AI-First/On%20the%20Measure%20of%20Intelligence.md)
 
 ---
