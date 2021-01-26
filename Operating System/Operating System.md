@@ -520,11 +520,11 @@ sem.value = 1 (*1개의 쓰래드만 접근 가능*)
 | sem.release() |
 
 ```markdown
-1. P<sub>1</sub>이 실행되면서 acquire() 실행 -> sem.value = 0           
-2. P<sub>1</sub>이 끝나기 전에 스위칭            
-3. P<sub>2</sub>가 실행되기 위해 acquire()을 실행하지만 sem.value로 인해 잡힘           
-4. P<sub>1</sub>이 끝나면서 release() 실행 -> sem.value = 0         
-5. P<sub>2</sub> 실행
+1. P1이 실행되면서 acquire() 실행 -> sem.value = 0           
+2. P1이 끝나기 전에 스위칭            
+3. P2가 실행되기 위해 acquire()을 실행하지만 sem.value로 인해 잡힘           
+4. P1이 끝나면서 release() 실행 -> sem.value = 1         
+5. P2 실행
 ```
 
 #### Ordering
@@ -537,10 +537,10 @@ sem.value = 0
 |sem.release()||
 
 ```markdown
-1. P_2가 실행되기 위해 acquire() 실행하지만 sem.value로 인해 잡힘        
-2. P<sub>1</sub> 실행         
-3. P<sub>1</sub>이 끝나면서 release() 실행 -> sem.value = 1          
-4. P<sub>2</sub> 실행           
+1. P2가 실행되기 위해 acquire() 실행하지만 sem.value로 인해 잡힘        
+2. P1 실행         
+3. P1이 끝나면서 release() 실행 -> sem.value = 1          
+4. P2 실행           
 ```
 
 
