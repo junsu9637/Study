@@ -623,17 +623,53 @@ void remove(int item)
    return item;
 }
 ```
+## Readers-Writers Problem
+
+데이터베이스를 읽기만 하면(Reader) 한 번에 여러 프로세서 접근 가능
 
 
+> Readers : 데이터베이스를 읽기만 가능
+  Writers : 데이터베이스를 읽고 쓰기 가능
+  
+### The first R/W problem(readers-preference)
+Reader에게 데이터베이스 접근 우선권을 부여하는 방식
 
+### The second R/W problem(writers-preference)
+Writer에게 데이터베이스 접근 우선권을 부여하는 방식
 
+### The third R/W problem
+아무에게도 데이터베이스 접근 우선권을 부여하지 않는 방식
 
+## Dining Philosopher Problem
 
+생각 - 작동 - 생각 - 작동 ... 의 형식으로 진행
+Starvation : 교착상태(Deadlock)로 인한 오류로 필요한 자원이 다른 프로세서에 할당되어 있어 프로세스를 실행하지 못함
 
+# Deadlock(교착상태)
 
+어떤 자원은 갖고 있으나 다른 자원은 가지 못해 대기해야하는 상태(자주 일어나지 않음)
 
+**Necessary Conditions(필요조건)** : 아래 4가지를 만족해야지 교착상태 가능
+> Mutual exclusion(상호배타)        
+  Hold and wait(보유 및 대기)         
+  No Preemption(비선점)         
+  Circular wait(환형대기)              
 
+## Resources(자원)
 
+**Instance** : 동일 형식(type) 자원이 여러 개 있을 수 있다
+Request(요청) -> Use(사용) -> Release(반납)의 순서를 진행해야 자원 사용 가능
+
+### Resource Allocation Graph(자원 할당도)
+
+> 자원 : 사각형(개수는 .으로 표시)        
+  프로세스 : 원         
+  할당 : 화살표
+  > 자원 -> 프로세스 : 할당 됨
+    프로세서 -> 자원 : 요청 
+  
+> 어떤 자원이 어떤 프로세스에게 할당되었는가          
+  어떤 프로세스가 어떤 자원을 할당 받으려고 기다리고 있는가           
 
 
 
