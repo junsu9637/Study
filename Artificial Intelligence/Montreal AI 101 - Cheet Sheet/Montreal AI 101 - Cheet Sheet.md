@@ -1,6 +1,6 @@
 # AI 리뷰
 
-## AI-FIRST
+# AI-FIRST
 
 오늘날의 인공지능은 강력하며 누구나 쉽게 접근할 수 있다.
 AI는 산업을 변화시킬 수 있고 새로운 가능성의 세계를 열어준다.
@@ -27,3 +27,19 @@ Gary Marcus의 인공지능은 다음 10년 동안 인지 모델 중심의 복�
 [**On the Measure of Intelligence - Francois Chollet**](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/AI-First/On%20the%20Measure%20of%20Intelligence.md)
 
 ---
+
+# Deep Learning
+
+**Mitchell에 따른 학습** (1997) : 컴퓨터 프로그램은 몇몇 종류와 과제와 관련하여 경험 E로부터 배운다고 한다. 만약 성능 측정 P에 의해 측정되는 과제T에서의 성과가 E에 따라 향상된다면 성능 측정 P에 관해서 배운다고 한다.
+
+> *Deep Learning은 학습된 특징과 기능의 구성으로 계산되는 풍부하고 유용한 내부 표현을 발견하는 학습 기계를 구축하기 위해 뇌의 신경망에서 영감을 받는다*      
+  \- Yoshua Bengio - 
+  
+> *Deep Learning은 매개 변수화된 기능 모듈의 네트워크를 구성하고 그라데이션 기반 최적화를 사용하여 예제로부터 그것들을 훈련시키고 있다. 이것은 벡터로 기호를 바꾸고 연속(미분 가능) 함수로 논리를 바꾼다.*      
+  \- Yann LeCun - 
+ 
+Deep Learning을 통한 여러 처리 계층으로 구성된 컴퓨팅 모델을 통해 추상화 수준이 여러 개인(원시) 데이터의 CREAPEN-TATION을 학습할 수 있다
+
+[**Deep Learning - Yann LeCun**](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/Deep%20Learning/Deep%20Learning.md)
+
+높은 수준의 신경 네트워크는 인코더와 디코더의 조합이다.
