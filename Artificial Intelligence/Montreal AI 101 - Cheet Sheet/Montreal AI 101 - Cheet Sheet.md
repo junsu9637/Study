@@ -21,8 +21,6 @@ Gary Marcus의 인공지능은 다음 10년 동안 인지 모델 중심의 복�
 **지능의 척도에 관하여**             
 [**On the Measure of Intelligence - Francois Chollet**](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/AI-First/On%20the%20Measure%20of%20Intelligence.md)
 
----
-
 # Deep Learning
 
 **Mitchell에 따른 학습** (1997) : 컴퓨터 프로그램은 몇몇 종류와 과제와 관련하여 경험 E로부터 배운다고 한다. 만약 성능 측정 P에 의해 측정되는 과제T에서의 성과가 E에 따라 향상된다면 성능 측정 P에 관해서 배운다고 한다.
