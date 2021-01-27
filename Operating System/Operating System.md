@@ -650,11 +650,73 @@ Starvation : 교착상태(Deadlock)로 인한 오류로 필요한 자원이 다�
 어떤 자원은 갖고 있으나 다른 자원은 가지 못해 대기해야하는 상태(자주 일어나지 않음)
 
 **Necessary Conditions(필요조건)** : 아래 4가지를 만족해야지 교착상태 가능
-> Mutual exclusion(상호배타)        
-  Hold and wait(보유 및 대기)         
-  No Preemption(비선점)         
-  Circular wait(환형대기)              
+> **Mutual exclusion(상호배타)** : 임계구역에 한 쓰래드만 접근       
+  **Hold and Wait(보유 및 대기)** : 자원이 보유되거나 대기        
+  **No Preemption(비선점)** : 자원 강제 회수 불가        
+  **Circular wait(환형대기)** : 자원이 순환해야 함             
 
+## 교착상태 처리
+
+> Deadlock Prevention (교착상태 방지)
+  Deadlock Avoidance (교착상태 회피)
+  Deadlock Detection & Recovery (교착상태 검출 및 복구)
+  Don't Care (교착상태 무시)
+
+### Deadlock Prevention
+
+교착상태의 4가지 필요조건 중 1개 이상을 방지한다.
+
+#### Mutual exclusion
+
+자원을 공유 가능하게 설정(불가능할 가능성 높음)
+
+#### Hold and Wait
+
+자원을 가지고 있으면서 다른 자원을 기다리지 않게 설정       
+자원 활용률 저하, starvation(기아) 발생 가능
+
+#### No Preemption
+
+자원을 선점 가능하게 설정(불가능할 가능성 높음)
+
+#### Circular wait
+
+자원에 번호를 부여하고, 오름차순으로 자원 요청하게 설정             
+자원 활용률 저하
+
+## 교착상태 회피
+
+자원 요청에 대한 잘못된 승인을 교착상태라고 정의
+
+**안전한 할당**
+총 12개의 자원
+| Process | Max needs | Current needs |
+|:-:|:-:|:-:|
+| P<sub>1</sub> | 10 | 5 |
+| P<sub>2</sub> | 4 | 2 |
+| P<sub>3</sub> | 9 | 2 |
+
+> 1. P<sub>1</sub>, P<sub>2</sub>, P<sub>3</sub>에 자원을 할당 : 12 - 9 = 3
+  2. P<sub>2</sub>에 2개 할당 : 3 - 2 = 1
+  3. P<sub>2</sub>가 종료 되면서 사용한 자원 반환 : 1 + 4 = 5
+  4. P<sub>1</sub>에 자원 할당 : 5 - 5 = 0
+  5. P<sub>1</sub>가 종료 되면서 사용한 자원 반환 : 0 + 10 = 10
+  6. P<sub>3</sub>에 자원 할당 : 10 - 7 = 3
+  7. P<sub>3</sub>가 종료 되면서 사용한 자원 반환 : 3 + 9 = 12
+
+**불안전한 할당**
+총 12개의 자원
+| Process | Max needs | Current needs |
+|:-:|:-:|:-:|
+| P<sub>1</sub> | 10 | 5 |
+| P<sub>2</sub> | 4 | 2 |
+| P<sub>3</sub> | 9 | 3 |
+
+> 1. P<sub>1</sub>, P<sub>2</sub>, P<sub>3</sub>에 자원을 할당 : 12 - 10 = 2
+  2. P<sub>2</sub>에 2개 할당 : 2 - 2 = 0
+  3. P<sub>2</sub>가 종료 되면서 사용한 자원 반환 : 0 + 4 = 4
+  4. P<sub>1</sub>, P<sub>3</sub>에 할당할 자원 부족
+  
 ## Resources(자원)
 
 **Instance** : 동일 형식(type) 자원이 여러 개 있을 수 있다
