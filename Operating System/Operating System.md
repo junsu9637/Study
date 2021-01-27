@@ -576,7 +576,13 @@ sem.value = 0
   \- 생산자 : 버퍼가 가득차면 넣을 수 없다           
   \- 소비자 : 버퍼가 비면 뺄 수 없다          
 
-Buffer 
+아래와 같은 문제는 세마포를 통해 해결 가능
+> 임계구역에 대한 동시 진입(공통변수 count, buf[])으로 인한 실행 불가, count != 0문제 발생           
+  **Busy-wait** : 버퍼가 가득 차거나 비어있으면서 생기는 문제        
+  > 생산자 : empty.acquire() - 빈 공간 기다림        
+    소비자 : full.acquire() - 가득 차 있는 공간 기다림         
+
+Bounded Buffer 생성 
 ```Java
 class Buffer
 {
