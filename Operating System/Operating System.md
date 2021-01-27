@@ -579,6 +579,10 @@ sem.value = 0
 | Critical-Section |
 | } |
 
+```markdown
+**synchronized()** 를 실행하면 Critical-Section에 한 쓰레드만 접근
+```
+
 #### Ordering
 
 | P<sub>1</sub> | P<sub>2</sub> |
@@ -586,6 +590,13 @@ sem.value = 0
 | | wait(); |
 | S<sub>1</sub>; | S<sub>2</sub>; |
 | notify(); | |
+
+```markdown
+1. P2가 먼저 실행되더라도 wait()으로 인해 실행되지 않음
+2. P1 실행 
+3. P1이 끝나면서 notify()실행
+4. notify()로 인해 P2 
+```
 
 ---
 ---
