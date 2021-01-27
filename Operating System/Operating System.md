@@ -561,3 +561,108 @@ sem.value = 0
 ---
 
 # Clasical Synchronization Problems (전통적 동기화 예제)
+
+> Producer and Consumer Problem(생산자-소비지 문제(유한버퍼 문제))        
+  Readers-Writers Problem(공유 데이터베이스 접근)         
+  Dining Philosopher Problem(식사하는 철학자 문제)       
+
+## Producer and Consumer Problem
+
+생산자가 데이터를 생산하면 소비자는 그것을 소비
+생산 속도와 소비 속도 차이로 인해 발생하는 문제를 해결하기 위해 Bounded Buffer(유한 버퍼) 사용
+
+> **Bounded Buffer**      
+  \- 생산된 데이터를 일단 저장           
+  \- 생산자 : 버퍼가 가득차면 넣을 수 없다           
+  \- 소비자 : 버퍼가 비면 뺄 수 없다          
+
+Buffer 
+```Java
+class Buffer
+{
+   int[] buf;
+   int size;
+   int count; // Buffer 내부의 생산품 개수
+   int in; // 생산품 저장 위치
+   int out; // 생산품 추출 위치
+   
+   Buffer(int size)
+   {
+      buf = new int[size];
+      this.size = size;
+      count = in = out = 0;
+   }
+}
+```
+Buffer에 데이터 저장
+```Java
+void insert(int item)  
+{
+   while(count == size){};
+   
+   buf[in] = item;
+   in = (in+1)%size;
+   count++;
+}
+```
+Buffer의 데이터 추출
+```Java
+void remove(int item) 
+{
+   while(count == 0){};
+   
+   int item = buf[out];
+   out = (out+1)%size;
+   count--;
+   return item;
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
