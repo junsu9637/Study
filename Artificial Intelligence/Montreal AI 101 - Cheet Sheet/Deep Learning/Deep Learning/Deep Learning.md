@@ -23,7 +23,29 @@ Machibe Learning의 가장 흔한 형태는 Supervised Learning이다. 이미지
 
 실제로 대부분의 실무자들은 **확률적 경사 하강법(SGD)** 이라는 철차를 사용한다. 이것은 몇 가지 예에 대한 입력 벡터를 보여주고, 출력과 오류를 계산하고, 그러한 예에 대한 평균 기울기를 계산하고, 그에 따라 가중치를 조정하는 것으로 구성된다. 이 프로세스는 목표 기능의 평균 감소가 멈출 때까지 교육 세트의 많은 예에 대해 반복됩니다. 각 예제 집합이 모든 예에 대한 평균 기울기의 노이즈를 추정하기 때문에 확률적이라 불린다. 이 간단한 절차는 일반적으로 훨씬 정교한 최적화 기술과 비교할 때 놀랄 만큼 빠르게 좋은 가중치 집합을 찾는다. 훈련 후, 시스템의 성능은 테스트 세트라고 하는 다른 예제로 측정된다. 이러한 학습 중 본 적이 없는 새로운 입력에 대한 합리적인 답번을 도출할 수 있는 능력은 기계의 일반화 능력을 테스트하는 데 도움이 된다. 
 
-![1]()
+![1](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/Deep%20Learning/Deep%20Learning/Image/1.png?raw=true)
+
+그림 1 : 다층 신경망 및 역전파
+
+> **a.** 다중 계층 신경망(연결된 점으로 표시됨)은 입력 공간을 왜곡하여 데이터 클래스(빨간색과 파란색 라인에 있는 예)를 선형으로 분리할 수 있다. 입력 공간의 일반 격자무늬(왼쪽에 표시됨)도 숨겨진 단위에 의해 변환(중앙 패널에 표시됨)되는 방법을 참고한다. 이 그림은 2개의 입력 장치, 2개의 숨겨진 장치, 1개의 출력 장치로 구성되고, 사물 인식이나 자연어 처리에 사용되는 네트워크는 수만 또는 수십만 개를 포함한다. 이에 대한 자료는 [C.Olah](http://colah.github.io/)의 자료이다.
+
+![6](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/Deep%20Learning/Deep%20Learning/Image/6.png?raw=true)
+
+> **b.** 파생물의 연쇄 법칙은 x와 y, y와 z 간의 작은 변화가 어떻게 나타나는지 알려준다. Δx는 ∂y/∂x(부분 파생물의 정의)를 곱함으로써  Δy로 변환된다. 마찬가지로 Δy의 변화는 Δz를 변화시킨다. 이렇게 Δx에 ∂y/∂x와 ∂z/∂x를 곱하여 Δz로 변하는 방법과 같이 한 방정식을 다른 방정식으로 대체하면 파생물의 연쇄 규칙이 제시된다. 이 이론은 x, y, z가 벡터일 때도 작동한다. 
+
+![7](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/Deep%20Learning/Deep%20Learning/Image/7.png?raw=true)
+
+> **c.** 두 개의 숨겨진 계층과 하나의 출력 계층이 있는 신경망에서 앞으로 값을 전달하는 계산에 사용되는 방정식은 각각 경사도를 역전파할 수 있는 모듈을 구성한다. 각 계층은 각 유닛에 대한 아래 계층의 단위 출력의 가중치 합계인 총 입력 z를 계산하다. 그런 다음 비선형 함수 f()가 z에 적용되어 장치의 출력을 가져온다. 최근 몇 년 동안 다음과 같은 비선형 함수가 신경망에 사용되고 있다. 출력 계층에서, 유닛의 출력과 관련된 오류 파생은 비용 함수를 차별화함으로써 계산된다.
+>> **ReLU 함수**          
+   *f(z) = max(0,z)*           
+   **Sigmoid 함수**         
+   *f(z) =1/(1 + exp(−z))*         
+   **logistic 함수**        
+   *f(z) =(exp(z)− exp(−z))/(exp(z)+exp(−z))*
+  
+![8](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/Deep%20Learning/Deep%20Learning/Image/8.png?raw=true)
+  
+> **b.** 뒤로 값을 전달하는 계산에 사용하는 방정식이다. 각 은닉 계층에서 우리는 각 단위의 출력과 관련하여 오류 파생물을 계산한다. 이는 위 계층의 단위에 대한 총 입력과 관련된 오류 파생물의 가중 합계이다. 그런 다음 출력과 관련된 오류 파생물을 입력에 *f(z)* 의 경사도를 곱하여 오류 파생물로 변환한다. 이러게 하면 유닛 *l*에 대한 비용 함수가 *0.5(y<sub>l</sub>-t<sub>l</sub>)<sup>2</sup>* 이면, *y<sub>l</sub>-t<sub>l</sub>* 가 나온다. 여기서 t<sub>l</sub>은 목표값이다. *∂E/∂z<sub>k</sub>* 가 알려지면, 아래 층의 유닛 *j*에서 연결부의 가중치 *w<sub>jk</sub>* 에 대해 파생된 오차는 *y<sub>j</sub>∂E/∂z<sub>k</sub>* 가 된다.
 
 
 현재 Machine Learning의 많은 실제 응용 프로그램은 수작업으로 설계된 특징 위에 선형 분류기를 사용한다. 2개의 클래스로 구성된 선형 분류기는 특징 벡터 성분의 가중 합계를 계산한다. 가중 합계가 임계값을 초과할 경우, 입력은 특정 범주에 속하는 것으로 분류된다. 
@@ -32,7 +54,9 @@ Machibe Learning의 가장 흔한 형태는 Supervised Learning이다. 이미지
 
 Deep Learning 아키텍처는 학습의 대상이 되는 모든(또는 대부분의) 비선형 입력-출력 매핑을 계산하는 단순 모듈의 다중 계층 스택이다. 스택의 각 모듈은 입력 정보를 변환하여 표현의 선택성과 불변성을 모두 증가시킨다. 깊이가 5~20인 여러 개의 비선형 계층을 사용할 경우, 시스템은 동시에 민감한 입력의 매우 복잡한 기능을 구현할 수 있다. 예를 들어 사모예드와 흰 늑대를 구별하는 것에서 배경, 포즈, 조명, 주변 객체와 같은 관계 없는 큰 변형에는 무감각해 진다.
 
-![2]()
+![2](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/Deep%20Learning/Deep%20Learning/Image/2.png?raw=true)
+
+
 
 # 여러 계층 아키텍처 교육을 위한 Backpropagation(역전파)
 
