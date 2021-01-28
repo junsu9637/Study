@@ -6,9 +6,10 @@ Deep Learning은 여러 처리 계층으로 구성된 계산 모델을 통해 �
 
 ## 목차
 
-[서론](#서론)
+[서론](# 서론)    
+[**Supervised learning(지도학습)**](# Supervised learning(지도학습))
 
-[Supervised learning(지도학습)](# Supervised learning(지도학습))  
+[**Supervised learning(지도학습)**](# Supervised learning(지도학습))  
 
 [여러 계층 아키텍처 교육을 위한 Backpropagation(역전파)](# 여러 계층 아키텍처 교육을 위한 Backpropagation(역전파))  
 
