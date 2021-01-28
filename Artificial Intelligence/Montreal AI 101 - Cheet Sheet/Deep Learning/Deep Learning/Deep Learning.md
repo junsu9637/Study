@@ -4,6 +4,17 @@
 
 Deep Learning은 여러 처리 계층으로 구성된 계산 모델을 통해 여러 수준의 추상화를 가진 데이터의 표현을 학습할 수 있다. 이러한 방법은 음성 인식, 시각적 물체 인식, 물체 감지, 약물 발견, 유전체학 같은 많은 다른 영역에서 최첨단 기술을 크게 향상시켰다. Deep Learning은 역전파 알고리즘을 사용하여 기계가 이전 계층의 표현에서 각 계층의 표현을 계산하는 데 사용되는 내부 매개 변수를 어떻게 변경해야 하는지를 표시함으로써 대규모 데이터 세트의 복잡한 구조를 발견한다. 심층 컨볼루션 망은 이미지, 비디오, 음성 및 오디오 처리에 획기적인 발전을 가져온 반면, 반복 망은 텍스트와 음성 같은 순차적 데이터에 발전을 가져왔다.
 
+## 목차
+
+[서론](#서론)
+[Supervised learning(지도학습)](#Supervised learning(지도학습))
+[여러 계층 아키텍처 교육을 위한 Backpropagation(역전파)](#여러 계층 아키텍처 교육을 위한 Backpropagation(역전파))
+[Convolutional neural networks(컨볼루션 신경망)](#Convolutional neural networks(컨볼루션 신경망))
+[Deep Convolutional neural networks를 통한 이미지 이해](#Deep Convolutional neural networks를 통한 이미지 이해)
+[분산 표현 및 언어 처리](#분산 표현 및 언어 처리)
+[반복 신경망](#반복 신경망)
+[Deep Learning의 미래](#Deep Learning의 미래)
+
 # 서론
 
 Machine Learning 기술은 현대 사회의 많은 측면(웹 검색, 소셜 네트워크의 콘텐츠 필터링, 전자상거래 웹 사이트의 권장 사항, 카메라와 스마트폰 같은 소비자 제품)에 힘을 실어 준다. Machine Learning 시스템은 이미지에서 물체를 식별하고, 음성을 텍스트로 기록하며, 뉴스 항목, 게시물, 제품을 사용자의 관심사와 일치시키고, 관련 검색 결과를 선택하는 데 사용된다. 점점 더 이러한 응용 프로그램은 Deep Learning이라는 기술 클래스를 사용한다.
