@@ -8,19 +8,19 @@ Deep Learning은 여러 처리 계층으로 구성된 계산 모델을 통해 �
 
 [서론](#서론)
 
-[Supervised learning(지도학습)](#Supervised learning(지도학습))  
+[Supervised learning(지도학습)](# Supervised learning(지도학습))  
 
-[여러 계층 아키텍처 교육을 위한 Backpropagation(역전파)](#여러 계층 아키텍처 교육을 위한 Backpropagation(역전파))  
+[여러 계층 아키텍처 교육을 위한 Backpropagation(역전파)](# 여러 계층 아키텍처 교육을 위한 Backpropagation(역전파))  
 
-[Convolutional neural networks(컨볼루션 신경망)](#Convolutional neural networks(컨볼루션 신경망))  
+[Convolutional neural networks(컨볼루션 신경망)](# Convolutional neural networks(컨볼루션 신경망))  
 
-[Deep Convolutional neural networks를 통한 이미지 이해](#Deep Convolutional neural networks를 통한 이미지 이해)   
+[Deep Convolutional neural networks를 통한 이미지 이해](# Deep Convolutional neural networks를 통한 이미지 이해)   
 
-[분산 표현 및 언어 처리](#분산 표현 및 언어 처리)    
+[분산 표현 및 언어 처리](# 분산 표현 및 언어 처리)    
 
-[반복 신경망](#반복 신경망)              
+[반복 신경망](# 반복 신경망)              
 
-[Deep Learning의 미래](#Deep Learning의 미래)          
+[Deep Learning의 미래](# Deep Learning의 미래)          
 
 # 서론
 
