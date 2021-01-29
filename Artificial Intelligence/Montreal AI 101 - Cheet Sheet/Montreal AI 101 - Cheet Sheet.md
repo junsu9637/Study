@@ -35,4 +35,4 @@ Deep Learning을 통한 여러 처리 계층으로 구성된 컴퓨팅 모델을
 
 [**Deep Learning - Yann LeCun**](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/Deep%20Learning/Deep%20Learning.md)
 
-높은 수준의 신경 네트워크는 인코더와 디코더의 조합이다.
+그리고 높은 수준의 신경 네트워크는 인코더와 디코더의 조합이다.
