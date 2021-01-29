@@ -371,7 +371,7 @@ No Free Lunch 정리는 모든 가능한 문제에 걸쳐 성능을 평균화할
 
 우리는 프로그램이 실행되는 고정된 범용 튜링 기계의 존재를 암시적으로 고려한다(스킬 프로그램, 프로그램의 일부 및 지능형 시스템의 일부 포함). 또한 고정된 *"상황 공간"* 및 *"응답 공간"* 의 존재를 가정한다. 이러한 각 공간은 앞으로 고려할 모든 기술 프로그램의 입력(및 출력)으로 허용되는 이진 문자열 집합을 정의한다.
 
-![2-2]https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/AI-First/On%20the%20Measure%20of%20Intelligence%20-%20Francois%20Chollet/Image/2.png?raw=true)
+![2-2](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/AI-First/On%20the%20Measure%20of%20Intelligence%20-%20Francois%20Chollet/Image/2.png?raw=true)
 ***문제의 위치 : 지능형 시스템은 작업과 상호 작용할 수 있는 기술 프로그램을 생성한다.***
 
 **작업** T는 4개의 객체로 구성된다. 
