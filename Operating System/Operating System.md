@@ -902,7 +902,85 @@ Segment : 프로세스를 논리적인 내용으로 자른 부분(크기가 동�
 limit를 넘어서면 segment violation 예외 상황 
 물리주소 = base[s] + d
 
+# Virtual Memory(가상 메모리)
 
+물리 메모리보다 큰 프로세스를 실행하기 위해 사용하는 방법          
+현재 실행에 필요한 부분만 메모리에 올린다.          
+
+## Demand Paging(요구 페이징)
+
+현재 요구되는 페이지만 메모리에 적재하고 나머지는 backing store에 저장
+
+## Page Fault(페이지 부재)
+
+접근하려는 페이지가 메모리에 없는 상태로 Backing store에서 해당 페이지를 가져온다.
+
+
+### Effective Access Time(유효 접근 시간)
+
+메모리의 평균 접근 시간
+
+***T<sub>eff</sub> = (1-p)T<sub>m</sub> + pT<sub>p</sub>***
+
+*p* : page fault 시간         
+*T<sub>p</sub>* = seek time(헤더를 움직이는 시간) + retational delay(원판이 헤더까지 돌아오는 시간) + transfer time(데이터를 읽는 시간)
+
+### Locality of reference(지역성의 원리)
+
+메모리 접근은 시작적, 공간적으로 지역성을 가진다
+> **시간적** : 한 번 읽었던 데이터를 다시 읽을 가능성이 있음          
+  **공간적** : 현재 읽었던 데이터 주위를 다음에 읽을 가능성이 있음 
+
+**reference** : CPU가 참조하는 주소
+
+# Page Replacement(페이지 교체)
+
+Demand Pageing
+```markdown
+1. 요구되어지는 페이지만 backing store에서 가져옴
+2. 프로그램 실행하면서 요구 페이지가 늘어가면서 메모리가 가득차게됨
+3. 어떤 페이지를 backing store로 몰아냄(page-out)
+4. 빈 공간에 페이지를 가져온다(page-in)
+```
+
+## Victim Page
+
+backing store로 쫓겨난 페이지로 modify 되지 않은 페이지를 선택한다.
+modified bit : modify 여부 확인을 위해 추가하는 하나의 비트
+
+## 페이지 교체 알고리즘
+
+> **FIFO(First-In.First-Out)**          
+  victim page : 처음 들어온 page 
+  **OPT(Optimal)**         
+  victim page : 앞으로 가장 오랫동안 사용되지 않을 page (비현실적)         
+  **LRU(Least-Recently-Used)**      
+  victim page : 최근에 가장 사용되지 않은 page         
+  *(최근에 가장 사용되지 않음 = 앞으로 가장 사용되지 않음이라고 가정
+  
+**page reference string** :  페이지 번호 중 이어지는 번호를 넘긴 페이지 번호
+
+```markdown
+CPU가 내는 주소 : 100 101 102 432 612 103 104 611 612           
+Page size = 100           
+*(한번에 100씩 가져오기 때문에 다음과 같이 변환 가능)*         
+페이지 번호 : 1 1 1 4 6 1 1 6 6           
+Page reference string : 1 4 6 1 6
+```
+
+**Globla Replacement(전역 교체)** : 메모리 상의 모든 프로세스 페이지 교체
+**Local Replacement(지역 교체)** : 메모리 상의 자기 프로세스 페이지 교체
+
+# Allocation of Frames(프레임 할당)
+
+**Thrashing** : 프로세스 개수가 증가하면 CPU 이용률이 증가하지만 일정 범위를 벗어나면 빈번한 Page in/out으로 인해 CPU 이용률이 감소하는 현상
+
+> Static Allocation(정적 할당)
+>> Equal allocation(균등 할당)
+>> Proportional allocation(비례 할당)
+> Dynamic Allocation(동적 할당)
+>> Working set model
+>> Page fault frequency
 
 
 
