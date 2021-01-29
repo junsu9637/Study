@@ -963,23 +963,23 @@ modified bit : modify 여부 확인을 위해 추가하는 하나의 비트
 ```markdown
 CPU가 내는 주소 : 100 101 102 432 612 103 104 611 612           
 Page size = 100           
-*(한번에 100씩 가져오기 때문에 다음과 같이 변환 가능)*         
+(한번에 100씩 가져오기 때문에 다음과 같이 변환 가능)         
 페이지 번호 : 1 1 1 4 6 1 1 6 6           
 Page reference string : 1 4 6 1 6
 ```
 
-**Globla Replacement(전역 교체)** : 메모리 상의 모든 프로세스 페이지 교체
+**Globla Replacement(전역 교체)** : 메모리 상의 모든 프로세스 페이지 교체           
 **Local Replacement(지역 교체)** : 메모리 상의 자기 프로세스 페이지 교체
 
 # Allocation of Frames(프레임 할당)
 
 **Thrashing** : 프로세스 개수가 증가하면 CPU 이용률이 증가하지만 일정 범위를 벗어나면 빈번한 Page in/out으로 인해 CPU 이용률이 감소하는 현상
 
-> Static Allocation(정적 할당)
->> Equal allocation(균등 할당)
->> Proportional allocation(비례 할당)
-> Dynamic Allocation(동적 할당)
->> Working set model
+> Static Allocation(정적 할당)        
+>> Equal allocation(균등 할당)         
+>> Proportional allocation(비례 할당)         
+> Dynamic Allocation(동적 할당)          
+>> Working set model           
 >> Page fault frequency
 
 
