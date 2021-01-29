@@ -4,7 +4,7 @@ https://www.deeplearningbook.org/
 # 목차
 
 [0. 소개](#Introduction)
-[1. 응용 수학 및 기계 학습 기초 ](#1.-Applied-Math-and-Machine-Learning-Basics)
+[1. 응용 수학 및 기계 학습 기초 ](#1.Applied-Math-and-Machine-Learning-Basics)
 [1.1 선형 대수]()
 [1.2 확률과 정보 이론]()
 [1.3 수치 계산]()
