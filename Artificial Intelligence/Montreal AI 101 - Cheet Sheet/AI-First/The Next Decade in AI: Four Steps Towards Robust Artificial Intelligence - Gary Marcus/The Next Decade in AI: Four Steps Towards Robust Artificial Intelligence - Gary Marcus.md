@@ -24,7 +24,7 @@
 
 사람들은 강력한 지능을 점묘법적 지능(표면적으로는 비슷하고 다소 예측할 수 없는 방식의 많은 경우에 작동하지만 많은 다른 경우에서는 실패하는 지능)이라고 부르는 것과 대조해야 한다.  그림 1의 왼쪽은 일반적인 스쿨버스를 인식하지만, 눈길에 전복된 스쿨버스를 인식하지 못하는 경우를 보여준다. 그리고 오른쪽은 일부 문장을 정확하게 해석하지만 관련 없는 소재가 있을 때 실패하는 읽기 시스템을 보여준다.
 
-![그림 1: 비전 및 언어의 특이적 오류](https://user-images.githubusercontent.com/76898072/104152556-413c6e00-5423-11eb-9443-45ca1d6c8661.png)
+![그림 1: 비전 및 언어의 특이적 오류](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/AI-First/The%20Next%20Decade%20in%20AI:%20Four%20Steps%20Towards%20Robust%20Artificial%20Intelligence%20-%20Gary%20Marcus/Image/1.png?raw=true)
 
 AI 문헌을 자세히 살펴보면 누구나 처음부터 강건성이 그 분야를 벗어났다는 것을 알게 될 것이다. 그 문제에 투입된 막대한 자원에도 불구하고, 딥러닝은 지금까지도 그 문제를 해결하지 못했다.
 
@@ -123,7 +123,7 @@ Marcus에서 논의된 바와 같이 이러한 오류는 널리 퍼져 있다. �
 
 놀랍게도 다층 퍼셉트론과 같은 일부 신경 네트워크 구조는 딥러닝의 전형적인 예로서 최근의 교과서에 의해 기술되었고, 이것과 관련된 문제를 가지고 있다. 여기 다층 퍼셉트론, 하단의 입력, 상단의 출력, 그 사이에 숨겨진 레이어의 예가 있습니다. 신경 네트워크에 노출된 사람이라면 누구나 쉽게 알 수 있다 : 항등 함수에 대해 학습된 다층 퍼셉트론
 
-![항등 함수에 대해 학습된 다층 퍼셉트론](https://user-images.githubusercontent.com/76898072/104171865-abb2d580-5446-11eb-998a-99660441897d.png)
+![항등 함수에 대해 학습된 다층 퍼셉트론](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/AI-First/The%20Next%20Decade%20in%20AI:%20Four%20Steps%20Towards%20Robust%20Artificial%20Intelligence%20-%20Gary%20Marcus/Image/2.png?raw=true)
 
 이러한 네트워크는 입력을 출력에 연결하는 방법을 쉽게 학습할 수 있다. 그리고 실제로 "범용 함수 근사치"의 다양한 법칙이 이것을 보증한다. 충분한 훈련 데이터와 훈련 데이터를 통한 충분한 반복을 감안할 때 네트워크는 훈련 데이터를 쉽게 마스터할 수 있다. 
 
@@ -150,7 +150,7 @@ Marcus에서 논의된 바와 같이 이러한 오류는 널리 퍼져 있다. �
 
 본질적으로 특정 종류의 확장된 신경 네트워크(예: 여기서 논의된 역전파로 훈련된 다층 퍼셉트론)는 두 가지에 탁월하다 : 암기 훈련 사례, 초차원 공간의 일부 클러스터(교육 공간 내 일반화라고 함)에서 이러한 예들을 둘러싸는 점들의 클라우드 내 덧붙인다. 그러나 그들은 훈련 공간 밖에서 잘 일반화되지 않는다.
 
-![다층 퍼셉트론](https://user-images.githubusercontent.com/76898072/104183170-e3287e80-5454-11eb-8810-70ea56aac85c.png) <br>
+![다층 퍼셉트론](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/AI-First/The%20Next%20Decade%20in%20AI:%20Four%20Steps%20Towards%20Robust%20Artificial%20Intelligence%20-%20Gary%20Marcus/Image/3.png?raw=true) <br>
 *다층 퍼셉트론 : 훈련 사례의 공간 내에서 일반화하는 데 능숙하며, 훈련 사례의 공간 밖에서 아이덴티티 기능을 일반화하는 데 서투르다.*
 
 결과적으로 두 가지 밀접하게 관련된 문제가 발생한다.
@@ -461,7 +461,7 @@ Ernest Davis, Noah Frazier-Logue는 이런 종류의 도전을 도울 수 있는
 
 프레임워크 자체는 인식 가능한 도메인 집합으로 변환된다. 이와 관련된 공간, 시간, 인과관계에 대한 지식 등이 아래에 요약되어 있다.
 
-![컨테이너에 대한 지식을 위한 프레임워크](https://user-images.githubusercontent.com/76898072/104557580-d7230380-5684-11eb-8e64-a2b059143314.png)
+![컨테이너에 대한 지식을 위한 프레임워크](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/AI-First/The%20Next%20Decade%20in%20AI:%20Four%20Steps%20Towards%20Robust%20Artificial%20Intelligence%20-%20Gary%20Marcus/Image/4.png?raw=true)
 
 ### 2.2.3 타고난 지식 체계
 
@@ -716,7 +716,7 @@ Transformer와 같은 시스템의 부분적인 성공은 CYC 크기의 인간 �
 
 현재 예측한 강력한 인공지능이 아래 그림에서 묘사된 교차점에 있을 것이다. 
 
-![그림 5](https://user-images.githubusercontent.com/76898072/105173913-11007800-5b65-11eb-85e4-869ec3a8694d.png)
+![그림 5](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/AI-First/The%20Next%20Decade%20in%20AI:%20Four%20Steps%20Towards%20Robust%20Artificial%20Intelligence%20-%20Gary%20Marcus/Image/5.png?raw=true)
 > 가능한 지능 모델의 넓은 공간 내에서 학습 및 기호 조정의 차원에서 초점을 맞춰 몇 가지 모델과 아키텍쳐를 표현한 벤 다이어그램. <br>
   개인을 위해 기록한 구조화된 표현인 대수적 정신의 가설과 현재 추측의 핵심은 성공적인 지능 모델 변수에 대한 연산을 필요로 할 것이다. 이 교차점이 새로운 10년 동안 일반 지능을 향한 연구의 중심이 되어야 한다. 
 
@@ -726,7 +726,7 @@ Transformer와 같은 시스템의 부분적인 성공은 CYC 크기의 인간 �
 
 아래 그림은 여러 구역의 풍부한 지식을 포함한 올바른 육안적 구조를 나타낸다.
 
-![그림 6](https://user-images.githubusercontent.com/76898072/105175571-79e8ef80-5b67-11eb-80b5-da75863d6c9b.png)
+![그림 6](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/AI-First/The%20Next%20Decade%20in%20AI:%20Four%20Steps%20Towards%20Robust%20Artificial%20Intelligence%20-%20Gary%20Marcus/Image/6.png?raw=true)
 > 공간적, 물리적, 심리적, 시간적, 인과적 추론을 위한 기계를 포한하는 시스템의 필요성을 표현한 벤 다이어그램 <br>
   대부분의 현재 신경망은 이러한 형태의 추론에 대한 명백한 메커니즘과 아러한 영역에 대한 자연스러운 표현 및 추론 방법이 부족하다.
 
