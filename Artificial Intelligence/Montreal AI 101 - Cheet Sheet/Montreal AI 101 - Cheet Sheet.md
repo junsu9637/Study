@@ -37,5 +37,21 @@ Deep Learning을 통한 여러 처리 계층으로 구성된 컴퓨팅 모델을
 
 그리고 높은 수준의 신경 네트워크는 인코더와 디코더의 조합이다.
 
+[**MIT-Deep Learning Review**](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/Deep%20Learning/MIT-Deep%20Learning%20Review/MIT-Deep%20Learning%20Review.md)
+
+| | 학습자 있음 | 학습자 없음 |
+|:-:|:-:|:-:|
+| 능동적 | 강화학습 / 활성학습| 내재적 동기 / 탐구 |
+| 수동적 | 지도학습 | 비지도학습 |
+
+![1](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/Image/1.png?raw=true)
+
+그림 1 : 다층 퍼셉트론(MLP)
+
+Deep Learning은 분산표현 + 구성의 범용 학습 절차로서, 데이터가 계층 구조의 여러 수준에서 잠재적으로 인자의 구성에 의해 생성되었다고 가정한다.
+
 [**MIT-Deep Learning**](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/Deep%20Learning/MIT-Deep%20Learning/MIT-Deep%20Learning.md)
+
+
+
 
