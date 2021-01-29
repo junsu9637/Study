@@ -151,7 +151,7 @@ AI의 역사는 크게 일반화(기호적 AI)를 표시하지 않은 시스템�
 
 위에서 설명한 일반화의 스텍트럼은 인지심리학에서 지능의 구조에 대한 이론에 의해 제시된 인간 인지 능력의 조직을 바탕으로 하는 것처럼 보인다. 인간 지능 구조의 주요 이론(CHC, g-VPR)은 아래 그림과 같이 모두 3개 층(CHC)이 있는 계층적인 방식으로 인지 능력을 조직한다.
 
-![2-1](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/figure/2-1.png?raw=true)
+![2-1](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/AI-First/On%20the%20Measure%20of%20Intelligence%20-%20Francois%20Chollet/Image/1.png?raw=true)
 
 위 그림은 인지 능력의 계층적 모델과 일반화의 스펙트럼에 대한 매핑을 나타낸다. 비록 능력의 분류법이 이론들 사이에 다르긴 하지만 최상위에는 일반 지능(g 인자), 중간에는 광범위한 능력, 최하위에는 전문화된 기술 또는 데스트 작업(광범위한 능력을 두 계층으로 나누는 g-VPR의 4계층으로 확장됨)에 해당한다. "극단적 일반화(extreme generalization)"는 g 인자에 해당하고, "광범위한 일반화(broad generalization)"는 광범위한 인지 능력에 해당한다. "지역 일반화(local generalization)"는 작업별 기술에 해당한다. 
 
@@ -371,7 +371,7 @@ No Free Lunch 정리는 모든 가능한 문제에 걸쳐 성능을 평균화할
 
 우리는 프로그램이 실행되는 고정된 범용 튜링 기계의 존재를 암시적으로 고려한다(스킬 프로그램, 프로그램의 일부 및 지능형 시스템의 일부 포함). 또한 고정된 *"상황 공간"* 및 *"응답 공간"* 의 존재를 가정한다. 이러한 각 공간은 앞으로 고려할 모든 기술 프로그램의 입력(및 출력)으로 허용되는 이진 문자열 집합을 정의한다.
 
-![2-2](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/figure/2-2.png?raw=true)
+![2-2]https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/AI-First/On%20the%20Measure%20of%20Intelligence%20-%20Francois%20Chollet/Image/2.png?raw=true)
 ***문제의 위치 : 지능형 시스템은 작업과 상호 작용할 수 있는 기술 프로그램을 생성한다.***
 
 **작업** T는 4개의 객체로 구성된다. 
@@ -535,7 +535,7 @@ No Free Lunch 정리는 모든 가능한 문제에 걸쳐 성능을 평균화할
 
 최단 최적 교육 시간 솔루션 *TrainSol<sup>opt</sup><sub>T, C</sub>* 에 의해 *Sol<sup>θ</sup><sub>T</sub>* 의 알고리즘 복잡도 부분이 설명된다. 즉 C 커리큘럼의 상황에 대해 최적으로 수행하는 가능한 최단시간 프로그램을 입력으로 채택하고 해당 기술 프로그램의 길이로 정규화된 평가 중에 최소 θ의 기술 수준에서 수행하는 프로그램을 생성한다. 이 수치는 0과 1 사이의 값이다. 
 
-![2-3](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/figure/2-3.png?raw=true)             
+![2-3](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/AI-First/On%20the%20Measure%20of%20Intelligence%20-%20Francois%20Chollet/Image/3.png?raw=true)             
 
 따라서, "일반화 어려움"이 높은 작업은 충분한 기술을 달성하기 위해 평가 시간이 가능한 가장 간단한 최적 훈련 시간과 크게 달라야 하는 작업이다. 상대 알고리즘 복잡성은 이 차이를 정량화하기 위한 측정법을 제공한다. GD는 적절한 평가 시간 솔루션 프로그램이 되기 위해 가장 짧은 훈련 시간 솔루션 프로그램을 얼마나 많이 편집해야 하는지를 측정하는 척도이다. 과제의 일반화 어려움은 없다(즉, 불확실성을 수반하지 않는다). 일반화할 수 있는 기술 프로그램은 상황에 익숙한 정확한 훈련 상황보다 상황 공간에서 "더 많은 근거를 다루는" 기술 프로그램입니다. 이는 미래의 불확실성을 다룰 수 있는 프로그램이다. 
 
@@ -553,7 +553,7 @@ No Free Lunch 정리는 모든 가능한 문제에 걸쳐 성능을 평균화할
 
 이것은 TrainSol<sup>opt</sup><sub>T, C</sub>에 의해 설명되는 Sol<sup>θ</sup><sub>T</sub>의 알고리즘 복잡도 부분 및 시스템 IS<sub>t=0</sub>의 초기 상태이다. 이것은 초기 시스템을 입력으로 채택하고 커리큘럼 C에서 상황에 대해 최적으로 수행하는 가능한 가장 짧은 프로그램을 추가한다. 그리고 평가 중에 θ이상의 기술 수준에서 수행하는 기술 프로그램을 생성하여 기술 프로그램의 길이에 의해 정상화된다. 이 수치는 0과 1 시이의 값이다. 
 
-![2-4](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/figure/2-4.png?raw=true)              
+![2-4](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/AI-First/On%20the%20Measure%20of%20Intelligence%20-%20Francois%20Chollet/Image/4.png?raw=true)              
 
 우리는 이 중에서  IS<sub>t=0</sub> = SkillProgramGen, ISUpdate, isState<sub>t=0</sub>에 주목한다.
 
@@ -565,7 +565,7 @@ No Free Lunch 정리는 모든 가능한 문제에 걸쳐 성능을 평균화할
 
 이것은 초기 시스템(교육 단계 시작 시)에 의해 설명되는 기술 임계값 θ의 최단 솔루션의 알고리듬 복잡도의 부분이고, 초기 시스템을 입력(*SkillProgramGen, ISUpdate, isState<sub>t=0</sub>*)으로 사용하는 가능한 가장 짧은 프로그램의 길이(*H(So<sup>θ</sup><sub>T</sub>*)이다. 그리고 평가 중 최소 θ의 기술 수준에서 수행하는 T의 최단 솔루션을 생성한다. 지능형 시스템은 이러한 특정 솔루션을 생성할 필요가 없고, 이 수치는 0과 1 시이의 값이다. 
 
-![2-5](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/figure/2-5.png?raw=true)             
+![2-5](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/AI-First/On%20the%20Measure%20of%20Intelligence%20-%20Francois%20Chollet/Image/5.png?raw=true)             
 
 따라서 정의되는 "사전 지식"은 초기 시스템에 내장된 "관련 정보의 양"으로 시스템이 충분하거나 최적의 솔루션으로부터 얼마나 가까운지를 측정하는 것으로 해석할 수 있다. 이것은 초기 시스템에 내장된 "정보의 양"과는 다르다는 점에 유의해야 한다(초기 시스템의 알고리즘 복잡성일 뿐이다). 이와 같이, 우리의 조치는 당면한 작업과 무관한 사전 지식을 포함하는 대형 시스템에 대해 최소한의 불이익을 줄 뿐이다(단 하나 추가된 비용은 지식 인덱싱 및 검색 오버헤드로 인한 비용).
 
@@ -593,7 +593,7 @@ No Free Lunch 정리는 모든 가능한 문제에 걸쳐 성능을 평균화할
 
 #### C 커리큘럼을 통한 *E<sup>θ</sup><sub>IS, T, C</sub>*
 
-![2-6](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/figure/2-6.png?raw=true)              
+![2-6](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/AI-First/On%20the%20Measure%20of%20Intelligence%20-%20Francois%20Chollet/Image/6.png?raw=true)              
 
 따라서 정의된 "경험"은 커리큘럼의 과정에 대한 과제에 대해 시스템이 받은 관련 정보의 양을 측정하는 것으로 해석할 수 있다. 각 단계에서는 새로운 정보만 설명한다.
 
@@ -616,9 +616,9 @@ No Free Lunch 정리는 모든 가능한 문제에 걸쳐 성능을 평균화할
 작업 범위에 연결된 I의 지능를 다음과 같이 정의한다.
 
 **시스템 IS의 지능이 범위를 벗어남(충분한 경우)**         
-![2-7](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/figure/2-7.png?raw=true)          
+![2-7](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/AI-First/On%20the%20Measure%20of%20Intelligence%20-%20Francois%20Chollet/Image/7.png?raw=true)          
 **시스템 IS의 지능이 범위를 벗어남(최적 사례)**          
-![2-8](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/figure/2-8.png?raw=true)           
+![2-8](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/AI-First/On%20the%20Measure%20of%20Intelligence%20-%20Francois%20Chollet/Image/8.png?raw=true)           
 
 주의할 점
 > P<sub>IS, T</sub> + E<sub>IS, T, C</sub>(사전 지식 및 경험)는 문제의 정보에 대한 시스템의 총 노출을 나타낸다. 그리고 교육을 시작할 때 시작하는 정보를 포함한다.
@@ -628,7 +628,7 @@ No Free Lunch 정리는 모든 가능한 문제에 걸쳐 성능을 평균화할
 > ω<sub>T</sub> · θ<sub>T</sub>는 T에서 충분한 기술을 달성하는 데 있어 우리가 갖는 주관적인 가치를 나타낸다. 그리고 ω<sub>T, Θ</sub> · Θ는 T에서 시스템의 전체 잠재력 Θ에 해당하는 기술 수준을 달성하는 데 있어 우리가 가지는 주관적인 가치를 나타낸다.
 
 > 도식적으로 각 과제의 기여는 다음과 같다.              
-  ![2-9](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/figure/2-9.png?raw=true)           
+  ![2-9](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/AI-First/On%20the%20Measure%20of%20Intelligence%20-%20Francois%20Chollet/Image/9.png?raw=true)           
   이 값은 ω 값에 의해 가중치가 추가되어 각 채점 함수의 규모와 독립적으로 서로 다른 작업에서 기술을 균일하게 비교할 수 있다.
 
 우리는 시스템의 지능을 시스템이 최종 직무별 기술(충분한 기술 또는 가능한 최고 기술)의 평균(해당되는 모든 커리큘럼에 대한 확률론적 평균)을 획득하는 정보 효율성의 측정치와 동일시한다. 그리고 고려된 작업의 개발자 인식 일반화 난이도에 의해 가중치가 부여된다(과제 값 ω에 따라 작업 전반에 걸쳐 대응 가능한 기술을 만든다).
@@ -651,7 +651,7 @@ No Free Lunch 정리는 모든 가능한 문제에 걸쳐 성능을 평균화할
 
 > 지능의 척도는 커리큘럼 최적화와 관련이 있다. 더 나은 커리큘럼 공간은 (평균적으로) 더 큰 실제 스킬과 더 큰 표현 지능(더 나은 기술-확정 효율성)으로 이어질 것이다.
 
-![2-10](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/figure/2.10.png?raw=true)
+![2-10](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/AI-First/On%20the%20Measure%20of%20Intelligence%20-%20Francois%20Chollet/Image/10.png?raw=true)
 
 그림 3 : 더 높은 지능은 동일한 정보를 사용하여 미래의 상황 공간에서 "더 많은 영역을 커버"한다.
 
@@ -784,7 +784,7 @@ ARC는 교육 세트와 평가 세트로 구성된다. 과제의 400개는 교�
 
 각 작업은 소수의 시연 예제로 구성되고(3.3 참조), 소수의 테스트 예시(희귀한 경우 2개 또는 3개일 수 있음)를 참조한다. 각 예제는 "입력 그리드"와 "출력 그리드"로 구성된다. 아래에 있는 그림 4와 같이 각 "그리드"는 문자 그대로의 기호 그리드로 각 기호는 일반적으로 고유한 색을 통해 시각화된다. 아래 그림은 10개의 고유 기호(또는 색상)가 있고, 그리드는 1x1에서 30x30 사이의 높이 또는 너비가 될 수 있다(중간 높이는 9이고 중앙 폭은 10).
 
-![2-11](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/figure/2-11.png?raw=true)
+![2-11](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/AI-First/On%20the%20Measure%20of%20Intelligence%20-%20Francois%20Chollet/Image/11.png?raw=true)
 
 그림 4 : 대칭적인 패턴을 완성하는 것은 암시적인 목표 작업이다. 작업의 속성은 세 가지 입출력 예제로 지정된다. 시험 응시자는 시험 입력의 입력 그리드(오른쪽 아래)에 해당하는 출력 그리드를 생성해야 한다.
 
@@ -803,14 +803,14 @@ ARC가 가정한 핵심 지식은 다음과 같다.
 > **객체 응집력**     
   색 연속성 또는 공간적 연속성을 포함한 연속성을 기준으로 그리드를 "객체"로 구문 분석하는 기능이다(그림 5 참조).
   
-  ![2-12](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/figure/2-12.png?raw=true)
+  ![2-12](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/AI-First/On%20the%20Measure%20of%20Intelligence%20-%20Francois%20Chollet/Image/12.png?raw=true)
   
   그림 5 : 왼쪽은 공간 연속성에 의해 정의된 개체이고, 오른쪽은 색상 연속성으로 정의된 개체이다. 
   
 > **객체 지속성**           
   소음이나 다른 물체에 의한 문제에도 불구하고 물체는 지속되는 것으로 가정한다(그림 6 참조). 대부분의 경우 입력의 개체는 출력 그리드에서 변화된 형태로 지속된다. 객체의 일반적인 기하학적 변환은 4장에서 다룬다.
   
-  ![2-13](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/figure/2-13.png?raw=true)
+  ![2-13](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/AI-First/On%20the%20Measure%20of%20Intelligence%20-%20Francois%20Chollet/Image/13.png?raw=true)
   
   그림 6 : 노이즈 제거 작업
   
@@ -818,11 +818,11 @@ ARC가 가정한 핵심 지식은 다음과 같다.
 > **접촉을 통한 객체의 영향**         
   많은 작업이 개체 간의 물리적 접촉을 특징으로 한다. 예를 들어 한 개체가 다른 개체와 접촉할 때까지 변환하는 상황(그림 7 참조)과 다른 물체가 "증가"할 때까지 "증가"하는 상황(그림 8 참조)이 있다.
   
-  ![2-14](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/figure/2-14.png?raw=true)
+  ![2-14](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/AI-First/On%20the%20Measure%20of%20Intelligence%20-%20Francois%20Chollet/Image/14.png?raw=true)
   
   그림 7 : 빨간색 개체는 "접촉"할 때까지 파란색 개체 쪽으로 "이동"한다.
   
-  ![2-15](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/figure/2-15.png?raw=true)
+  ![2-15](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/AI-First/On%20the%20Measure%20of%20Intelligence%20-%20Francois%20Chollet/Image/15.png?raw=true)
 
   그림 8 : 암시적 목표가 적색 장애물과 접촉할 때 "반복"하는 대각선을 추정하는 것이다.
 
@@ -830,7 +830,7 @@ ARC가 가정한 핵심 지식은 다음과 같다.
 
 ARC는 시간의 개념을 나타내지 않는다. 많은 입출력 그리드는 인간의 의도성을 포함하는 프로세스의 시작 및 종료 상태로 효과적으로 모델링될 수 있다(그림 9 참조). ARC를 해결하기 위해 사전 목표 지향성이 엄격하게 필요하다.
 
-![2-16](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/figure/2-16.png?raw=true)
+![2-16](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/AI-First/On%20the%20Measure%20of%20Intelligence%20-%20Francois%20Chollet/Image/16.png?raw=true)
 
 그림 9 : "선 추정", "장애물 전환", "목표에 효율적인 도달"의 개념을 결합한 작업(실제 작업에는 이 세 개보다 더 많은 시연 쌍이 있다)
 
@@ -838,7 +838,7 @@ ARC는 시간의 개념을 나타내지 않는다. 많은 입출력 그리드는
 
 많은 ARC 작업에는 개체 카운트 또는 정렬(예: 크기별 정렬)이 포함된다. 즉 일정 시간 동안 숫자 비교(어떤 모양, 기호가 가장 많이 나타나는가?(그림 10 참조)) 또는 패턴 반복을 포함한다. 이 개념들이 핵심 지식 번호 시스템의 일부이기 때문에 덧셈과 뺄셈의 개념도 특징적이다. ARC에 포함된 모든 수량는 10개보다 작다.
 
-![2-17](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/figure/2-17.png?raw=true)
+![2-17](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/AI-First/On%20the%20Measure%20of%20Intelligence%20-%20Francois%20Chollet/Image/17.png?raw=true)
 
 그림 10 : 고유한 개체를 카운트하고 가장 많이 나타나는 개체를 선택하는 것이 암시적 목표인 작업(실제 작업에는 이 세 개보다 더 많은 시연 쌍이 있음)
 
@@ -852,7 +852,7 @@ ARC 작업은 다양한 사전 지식의 기본 기하학 및 체계적인 분�
   \- 개체 복사, 반복        
   \- 회전, 편환, 대칭(그림 11 참조)
   
-  ![2-18](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/figure/2-18.png?raw=true)
+  ![2-18](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/AI-First/On%20the%20Measure%20of%20Intelligence%20-%20Francois%20Chollet/Image/18.png?raw=true)
   
   그림 11 : 많은 작업은 어떤 형태의 대칭성을 포함
 
@@ -929,7 +929,7 @@ DotA2 게임을 예를 들어 보자. DotA2에서 훈련된 AI는 그것이 같�
 
 이는 새로운 작업을 프로그래밍 방식으로 생성하는 것이 해결책일 수 있다. 우리는 3.1.3에서 생성할 수 있는 작업의 다양성과 복잡성에 한계를 두기 때문에 정적 "마스터" 프로그램에서의 프로그래밍적 생성은 바람직하지 않다고 지적하고, 마스터 프로그램을 역 엔지니어링함으로써 벤치마크를 "비교"할 수 있는 잠재적 방법을 제공했다. 대신 우리는 "교사" 프로그램이라고 불리는 항상 학습 프로그램을 통해 작업을 생성할 것을 제안한다. 이는 반복에서 "학생" 프로그램이라고 불리는 시험 응시 시스템과 상호작용한다(그림 12 참조).
 
-![2-19](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/figure/2-19.png?raw=true)
+![2-19](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/AI-First/On%20the%20Measure%20of%20Intelligence%20-%20Francois%20Chollet/Image/19.png?raw=true)
 
 그림 12 : 교사-학생 학습 및 평가 시스템
 
