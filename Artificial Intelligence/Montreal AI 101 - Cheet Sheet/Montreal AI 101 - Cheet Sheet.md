@@ -31,13 +31,7 @@ Gary Marcus의 인공지능은 다음 10년 동안 인지 모델 중심의 복�
 > *Deep Learning은 매개 변수화된 기능 모듈의 네트워크를 구성하고 그라데이션 기반 최적화를 사용하여 예제로부터 그것들을 훈련시키고 있다. 이것은 벡터로 기호를 바꾸고 연속(미분 가능) 함수로 논리를 바꾼다.*      
   \- Yann LeCun - 
  
-Deep Learning을 통한 여러 처리 계층으로 구성된 컴퓨팅 모델을 통해 추상화 수준이 여러 개인(원시) 데이터의 CREAPEN-TATION을 학습할 수 있다
-
-[**Deep Learning - Yann LeCun**](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/Deep%20Learning/Deep%20Learning.md)
-
-그리고 높은 수준의 신경 네트워크는 인코더와 디코더의 조합이다.
-
-[**MIT-Deep Learning Review**](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/Deep%20Learning/MIT-Deep%20Learning%20Review/MIT-Deep%20Learning%20Review.md)
+Deep Learning을 통한 여러 처리 계층으로 구성된 컴퓨팅 모델을 통해 추상화 수준이 여러 개인(원시) 데이터의 CREAPEN-TATION을 학습할 수 있다. 그리고 높은 수준의 신경 네트워크는 인코더와 디코더의 조합이다.
 
 | | 학습자 있음 | 학습자 없음 |
 |:-:|:-:|:-:|
@@ -49,6 +43,10 @@ Deep Learning을 통한 여러 처리 계층으로 구성된 컴퓨팅 모델을
 그림 1 : 다층 퍼셉트론(MLP)
 
 Deep Learning은 분산표현 + 구성의 범용 학습 절차로서, 데이터가 계층 구조의 여러 수준에서 잠재적으로 인자의 구성에 의해 생성되었다고 가정한다.
+
+[**Deep Learning - Yann LeCun**](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/Deep%20Learning/Deep%20Learning.md)
+
+[**MIT-Deep Learning Review**](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/Deep%20Learning/MIT-Deep%20Learning%20Review/MIT-Deep%20Learning%20Review.md)
 
 [**MIT-Deep Learning**](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/Deep%20Learning/MIT-Deep%20Learning/MIT-Deep%20Learning.md)
 
