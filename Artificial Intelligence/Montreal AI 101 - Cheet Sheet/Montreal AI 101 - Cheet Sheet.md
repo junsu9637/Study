@@ -50,6 +50,6 @@ Deep Learning은 분산표현 + 구성의 범용 학습 절차로서, 데이터�
 
 [**MIT-Deep Learning**](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/Deep%20Learning/MIT-Deep%20Learning/MIT-Deep%20Learning.md)
 
-
+[**Dive into Deep Learning-Aston Zhang**](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/Deep%20Learning/Dive%20into%20Deep%20Learning-Aston%20Zhang/Dive%20into%20Deep%20Learning-Aston%20Zhang.md)
 
 
