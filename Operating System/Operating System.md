@@ -978,6 +978,7 @@ Page reference string : 1 4 6 1 6
 > Static Allocation(정적 할당)        
 >> Equal allocation(균등 할당)         
 >> Proportional allocation(비례 할당)         
+
 > Dynamic Allocation(동적 할당)          
 >> Working set model           
 >> Page fault frequency
