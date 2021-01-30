@@ -14,7 +14,18 @@ https://github.com/lexfridman/mit-deep-learning
 <bar> [1.3.3 정확도 평가](#Evaluate-accuracy)                   
 <bar> [1.3.4 예측](#Make-predictions)                  
 
-[2. 운전 장면 분할](#Driving-Scene-Segmentation)            
+[2. 운전 장면 분할](#Driving-Scene-Segmentation)      
+[2.1 모델 생성](#Build-the-model)
+[2.2 시각화](#Visualization)
+[2.3 고정 그래프에서 모델 로드](#Load-the-model-from-a-frozen-graph)
+[2.4 샘플 이미지에서 실행](#Run-on-the-sample-image)
+[2.5 샘플 비디오에서 실행](#Run-on-the-sample-video)
+[2.6 평가](#Evaluation)
+[2.7 샘플 이미지에 대한 평가](#Evaluate-on-the-sample-image)
+[2.8 샘플 이미지에 대한 평가](Evaluate-on-the-sample-video)
+[2.9 선택사항 : 시간 정보 활용](#Optional-leverage-temporal-information)
+
+
 [GAN (Generative Adversarial Network)](#Generative-Adversarial-Networks)          
 [DeepTraffic 심층 강화 학습 대회](#DeepTraffic-Deep-Reinforcement-Learning-Competition)          
 
@@ -389,6 +400,450 @@ if vw is not None:
 ![](https://camo.githubusercontent.com/62ff651ca933abe4bc8468fc7035633f49e69235/68747470733a2f2f692e696d6775722e636f6d2f654d4639464f472e676966)
 
 # Driving Scene Segmentation
+
+이 문서는 MIT 드라이빙 장면 분할 데이터 세트의 샘플 비디오에서 DeepLab 의미 장면 분할 모델을 실행하는 단계를 시연한다.
+
+```python
+# Tensorflow
+import tensorflow as tf
+print(tf.__version__)
+
+# I/O libraries
+import os
+from io import BytesIO
+import tarfile
+import tempfile
+from six.moves import urllib
+
+# Helper libraries
+import matplotlib
+from matplotlib import gridspec
+from matplotlib import pyplot as plt
+import numpy as np
+from PIL import Image
+import cv2 as cv
+from tqdm import tqdm
+import IPython
+from sklearn.metrics import confusion_matrix
+from tabulate import tabulate
+
+# 경고를 보려면 이 설명을 참조(잘 사용 안 함)
+import warnings
+warnings.simplefilter("ignore", DeprecationWarning)
+```
+
+## Build the model
+
+DeepLab은 의미론적 이미지 분할을 위한 최첨단 Deep Learning 모델로, 여기서 목표는 입력 이미지의 모든 픽셀에 의미론적 레이블(예: 사람, 개, 고양이 등)을 할당하는 것이다. Flickr 영상의 일부 분할 결과는 아래와 같다.
+
+![](https://camo.githubusercontent.com/a59b7e7c6dd1744c85fc667cf48aec022365b103/68747470733a2f2f6769746875622e636f6d2f74656e736f72666c6f772f6d6f64656c732f626c6f622f6d61737465722f72657365617263682f646565706c61622f6733646f632f696d672f766973312e706e673f7261773d74727565)
+
+운전의 맥락에서, 우리는 카메라 입력을 통해 전방 주행 장면에 대한 의미적 이해를 얻는 것을 목표로 한다. 이는 운전 안전에 중요하며 모든 수준의 자율 주행에 필수적인 요건이다. 첫 번째 단계는 모델을 작성하고 사전 훈련된 가중치를 로드하는 것이다. 이 데모에서는 Cityscapes 데이터 세트에 대해 훈련된 모델 체크포인트를 사용한다.
+
+![](https://camo.githubusercontent.com/131d89bfcabd56e73216e70c78dedd0cb3203374/68747470733a2f2f7777772e636974797363617065732d646174617365742e636f6d2f776f726470726573732f77702d636f6e74656e742f75706c6f6164732f323031352f30372f6d75656e7374657230302e706e67)
+
+![](https://camo.githubusercontent.com/9f6b59d72d4175f9dccf245ec56c0b2c131ccf55/68747470733a2f2f7777772e636974797363617065732d646174617365742e636f6d2f776f726470726573732f77702d636f6e74656e742f75706c6f6164732f323031352f30372f7a75657269636830302e706e67)
+
+```python
+class DeepLabModel(object):
+    """Deeplab 모델을 로드하고 추론을 실행할 클래스"""
+
+    FROZEN_GRAPH_NAME = 'frozen_inference_graph'
+
+    def __init__(self, tarball_path):
+        """사전 훈련된 Deeplab 모델 생성 및 로드"""
+        self.graph = tf.Graph()
+        graph_def = None
+
+        # tar 아카이브에서 고정 그래프를 추출
+        tar_file = tarfile.open(tarball_path)
+        for tar_info in tar_file.getmembers():
+            if self.FROZEN_GRAPH_NAME in os.path.basename(tar_info.name):
+                file_handle = tar_file.extractfile(tar_info)
+                graph_def = tf.GraphDef.FromString(file_handle.read())
+                break
+        tar_file.close()
+
+        if graph_def is None:
+            raise RuntimeError('Cannot find inference graph in tar archive.')
+
+        with self.graph.as_default():
+            tf.import_graph_def(graph_def, name='')
+        self.sess = tf.Session(graph=self.graph)
+
+    def run(self, image, INPUT_TENSOR_NAME = 'ImageTensor:0', OUTPUT_TENSOR_NAME = 'SemanticPredictions:0'):
+        """단일 이미지에서 추론 실행
+
+        Args:
+            image: A PIL.Image 개체로 원시 입력 이미지
+            INPUT_TENSOR_NAME: 입력 텐서의 이름(기본 값 : ImageTensor)
+            OUTPUT_TENSOR_NAME: 입력 텐서의 이름으로 의미론적 예측으로 설정
+
+        Returns:
+            resized_image: 원래 입력 이미지에서 크기가 조정된 RGB 이미지
+            seg_map: 'resize_image'의 분할 맵
+        """
+        width, height = image.size
+        target_size = (2049,1025)  # Cityscapes images의 크기
+        resized_image = image.convert('RGB').resize(target_size, Image.ANTIALIAS)
+        batch_seg_map = self.sess.run(
+            OUTPUT_TENSOR_NAME,
+            feed_dict={INPUT_TENSOR_NAME: [np.asarray(resized_image)]})
+        seg_map = batch_seg_map[0]  # expected batch size = 1
+        if len(seg_map.shape) == 2:
+            seg_map = np.expand_dims(seg_map,-1)  # cv.resize를 위한 추가 자원 필요
+        seg_map = cv.resize(seg_map, (width,height), interpolation=cv.INTER_NEAREST)
+        return seg_map
+```
+
+## Visualization
+
+결과를 디코딩하고 시각화하기 위한 몇 가지 도우미 기능을 만들어보자.
+
+```python
+def create_label_colormap():
+    """세그먼트 된 밴치마크인 Cityscapes를 사용하여 색상 맵 레이블 생성
+
+    Returns:
+        분할 결과를 시각화하기 위한 색상 맵
+    """
+    colormap = np.array([
+        [128,  64, 128],
+        [244,  35, 232],
+        [ 70,  70,  70],
+        [102, 102, 156],
+        [190, 153, 153],
+        [153, 153, 153],
+        [250, 170,  30],
+        [220, 220,   0],
+        [107, 142,  35],
+        [152, 251, 152],
+        [ 70, 130, 180],
+        [220,  20,  60],
+        [255,   0,   0],
+        [  0,   0, 142],
+        [  0,   0,  70],
+        [  0,  60, 100],
+        [  0,  80, 100],
+        [  0,   0, 230],
+        [119,  11,  32],
+        [  0,   0,   0]], dtype=np.uint8)
+    return colormap
+
+
+def label_to_color_image(label):
+    """분할 결과를 시각화하기 위한 색상 맵으로 데이터 세트 색상 맵에 의해 정의된 색상을 레이블에 추가
+
+    Args:
+        label: 정수 유형의 2D 배열로 분할 레이블을 저장
+
+    Returns:
+        result: 실수 형식의 2D 배열이다. 배열 요소는 PASCAL 색상 맵에 대한 입력 레이블의 해당 요소에 의해 인덱싱된 색상이다. 
+
+    Raises:
+        ValueError: 라벨이 2등급이 아니거나 라벨의 값이 색상 맵 최대 항목보다 큰 경우
+    """
+    if label.ndim != 2:
+        raise ValueError('Expect 2-D input label')
+
+    colormap = create_label_colormap()
+
+    if np.max(label) >= len(colormap):
+        raise ValueError('label value too large.')
+
+    return colormap[label]
+
+
+def vis_segmentation(image, seg_map):
+    """입력 이미지, 분할 지도, 오버레이를 시각화"""
+    plt.figure(figsize=(20, 4))
+    grid_spec = gridspec.GridSpec(1, 4, width_ratios=[6, 6, 6, 1])
+
+    plt.subplot(grid_spec[0])
+    plt.imshow(image)
+    plt.axis('off')
+    plt.title('input image')
+
+    plt.subplot(grid_spec[1])
+    seg_image = label_to_color_image(seg_map).astype(np.uint8)
+    plt.imshow(seg_image)
+    plt.axis('off')
+    plt.title('segmentation map')
+
+    plt.subplot(grid_spec[2])
+    plt.imshow(image)
+    plt.imshow(seg_image, alpha=0.7)
+    plt.axis('off')
+    plt.title('segmentation overlay')
+
+    unique_labels = np.unique(seg_map)
+    ax = plt.subplot(grid_spec[3])
+    plt.imshow(FULL_COLOR_MAP[unique_labels].astype(np.uint8), interpolation='nearest')
+    ax.yaxis.tick_right()
+    plt.yticks(range(len(unique_labels)), LABEL_NAMES[unique_labels])
+    plt.xticks([], [])
+    ax.tick_params(width=0.0)
+    plt.grid('off')
+    plt.show()
+
+
+LABEL_NAMES = np.asarray([
+    'road', 'sidewalk', 'building', 'wall', 'fence', 'pole', 'traffic light', 'traffic sign', 'vegetation', 'terrain', 'sky', 'person', 'rider', 'car', 'truck', 'bus', 'train', 'motorcycle', 'bicycle', 'void'])
+
+FULL_LABEL_MAP = np.arange(len(LABEL_NAMES)).reshape(len(LABEL_NAMES), 1)
+FULL_COLOR_MAP = label_to_color_image(FULL_LABEL_MAP)
+```
+
+## Load the model from a frozen graph
+
+다양한 네트워크 기반이 있는 Cityscape에 대해 사전 교육을 받은 두 가지 모델 체크포인트(MobileNetV2, Xception65)가 있다. 우리는 더 빠른 추론을 위해 MobileNetV2를 기본적으로 사용한다.
+
+```python
+MODEL_NAME = 'mobilenetv2_coco_cityscapes_trainfine'
+#MODEL_NAME = 'xception65_cityscapes_trainfine'
+
+_DOWNLOAD_URL_PREFIX = 'http://download.tensorflow.org/models/'
+_MODEL_URLS = {'mobilenetv2_coco_cityscapes_trainfine':'deeplabv3_mnv2_cityscapes_train_2018_02_05.tar.gz', 'xception65_cityscapes_trainfine':'deeplabv3_cityscapes_train_2018_02_06.tar.gz',}
+_TARBALL_NAME = 'deeplab_model.tar.gz'
+
+model_dir = tempfile.mkdtemp()
+tf.gfile.MakeDirs(model_dir)
+
+download_path = os.path.join(model_dir, _TARBALL_NAME)
+print('downloading model, this might take a while...')
+urllib.request.urlretrieve(_DOWNLOAD_URL_PREFIX + _MODEL_URLS[MODEL_NAME], download_path)
+print('download completed! loading DeepLab model...')
+
+MODEL = DeepLabModel(download_path)
+print('model loaded successfully!')
+```
+
+## Run on the sample image
+
+샘플 이미지는 MIT 주행 장면 분할(DriveSeg) 데이터 세트의 프레임이다(0).
+
+```python
+SAMPLE_IMAGE = 'mit_driveseg_sample.png'
+if not os.path.isfile(SAMPLE_IMAGE):
+    print('downloading the sample image...')
+    SAMPLE_IMAGE = urllib.request.urlretrieve('https://github.com/lexfridman/mit-deep-learning/blob/master/tutorial_driving_scene_segmentation/mit_driveseg_sample.png?raw=true')[0]
+print('running deeplab on the sample image...')
+
+def run_visualization(SAMPLE_IMAGE):
+    """Inferences DeepLab model and visualizes result."""
+    original_im = Image.open(SAMPLE_IMAGE)
+    seg_map = MODEL.run(original_im)
+    vis_segmentation(original_im, seg_map)
+
+run_visualization(SAMPLE_IMAGE)
+```
+
+![](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/Deep%20Learning/MIT-Deep%20Learning%20Review/Image/4.png?raw=true)
+
+## Run on the sample video
+
+샘플 비디오는 MIT DriveSeg 데이터 세트에서 프레임이다(0~597). 
+
+```python
+def vis_segmentation_stream(image, seg_map, index):
+    """분할 오버레이를 시각화하여 IPython 디스플레이로 스트리밍"""
+    plt.figure(figsize=(12, 7))
+
+    seg_image = label_to_color_image(seg_map).astype(np.uint8)
+    plt.imshow(image)
+    plt.imshow(seg_image, alpha=0.7)
+    plt.axis('off')
+    plt.title('segmentation overlay | frame #%d'%index)
+    plt.grid('off')
+    plt.tight_layout()
+
+    # Show visualization in a streaming fashion.
+    f = BytesIO()
+    plt.savefig(f, format='jpeg')
+    IPython.display.display(IPython.display.Image(data=f.getvalue()))
+    f.close()
+    plt.close()
+
+
+def run_visualization_video(frame, index):
+    """비디오 파일에서 DeepLab 모델을 추론하고 시각화를 스트리밍"""
+    original_im = Image.fromarray(frame[..., ::-1])
+    seg_map = MODEL.run(original_im)
+    vis_segmentation_stream(original_im, seg_map, index)
+
+
+SAMPLE_VIDEO = 'mit_driveseg_sample.mp4'
+if not os.path.isfile(SAMPLE_VIDEO): 
+    print('downloading the sample video...')
+    SAMPLE_VIDEO = urllib.request.urlretrieve('https://github.com/lexfridman/mit-deep-learning/raw/master/tutorial_driving_scene_segmentation/mit_driveseg_sample.mp4')[0]
+print('running deeplab on the sample video...')
+
+video = cv.VideoCapture(SAMPLE_VIDEO)
+# num_frames = 598  # 전체 샘플 비디오를 사용하기 위해 사용
+num_frames = 30
+
+try:
+    for i in range(num_frames):
+        _, frame = video.read()
+        if not _: break
+        run_visualization_video(frame, i)
+        IPython.display.clear_output(wait=True)
+except KeyboardInterrupt:
+    plt.close()
+    print("Stream stopped.")
+```
+
+![5](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/Deep%20Learning/MIT-Deep%20Learning%20Review/Image/5.png?raw=true)
+
+## Evaluation
+
+이제 실측 주석을 사용하여 모델 성능을 평가해보자. 먼저 tar 파일에서 주석을 읽는다. 
+
+```python
+class DriveSeg(object):
+    """MIT DriveSeg 데이터 세트를 로드하는 클래스"""
+
+    def __init__(self, tarball_path):
+        self.tar_file = tarfile.open(tarball_path)
+        self.tar_info = self.tar_file.getmembers()
+    
+    def fetch(self, index):
+        """지수를 기준으로 실측을 구한다.
+
+        Args:
+            index: 프레임 개수.
+
+        Returns:
+            gt: 실측 분할 맵
+        """
+        tar_info = self.tar_info[index + 1]  # 상위 디렉토리인 인덱스 0 제외
+        file_handle = self.tar_file.extractfile(tar_info)
+        gt = np.fromstring(file_handle.read(), np.uint8)
+        gt = cv.imdecode(gt, cv.IMREAD_COLOR)
+        gt = gt[:, :, 0]  # 3채널 이미지에서 단일 채널 선택
+        gt[gt==255] = 19 
+        return gt
+
+
+SAMPLE_GT = 'mit_driveseg_sample_gt.tar.gz'
+if not os.path.isfile(SAMPLE_GT): 
+    print('downloading the sample ground truth...')
+    SAMPLE_GT = urllib.request.urlretrieve('https://github.com/lexfridman/mit-deep-learning/raw/master/tutorial_driving_scene_segmentation/mit_driveseg_sample_gt.tar.gz')[0]
+
+dataset = DriveSeg(SAMPLE_GT)
+print('visualizing ground truth annotation on the sample image...')
+
+original_im = Image.open(SAMPLE_IMAGE)
+gt = dataset.fetch(0)  # 샘플 이미지는 프레임 0
+vis_segmentation(original_im, gt)
+```
+![6](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/Deep%20Learning/MIT-Deep%20Learning%20Review/Image/6.png?raw=true)
+
+## Evaluate on the sample image
+
+분할 모델의 성능을 측정하는 방법은 여러 가지가 있다. 가장 직설적인 것은 픽셀 정확도로 얼마나 많은 픽셀이 정확하게 예측되는지를 계산한다. 일반적으로 사용되는 또 다른 Jaccard Index(교차 초과 결합)는 IoU = TP α(TP+FP+FN)이다. 여기서 TP, FP 및 FN은 각각 참 양, 거짓 양 및 거짓 음의 픽셀 수다. 
+
+```python
+def evaluate_single(seg_map, ground_truth):
+    """모델이 로드된 상태에서 단일 프레임을 평가"""    
+    # merge label due to different annotation scheme
+    seg_map[np.logical_or(seg_map==14,seg_map==15)] = 13
+    seg_map[np.logical_or(seg_map==3,seg_map==4)] = 2
+    seg_map[seg_map==12] = 11
+
+    # 유효 면적의 정확도를 계산
+    acc = np.sum(seg_map[ground_truth!=19]==ground_truth[ground_truth!=19])/np.sum(ground_truth!=19)
+    
+    # 평가를 위한 유효한 레이블 선택
+    cm = confusion_matrix(ground_truth[ground_truth!=19], seg_map[ground_truth!=19], 
+                          labels=np.array([0,1,2,5,6,7,8,9,11,13]))
+    intersection = np.diag(cm)
+    union = np.sum(cm, 0) + np.sum(cm, 1) - np.diag(cm)
+    return acc, intersection, union
+
+
+print('evaluating on the sample image...')
+
+original_im = Image.open(SAMPLE_IMAGE)
+seg_map = MODEL.run(original_im)
+gt = dataset.fetch(0)  # 샘플 이미지는 프레임 0
+acc, intersection, union = evaluate_single(seg_map, gt)
+class_iou = np.round(intersection / union, 5)
+print('pixel accuracy: %.5f'%acc)
+print('mean class IoU:', np.mean(class_iou))
+print('class IoU:')
+print(tabulate([class_iou], headers=LABEL_NAMES[[0,1,2,5,6,7,8,9,11,13]]))
+```
+
+## Evaluate on the sample video
+
+```python
+print('evaluating on the sample video...', flush=True)
+
+video = cv.VideoCapture(SAMPLE_VIDEO)
+# num_frames = 598 
+num_frames = 30
+
+acc = []
+intersection = []
+union = []
+
+for i in tqdm(range(num_frames)):
+    _, frame = video.read()
+    original_im = Image.fromarray(frame[..., ::-1])
+    seg_map = MODEL.run(original_im)
+    gt = dataset.fetch(i)
+    _acc, _intersection, _union = evaluate_single(seg_map, gt)
+    intersection.append(_intersection)
+    union.append(_union)
+    acc.append(_acc)
+
+class_iou = np.round(np.sum(intersection, 0) / np.sum(union, 0), 4)
+print('pixel accuracy: %.4f'%np.mean(acc))
+print('mean class IoU: %.4f'%np.mean(class_iou))
+print('class IoU:')
+print(tabulate([class_iou], headers=LABEL_NAMES[[0,1,2,5,6,7,8,9,11,13]]))
+```
+
+## Optional leverage temporal information
+
+비디오 장면 분할을 이미지 분할과 다르게 만드는 한 가지는 지각에 도움이 될 수 있는 귀중한 시간 정보를 포함하는 이전 프레임의 가용성이다. 여기서 문제는 우리가 어떻게 그러한 시간적 정보를 사용할 수 있는가 하는 것이다. 한 프레임만 예측하지 않고 두 프레임의 예측을 결합하여 시간이 지남에 따라 보다 부드러운 예측을 만들어 보자.
+
+```python
+print('evaluating on the sample video with temporal smoothing...', flush=True)
+
+video = cv.VideoCapture(SAMPLE_VIDEO)
+# num_frames = 598  # uncomment to use the full sample video
+num_frames = 30
+
+acc = []
+intersection = []
+union = []
+prev_seg_map_logits = 0
+
+for i in tqdm(range(num_frames)):
+    _, frame = video.read()
+    original_im = Image.fromarray(frame[..., ::-1])
+    
+    # 레이블 예측 대신 로짓 가져오기
+    seg_map_logits = MODEL.run(original_im, OUTPUT_TENSOR_NAME='ResizeBilinear_3:0')
+    
+    # 이전 프레임의 로짓 추가 및 결과 가져오기
+    seg_map = np.argmax(seg_map_logits + prev_seg_map_logits, -1)
+    prev_seg_map_logits = seg_map_logits
+    
+    gt = dataset.fetch(i)
+    _acc, _intersection, _union = evaluate_single(seg_map, gt)
+    intersection.append(_intersection)
+    union.append(_union)
+    acc.append(_acc)
+    
+class_iou = np.round(np.sum(intersection, 0) / np.sum(union, 0), 4)
+print('pixel accuracy: %.4f'%np.mean(acc))
+print('mean class IoU: %.4f'%np.mean(class_iou))
+print('class IoU:')
+print(tabulate([class_iou], headers=LABEL_NAMES[[0,1,2,5,6,7,8,9,11,13]]))
+```
 
 # Generative Adversarial Networks
 
