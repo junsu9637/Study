@@ -252,20 +252,141 @@ model.compile(optimizer=tf.train.AdamOptimizer(), loss='sparse_categorical_cross
 
 ### Train the model
 
+신경망 모델을 훈련하려면 다음 단계가 필요하다.
+
+```markdown
+1. 이 예에서는 train_image, train_label 배열과 같은 교육 데이터를 모델에 제공
+2. 모델은 이미지와 레이블을 연결하는 방법을 배웁니다.
+3. 이 예에서는 test_images 배열로 테스트 세트에 대해 예측하도록 모델에 요청한다. 그리고 예측이 test_labels 배열의 레이블과 일치하는지 검증한다.
+```
+
+학습이 시작되면 모델에게 교육데이터가 '적합'한지 확인한다.
+
+```python
+history = model.fit(train_images, train_labels, epochs=5)
+```
+
 ### Evaluate accuracy
+
+테스트 데이터 세트에서 모델의 성능을 비교한다.
+
+```python
+print(test_images.shape)
+test_loss, test_acc = model.evaluate(test_images, test_labels)
+
+print('Test accuracy:', test_acc)
+```
+
+종종 테스트 데이터 세트의 정확도가 교육 데이터 세트의 정확성보다 약간 떨어지는 경우가 있다. 훈련 정확도와 시험 정확도 사이의 이러한 차이는 과적합 사례이다. 우리의 경우 정확도가 99.19%로 더 우수하다. 이는 부분적으로 드롭아웃 계층에서 성공적으로 정규화가 이루어졌기 때문이다.
 
 ### Make predictions
 
+훈련된 모델을 사용하여 일부 이미지에 대한 예측을 할 수 있다. 이를 위해 MNIST 데이터 세트를 벗어나 CPPN, GAN, VAE의 혼합으로 생성된 아름다운 고해상도 이미지로 이동해 보자. 원본 데이터와 이러한 변조된 애니메이션의 생성 방법에 대한 설명은 [하드마루 블로그 게시물](https://blog.otoro.net/2016/04/01/generating-large-images-from-latent-vectors/)을 참조하라.
 
+![](https://camo.githubusercontent.com/fa61cfca07320919eb6430a2a06f98d3e68e29c1/68747470733a2f2f692e696d6775722e636f6d2f4f72554a7339562e676966)
 
+```python
+mnist_dream_path = 'images/mnist_dream.mp4'
+mnist_prediction_path = 'images/mnist_dream_predicted.mp4'
 
+# Colab에서 실행 중인 경우 영상 다운로드
+if not os.path.isfile(mnist_dream_path): 
+    print('downloading the sample video...')
+    vid_url = this_tutorial_url + '/' + mnist_dream_path
+    
+    mnist_dream_path = urllib.request.urlretrieve(vid_url)[0]
+                                                                                                  
+def cv2_imshow(img):
+    ret = cv2.imencode('.png', img)[1].tobytes() 
+    img_ip = IPython.display.Image(data=ret)
+    IPython.display.display(img_ip)
 
+cap = cv2.VideoCapture(mnist_dream_path) 
+vw = None
+frame = -1 # 디버깅을 위한 카운터, 0-indexed
 
+# 모든 프레임을 살펴보고 MNIST 영상에 대해 분류기를 실행(숫자에서 숫자로 형태 변환)
+while True: # 481 프레임이어야 함
+    frame += 1
+    ret, img = cap.read()
+    if not ret: break
+               
+    assert img.shape[0] == img.shape[1] # 정사각형이어야 한다
+    if img.shape[0] != 720:
+        img = cv2.resize(img, (720, 720))
+       
+    #preprocess the image for prediction
+    img_proc = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    img_proc = cv2.resize(img_proc, (28, 28))
+    img_proc = preprocess_images(img_proc)
+    img_proc = 1 - img_proc # 교육 데이터 세트가 검정 바탕의 흰색 텍스트이므로 역방향
 
+    net_in = np.expand_dims(img_proc, axis=0) # 차원을 확장하여 배치 크기를 1로 지정
+    net_in = np.expand_dims(net_in, axis=3) # 차원을 확장하여 채널 수 지정
+    
+    preds = model.predict(net_in)[0]
+    guess = np.argmax(preds)
+    perc = np.rint(preds * 100).astype(int)
+    
+    img = 255 - img
+    pad_color = 0
+    img = np.pad(img, ((0,0), (0,1280-720), (0,0)), mode='constant', constant_values=(pad_color))  
+    
+    line_type = cv2.LINE_AA
+    font_face = cv2.FONT_HERSHEY_SIMPLEX
+    font_scale = 1.3        
+    thickness = 2
+    x, y = 740, 60
+    color = (255, 255, 255)
+    
+    text = "Neural Network Output:"
+    cv2.putText(img, text=text, org=(x, y), fontScale=font_scale, fontFace=font_face, thickness=thickness, color=color, lineType=line_type)
+    
+    text = "Input:"
+    cv2.putText(img, text=text, org=(30, y), fontScale=font_scale, fontFace=font_face, thickness=thickness, color=color, lineType=line_type)   
+        
+    y = 130
+    for i, p in enumerate(perc):
+        if i == guess: color = (255, 218, 158)
+        else: color = (100, 100, 100)
+            
+        rect_width = 0
+        if p > 0: rect_width = int(p * 3.3)
+        
+        rect_start = 180
+        cv2.rectangle(img, (x+rect_start, y-5), (x+rect_start+rect_width, y-20), color, -1)
 
+        text = '{}: {:>3}%'.format(i, int(p))
+        cv2.putText(img, text=text, org=(x, y), fontScale=font_scale, fontFace=font_face, thickness=thickness, color=color, lineType=line_type)
+        y += 60
+    
+    # 출력을 비디오로 저장하지 않으려면 False로 설정
+    save_video = True
+    
+    if save_video:
+        if vw is None:
+            codec = cv2.VideoWriter_fourcc(*'DIVX')
+            vid_width_height = img.shape[1], img.shape[0]
+            vw = cv2.VideoWriter(mnist_prediction_path, codec, 30, vid_width_height)
+        # 위 15fps는 제대로 작동하지 않기 때문에 30fps에서 두 번 오른쪽으로 이동
+        vw.write(img)
+        vw.write(img)
+    
+    # 표시할 이미지를 축소
+    img_disp = cv2.resize(img, (0,0), fx=0.5, fy=0.5)
+    cv2_imshow(img_disp)
+    IPython.display.clear_output(wait=True)
+        
+cap.release()
+if vw is not None:
+    vw.release()
+```
 
+![3](https://github.com/junsu9637/Study/blob/main/Artificial%20Intelligence/Montreal%20AI%20101%20-%20Cheet%20Sheet/Deep%20Learning/MIT-Deep%20Learning%20Review/Image/3.png?raw=true)
 
+위의 내용은 출력이 가장 높은 뉴런을 선택하여 네트워크의 예측을 보여준다. 출력 계층 값이 1에 1을 추가하는 반면, 이 값들은 "불확도"의 잘 보정된 측정값을 반영하지 않는다. 종종, 네트워크는 학습된 확률 측정치를 반영하지 않는 최고 선택에 대해 지나치게 자신한다. 모든 것이 제대로 실행되었다면 다음과 같은 애니메이션을 얻을 수 있다. 
 
+![](https://camo.githubusercontent.com/62ff651ca933abe4bc8468fc7035633f49e69235/68747470733a2f2f692e696d6775722e636f6d2f654d4639464f472e676966)
 
 # Driving Scene Segmentation
 
