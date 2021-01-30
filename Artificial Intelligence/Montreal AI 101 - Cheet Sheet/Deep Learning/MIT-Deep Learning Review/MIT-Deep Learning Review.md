@@ -51,7 +51,7 @@ tf.keras는 TensorFlow에서 신경망 모델을 구축하고 훈련하는 가�
 
 tf.keras(TensorFlow와 함께 제공됨)와 Keras(독립형)가 있다. tf.kears는 TensorFlow와 함께 제공되므로 추가 설치가 필요하지 않고, 강력한 TensorFlow 고유 기능이 제공되므로 이것을 사용할 것이다. 
 
-```jupyter notebook
+```python
 # TensorFlow와 tf.keras
 import tensorflow as tf
 from tensorflow import keras
