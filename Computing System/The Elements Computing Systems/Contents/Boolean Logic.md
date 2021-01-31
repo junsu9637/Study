@@ -14,12 +14,12 @@
 
 ## Background
 
-`Boolean Algebra -> Boolean Function -> Boolean Gate`
+`Boolean Algebra -> Boolean Function -> Boolean Gate`               
 불 대수를 기반으로 불 함수를 구현하고, 불 함수를 기반으로 불 게이트를 구현한다. 
 
 ### Boolean Algebra
 
-불 대수는 참/거짓, 1/0과 같은 Boolean(2진수)값을 다루는 대수학이다. 불 함수는 2진수를 입력받아 2진수를 출력하는 함수다. 
+불 대수는 참/거짓, 1/0과 같은 Boolean(2진수)값을 다루는 대수학이다. 불 함수는 2진수를 입력받아 2진수를 출력하는 함수다.              
 컴퓨터는 2진수를 표현하고 처리하는 하드웨어이므로, 불 함수는 하드웨어 아키텍쳐에 중심적인 역할을 한다. 따라서 불 함수를 정의하고 분석하는 것이 컴퓨터 아키텍쳐를 구축하는 첫 단계가 된다.
 
 #### 진리표 표현
@@ -41,7 +41,7 @@ Truth table(진리표)는 불 함수를 정의하는 가장 쉬운 방법으로 
 불 표현식은 불 함수를 표현하는 다른 방식이다. 
 > x And y
   x Or y
-  Not x = \bar{x} 
+  Not x = $$\bar{x}$$ 
 
 1.2 기능
 
