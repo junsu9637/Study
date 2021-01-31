@@ -1,7 +1,7 @@
-1. 불 논리(#boolean-logic)       
-1.1 배경(#background)              
-1.1.1 불 대수(#boolean-algebra)              
-1.1.2 게이트 논리(#gete-logic)
+[1. 불 논리](#boolean-logic)       
+[1.1 배경](#background)              
+[1.1.1 불 대수](#boolean-algebra)              
+[1.1.2 게이트 논리](#gete-logic)
 1.1.2      
 
 1.2 기능            
