@@ -41,7 +41,7 @@ Truth table(진리표)는 불 함수를 정의하는 가장 쉬운 방법으로 
 불 표현식은 불 함수를 표현하는 다른 방식이다. 
 > x And y
   x Or y
-  Not x = $$\bar{x}$$ 
+  Not x = $$\bar{x}$$
 
 1.2 기능
 
