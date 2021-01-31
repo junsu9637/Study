@@ -134,9 +134,9 @@ set a 1, set b 1, eval, output;
 
 ### Basic Logic Gate
 
-### Multi-Bit Version Of The Basic Gate
+### Multi Bit Version Of The Basic Gate
 
-### Multi-Input Version Of Basic Gate
+### Multi Input Version Of Basic Gate
 
 1.3 구현
 1.4 정리
