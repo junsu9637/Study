@@ -39,15 +39,12 @@ Truth table(진리표)는 불 함수를 정의하는 가장 쉬운 방법으로 
 #### 불 표현식
 
 불 표현식은 불 함수를 표현하는 다른 방식이다. 
-> x And y
-  x Or y
-  Not x = $$\bar{x}$$
+> x And y = x &cdot y
+  x Or y = x + y
+  Not x = ~~x~~
 
 1.2 기능
 
-$$
-a_S
-$$
 
 1.3 구현
 1.4 정리
