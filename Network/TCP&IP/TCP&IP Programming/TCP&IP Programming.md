@@ -2,10 +2,7 @@
 네크워크 프로그래밍의 시작
 
 [1. 네트워크 프로그래밍과 소켓의 의미](https://github.com/junsu9637/Study/blob/main/Network/TCP%26IP/TCP%26IP%20Programming/Contents/Understanding%20Network%20Programming%20and%20Sockets/Understanding%20Network%20Programming%20and%20Sockets.md#windows-based-implementation)         
-1.1 네트워크 프로그래밍과 소켓의 이해             
-1.2 리눅스 기반 파일 조작하기           
-1.3 윈도우 기반으로 구현하기              
-1.4 윈도우 기반의 소켓관련 함수                      
+                    
 
 2. 소켓의 타입과 프로토콜의 설정            
 2.1 소켓의 프로토콜과 그에 따른 데이터 전송 특성            
