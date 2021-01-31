@@ -24,7 +24,7 @@
 [1.2 컴퓨터 시스템의 구성](#Computer-System-Organization)
 [1.2.1 인터럽트](#Interrupts)
 [1.2.2 저장장치 구조](#Storage-Structure)
-[1.2.3 입출력 구조](#I/O-Structure)
+[1.2.3 입출력 구조](#I\/O-Structure)
 
 [1.3 컴퓨터 시스템의 구조](#Computer-System-Architecture)
 
