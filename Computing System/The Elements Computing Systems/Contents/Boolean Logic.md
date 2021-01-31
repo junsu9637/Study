@@ -1,16 +1,16 @@
 [1. 불 논리](#boolean-logic)       
 [1.1 배경](#background)              
 [1.1.1 불 대수](#boolean-algebra)              
-[1.1.2 게이트 논리](#gate-logic)
-[1.1.3 실제 하드웨어 구성](#physical-hardware-configuration)      
-[1.1.4 하드웨어 기술 언어](#hardware-technical-language)
-[1.1.5 하드웨어 시레이션](#hardware-simulation)
+[1.1.2 게이트 논리](#gate-logic)           
+[1.1.3 실제 하드웨어 구성](#physical-hardware-configuration)                      
+[1.1.4 하드웨어 기술 언어](#hardware-technical-language)                 
+[1.1.5 하드웨어 시레이션](#hardware-simulation)                
 
-[1.2 명세](#specification)            
-[1.2.1 Nand 게이트](#nand-gate)
-1.2.2 기본 논리 게이트(#basic-logic-gate)
-1.2.3 기본 게이트의 멀티비트 버전(multi-bit-version-of-the-default-gate)
-1.2.4 기본 게이트의 다입력 버전(multi-input-version-of-default-gate)
+[1.2 명세](#specification)                                         
+[1.2.1 Nand 게이트](#nand-gate)             
+[1.2.2 기본 논리 게이트](#basic-logic-gate)                  
+[1.2.3 기본 게이트의 멀티비트 버전](multi-bit-version-of-the-default-gate)                 
+[1.2.4 기본 게이트의 다입력 버전](multi-input-version-of-default-gate)              
 
 1.3 구현               
 1.4 정리          
