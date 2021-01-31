@@ -15,6 +15,10 @@
 
 운영체제는 덩치가 크고 복잡하기 때문에 부분별로 생성 되어야 하고, 이 하나의 부분은 전체 시스템 윤곽에 잘 맞는 일부여야 한다.
 
+![1.1](https://github.com/junsu9637/Study/blob/main/Operating%20System/Operating%20System%20Concepts/Image/1-1.png?raw=true)
+
+그림 1.1 : 컴퓨터 시스템 구성요서에 대한 대략적인 
+
 # 차례
 [1.1 운영체제가 할 일](#what-operating-system-do)          
 [1.1.1 사용자 관점](#user-view)            
@@ -53,6 +57,8 @@
 
 
 # What Operating System Do
+
+
 ## user-view
 ## system-view
 ## pperating-system-definitions
