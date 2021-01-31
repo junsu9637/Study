@@ -9,8 +9,8 @@
 [1.2 명세](#specification)                                         
 [1.2.1 Nand 게이트](#nand-gate)             
 [1.2.2 기본 논리 게이트](#basic-logic-gate)                  
-[1.2.3 기본 게이트의 멀티비트 버전](#multi-bit-version-of-the-default-gate)                 
-[1.2.4 기본 게이트의 다입력 버전](#multi-input-version-of-default-gate)              
+[1.2.3 기본 게이트의 멀티비트 버전](#multi-bit-version-of-the-basic-gate)                 
+[1.2.4 기본 게이트의 다입력 버전](#multi-input-version-of-basic-gate)              
 
 1.3 구현               
 1.4 정리          
@@ -134,9 +134,9 @@ set a 1, set b 1, eval, output;
 
 ### Basic Logic Gate
 
-### Multi Bit Version Of The Basic Gate
+### Multi-Bit Version Of The Basic Gate
 
-### Multi Input Version Of Basic Gate
+### Multi-Input Version Of Basic Gate
 
 1.3 구현
 1.4 정리
