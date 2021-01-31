@@ -1,4 +1,4 @@
-서론
+서론         
 [1. 불 논리](https://github.com/junsu9637/Study/blob/main/Computing%20System/The%20Elements%20Computing%20Systems/Contents/Boolean%20Logic.md#multi-bit-version-of-the-basic-gate)    
 2. 불 연산         
 3. 순차 논리            
