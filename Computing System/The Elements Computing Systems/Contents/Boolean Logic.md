@@ -256,7 +256,11 @@ set a 1, set b 1, eval, output;
 칩 이름 : Mux4Way16
 입력 : a[16], b[16], c[16], d[16], sel[2]
 출력 : out[16]
-기능 : If sel = 00 then out = a else if sel = 01 then out = b else if sel = 10 then out = c else if sel = 11 then out = d
+기능 : 
+If sel = 00 then out = a 
+else if sel = 01 then out = b 
+else if sel = 10 then out = c 
+else if sel = 11 then out = d
 ```
 
 **다입력 DeMultiplexor** : m-입력 n 비트 DeMultiplexor는 n 비트 입력을 하나 받아 m개의 n 비트 출력 중 하나를 내보낸다. 선택 입력은 k개의 제어 비트로 되어 있고, *k = log<sub>2</sub>m*이다. 아래 예시는 4-입력 1비트 Demultiplexor다.
@@ -265,7 +269,11 @@ set a 1, set b 1, eval, output;
 칩 이름 : DMux4Way
 입력 : in, sel[2]
 출력 : a, b, c, d
-기능 : If sel = 00 then {a = in, b=c=d= 0} else if sel = 01 then {b = in, a=c=d= 0} else if sel = 10 then {c = in, a=b=d= 0} else if sel = 11 then {d = in, a=b=c= 0}
+기능 : 
+If sel = 00 then {a = in, b=c=d= 0} 
+else if sel = 01 then {b = in, a=c=d= 0} 
+else if sel = 10 then {c = in, a=b=d= 0} 
+else if sel = 11 then {d = in, a=b=c= 0}
 ```
 
 1.3 구현
