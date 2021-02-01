@@ -241,5 +241,34 @@ set a 1, set b 1, eval, output;
 
 ### Multi-Input Version Of Basic Gate
 
+2-입력 논리 게이트들은 입력이 여러 개인 다입력 게이트들로 일반화할 수 있다. 
+
+**다입력 Or** : n-입력 Or 게이트는 n 비트 입력 중 적어도 하나가 1이면 1을 출력하고, 그 외에는 0을 출력한다. 아래는 8-입력 게이트의 예시다.
+```markdown
+칩 이름 : Or8Way
+입력 : in[8]
+출력 : out
+기능 : out = Or(in[0],...,in[7])
+```
+
+**다입력 Multiplexor** : m-입력 n 비트 multiplexor는 m개의 n비트 입력 버스 중에 하나를 골라서 n 비트를 출력 버스에 출력한다. 선택 입력은 k개의 제어 비트로 되어 있으며 *k = log<sub>2</sub>m*이다. 아래 예시는 4-입력 16비트 multiplexor다.
+```markdown
+칩 이름 : Mux4Way16
+입력 : a[16], b[16], c[16], d[16], sel[2]
+출력 : out[16]
+기능 : If sel = 00 then out = a else if sel = 01 then out = b else if sel = 10 then out = c else if sel = 11 then out = d
+```
+
+**다입력 DeMultiplexor** : m-입력 n 비트 DeMultiplexor는 n 비트 입력을 하나 받아 m개의 n 비트 출력 중 하나를 내보낸다. 선택 입력은 k개의 제어 비트로 되어 있고, *k = log<sub>2</sub>m*이다. 아래 예시는 4-입력 1비트 Demultiplexor다.
+
+```markdown
+칩 이름 : DMux4Way
+입력 : in, sel[2]
+출력 : a, b, c, d
+기능 : If sel = 00 then {a = in, b=c=d= 0} else if sel = 01 then {b = in, a=c=d= 0} else if sel = 10 then {c = in, a=b=d= 0} else if sel = 11 then {d = in, a=b=c= 0}
+```
+
 1.3 구현
+
+
 1.4 정리
