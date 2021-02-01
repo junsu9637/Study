@@ -184,10 +184,12 @@ set a 1, set b 1, eval, output;
   **기능** : If sel = 0 then out = a, else out = b  
 
 **Demultiplexor** : 멀티플랙서와 반대 기능을 한다. 따라서 선택 비트에 따라 두 출력 중 하나를 선택해서 입력 신호를 보낸다. 
-> **칩 이름** : DMux         
-  **입력** : in, sel             
-  **출력** : a, b                      
-  **기능** : If sel = 0 then {a = in, b = 0}, else {a = 0, b = in}
+```
+**칩 이름** : DMux         
+**입력** : in, sel             
+**출력** : a, b                      
+**기능** : If sel = 0 then {a = in, b = 0}, else {a = 0, b = in}
+```
   
 ### Multi-Bit Version Of The Basic Gate
 
