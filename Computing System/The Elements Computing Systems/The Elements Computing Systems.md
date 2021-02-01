@@ -1,6 +1,6 @@
 서론         
-[1. 불 논리](https://github.com/junsu9637/Study/blob/main/Computing%20System/The%20Elements%20Computing%20Systems/Contents/Boolean%20Logic.md#multi-bit-version-of-the-basic-gate)    
-2. 불 연산         
+[1. 불 논리](https://github.com/junsu9637/Study/blob/main/Computing%20System/The%20Elements%20Computing%20Systems/Contents/Boolean%20Logic.md#multi-bit-version-of-the-basic-gate)     
+[2. 불 연산](https://github.com/junsu9637/Study/blob/main/Computing%20System/The%20Elements%20Computing%20Systems/Contents/Boolean%20operations.md)           
 3. 순차 논리            
 4. 기계어               
 5. 컴퓨터 아키텍쳐            
