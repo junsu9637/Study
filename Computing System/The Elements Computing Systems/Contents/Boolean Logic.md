@@ -129,12 +129,66 @@ set a 1, set b 1, eval, output;
 
 ## Specification
 
-이 절에서는 불 연산을 수행하는 게이트들을 정의한다. 
+이 절에서는 불 연산을 수행하는 게이트들을 정의한다. 게이트들의 명세나 인터페이스만 정의하고 상세 구현은 다음 문서에서 진행할 것이다. 특정 게이트에 대한 구현은 부록 A에서 정리된다.
 
 ### Nand Gate
 
+모든 게이트들의 기초가 되는 Nand 게이트는 다음과 같은 불 함수를 계산한다.
+| a b | Nand(a,b) |
+|:-:|:-:|
+| 0 0 | 1 |
+| 0 1 | 1 |
+| 1 0 | 1 |
+| 1 1 | 0 |
+
+앞으로는 이 내용을 아래와 같이 정의할 것이다.
+
+> **칩 이름** : Nand         
+  **입력** : a, b             
+  **출력** : out                      
+  **기능** : If a = b = 1 then out = 0, else out = 1                         
+
 ### Basic Logic Gate
 
+**And** : 입력값이 둘 다 1일 경우 1을, 그 외에는 0을 반환한다.
+> **칩 이름** : And         
+  **입력** : a, b             
+  **출력** : out                      
+  **기능** : If a = b = 1 then out = 1, else out = 0  
+
+**Or** : 입력값 중 적어도 하나가 1일 때 1을, 그 외에는 0을 반환한다.
+
+> **칩 이름** : Or         
+  **입력** : a, b             
+  **출력** : out                      
+  **기능** : If a = b = 0 then out = 0, else out = 1  
+
+**Xor** : *Exclusive or(베타적 논리합)* 이라고도 불리며 두 입력값이 다를 경우 1, 그 외에는 0을 반환한다.
+
+> **칩 이름** : Xor         
+  **입력** : a, b             
+  **출력** : out                      
+  **기능** : If a != b then out = 1, else out = 0  
+
+**Not** : *Converter(컨버터)* 라고도 불리며 입력값을 0에서 1 또는 1에서 0으로 바꿔서 반환한다.
+
+> **칩 이름** : Not         
+  **입력** : in             
+  **출력** : out                      
+  **기능** : If in = 0 then out = 1, else out = 0
+  
+**Multiplexor** : 3-입력 게이트의 멀티플렉서는 Selection bit(선택 비트)를 입력받아 나머지 2개의 Data bit(데이터 비트) 중 하나를 선택한다. 따라서 Selector이라는 이름으로도 불린다.
+> **칩 이름** : MUX         
+  **입력** : a, b, sel             
+  **출력** : out                      
+  **기능** : If sel = 0 then out = a, else out = b  
+
+**Demultiplexor** : 멀티플랙서와 반대 기능을 한다. 따라서 선택 비트에 따라 두 출력 중 하나를 선택해서 입력 신호를 보낸다. 
+> **칩 이름** : DMux         
+  **입력** : in, sel             
+  **출력** : a, b                      
+  **기능** : If sel = 0 then {a = in, b = 0}, else {a = 0, b = in}
+  
 ### Multi-Bit Version Of The Basic Gate
 
 ### Multi-Input Version Of Basic Gate
