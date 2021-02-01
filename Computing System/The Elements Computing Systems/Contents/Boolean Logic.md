@@ -1,4 +1,7 @@
-[1. 불 논리](#boolean-logic)       
+# 차례
+
+[1. 불 논리](#boolean-logic) 
+
 [1.1 배경](#background)              
 [1.1.1 불 대수](#boolean-algebra)              
 [1.1.2 게이트 논리](#gate-logic)           
@@ -11,11 +14,7 @@
 [1.2.2 기본 논리 게이트](#basic-logic-gate)                  
 [1.2.3 기본 게이트의 멀티비트 버전](#multi-bit-version-of-the-basic-gate)                 
 [1.2.4 기본 게이트의 다입력 버전](#multi-input-version-of-basic-gate)              
-
-1.3 구현               
-1.4 정리          
-
-
+       
 # Boolean Logic
 
 디지털 기기는 모두 정보를 저장하고 처리하도록 설계된 칩들을 탑재한다. 이 칩들은 동일한 구성 요소인 **논리 게이트**로 만들어진다. 게이트는 물리적으로는 다양한 소재와 제작기술로 구현되지만 논리적 작동 방식은 모든 컴퓨터에서 동일하다. 이 문서에서는 Nand 게이트를 이용해 다른 논리 게이트를 만들 것이다. 여기서 Nand 게이트를 사용하는 것은 Nand 함수가 이론적으로 And, Or, Not 연산을 이 함수만으로 만들 수 있기 때문이다.
@@ -276,7 +275,6 @@ else if sel = 10 then {c = in, a=b=d= 0}
 else if sel = 11 then {d = in, a=b=c= 0}
 ```
 
-1.3 구현
 
 
-1.4 정리
+
