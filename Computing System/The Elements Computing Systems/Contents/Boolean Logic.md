@@ -201,6 +201,44 @@ set a 1, set b 1, eval, output;
   
 ### Multi-Bit Version Of The Basic Gate
 
+컴퓨터 하드웨어는 버스라고 불리는 멀티비트 배열에 대해 연산을 수행한다. 예를 들어 32비트 컴퓨터는 2개의 32비트 버스에 대한 And 함수를 연산할 수 있다. 이 연산은 32개의 2진 And 게이트를 나란히 놓고, 각각의 비트 쌍마다 And를 적용하는 방식으로 구현된다.
+
+이 절에서는 16비트 컴퓨터 구축에 필요한 멀티비트 논리 게이트들을 소개한다. n 비트 논리 게이트의 아키텍쳑도 기본적으로 동일하다. 
+
+버스 내의 개별 비트들을 가리킬 때는 배열 문법을 활용한다. 예를 들어 data라는 16비트 버스가 있다면 data[0], ... , data[15]와 같이 개별 비트를 표시한다.
+
+**멀티비트 And** : n 비트 And 게이트는 2개의 n 비트 입력 버스에서 들어오는 모든 n 비트 쌍에 대해 And 연산을 수행한다.
+```markdown
+칩 이름 : And16
+입력 : a[16] b[16]
+출력 : out[16]
+기능 : For i = 0...15 out[i] = And(a[i], b[i])
+```
+
+**멀티비트 Or** : n 비트 Or 게이트는 2개의 n 비트 입력 버스에서 들어오는 모든 n 비트 쌍에 대해 Or 연산을 수행한다.
+```markdown
+칩 이름 : Or16
+입력 : a[16] b[16]
+출력 : out[16]
+기능 : For i = 0...15 out[i] = Or(a[i], b[i])
+```
+
+**멀티비트 Not** : n비트 Not 게이트는 n 비트 입력 버스의 모든 비트에 대한 Not 연산을 수행한다.
+```markdown
+칩 이름 : Not16
+입력 : in[16]
+출력 : out[16]
+기능 : For i = 0...15 out[i] = Not(in[i])
+```
+
+**멀티비트 Multiplexor** : n 비트 Multiplexor는 입력 비트가 n 비트라는 것을 제외하면 기존과 동일하다. 선택 비트는 여전히 1비트다.
+```markdown
+칩 이름 :Mux16
+입력 : a[16] b[16]. sel
+출력 : out[16]
+기능 : If sel = 0 then for i = 0...15 out[i] = a[i] else for i = 0...15 out[i] = b[i]
+```
+
 ### Multi-Input Version Of Basic Gate
 
 1.3 구현
