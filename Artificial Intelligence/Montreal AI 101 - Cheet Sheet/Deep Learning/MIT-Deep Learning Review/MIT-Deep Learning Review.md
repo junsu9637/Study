@@ -26,7 +26,7 @@ https://github.com/lexfridman/mit-deep-learning
 [2.9 선택사항 : 시간 정보 활용](#optional-leverage-temporal-information)             
 
 
-[3. GAN (Generative Adversarial Network)](#generative-adversarial-metworks)      
+[3. GAN (Generative Adversarial Network)](#generative-adversarial-networks)      
 [3.1 BigGAN](#biggan)
 
 [4. DeepTraffic 심층 강화 학습 대회](#deeptraffic-deep-reinforcement-learning-competition)          
