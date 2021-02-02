@@ -3,31 +3,33 @@ https://github.com/lexfridman/mit-deep-learning
 
 # 목차
 
-[1. 딥러닝 기초](#Deep-Learning-Basics)            
-[1.1 전제 조건](#Prerequisites)             
-[1.2 Feed-Forward 신경망에 의한 Bostan 주택가격 예측](#Boston-Housing-Price-Prediction-with-Feed-Forward-Neural-Networks)         
-<bar> [1.2.1 모델 설정](#Build-the-model)                
-<bar> [1.2.2 모델 학습](#Train-the-model)                    
-[1.3 합성신경망을 이용한 MNIST 꿈의 분류](#Classification-of-MNIST-Dreams-with-Convolutional-Neural-Networks)                 
-<bar> [1.3.1 모델 설정](#Build-the-model)               
-<bar> [1.3.2 모델 학습](#Train-the-model)                
-<bar> [1.3.3 정확도 평가](#Evaluate-accuracy)                   
-<bar> [1.3.4 예측](#Make-predictions)                  
+[1. 딥러닝 기초](#deep-learning-basics)            
+[1.1 전제 조건](#prerequisites)             
+[1.2 Feed-Forward 신경망에 의한 Bostan 주택가격 예측](#boston-housing-price-prediction-with-feed-forward-neural-networks)         
+<bar> [1.2.1 모델 설정](#build-the-model)                
+<bar> [1.2.2 모델 학습](#train-the-model)                    
+[1.3 합성신경망을 이용한 MNIST 꿈의 분류](#classification-of-mnist-dreams-with-convolutional-neural-networks)                 
+<bar> [1.3.1 모델 설정](#build-the-model)               
+<bar> [1.3.2 모델 학습](#train-the-model)                
+<bar> [1.3.3 정확도 평가](#evaluate-accuracy)                   
+<bar> [1.3.4 예측](#make-predictions)                  
 
-[2. 운전 장면 분할](#Driving-Scene-Segmentation)            
-[2.1 모델 생성](#Build-the-model)             
-[2.2 시각화](#Visualization)               
-[2.3 고정 그래프에서 모델 로드](#Load-the-model-from-a-frozen-graph)            
-[2.4 샘플 이미지에서 실행](#Run-on-the-sample-image)              
-[2.5 샘플 비디오에서 실행](#Run-on-the-sample-video)               
-[2.6 평가](#Evaluation)               
-[2.7 샘플 이미지에 대한 평가](#Evaluate-on-the-sample-image)             
-[2.8 샘플 이미지에 대한 평가](Evaluate-on-the-sample-video)               
-[2.9 선택사항 : 시간 정보 활용](#Optional-leverage-temporal-information)             
+[2. 운전 장면 분할](#driving-scene-segmentation)            
+[2.1 모델 생성](#build-the-model)             
+[2.2 시각화](#visualization)               
+[2.3 고정 그래프에서 모델 로드](#load-the-model-from-a-frozen-graph)            
+[2.4 샘플 이미지에서 실행](#run-on-the-sample-image)              
+[2.5 샘플 비디오에서 실행](#run-on-the-sample-video)               
+[2.6 평가](#evaluation)               
+[2.7 샘플 이미지에 대한 평가](#evaluate-on-the-sample-image)             
+[2.8 샘플 이미지에 대한 평가](#evaluate-on-the-sample-video)               
+[2.9 선택사항 : 시간 정보 활용](#optional-leverage-temporal-information)             
 
 
-[GAN (Generative Adversarial Network)](#Generative-Adversarial-Networks)          
-[DeepTraffic 심층 강화 학습 대회](#DeepTraffic-Deep-Reinforcement-Learning-Competition)          
+[3. GAN (Generative Adversarial Network)](#generative-adversarial-metworks)      
+[3.1 BigGAN](#biggan)
+
+[4. DeepTraffic 심층 강화 학습 대회](#deeptraffic-deep-reinforcement-learning-competition)          
 
 # Deep Learning Basics
 
@@ -846,5 +848,17 @@ print(tabulate([class_iou], headers=LABEL_NAMES[[0,1,2,5,6,7,8,9,11,13]]))
 ```
 
 # Generative Adversarial Networks
+
+이 문서는 MIT Deep Learning 시리즈 중 GAN에 대한 소개 강의를 기반으로 제작되었다.
+
+GAN(Generative Adversarial Networks)은 특정 표현에서 새로운 실제 샘플을 생성하기 위해 최적화된 네트워크를 훈련하기 위한 프레임워크이다. 가장 간단한 형태로 훈련 과정은 두 개의 네트워크를 포함한다. generator이라고 불리는 하나의 내트워크는 새 인스턴스를 생성한다. 이 인스턴스는 다른 네트워크를 속이고 이미지를 실제 또는 가짜로 분류한다. 
+
+![](https://camo.githubusercontent.com/8415e3ee30cee611cf88eabee12eac47da54c110/68747470733a2f2f692e696d6775722e636f6d2f4c7765614431732e706e67)
+
+GAN에는 대략 3가지 범주가 있다.
+
+> 
+
+## BigGAN
 
 # DeepTraffic Deep Reinforcement Learning Competition
