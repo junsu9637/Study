@@ -3,12 +3,12 @@
  [1.2 자바개발환경 구축](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Introduction.md)               
  [1.3 자바로 프로그램 작성](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Introduction.md)             
 
-2. 변수                 
-2.1 변수와 상수               
-2.2 변수의 타입               
-2.3 진법               
-2.4 기본형               
-2.5 형변환                
+[2. 변수](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Variable.md)                 
+[2.1 변수와 상수](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Variable.md)               
+[2.2 변수의 타입](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Variable.md)               
+[2.3 진법](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Variable.md)               
+[2.4 기본형](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Variable.md)               
+[2.5 형변환](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Variable.md)                
 
 3. 연산자             
 3.1 연산자              
