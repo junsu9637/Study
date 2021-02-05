@@ -1,7 +1,7 @@
-1. 변수와 상수(#variables-and-constants)               
-1.1 변수란(#what-is-variables)          
-1.2 변수의 선언과 초기화(#declaration-and-initialization-of-variables)        
-1.3 변수의 명명규칙(#naming-rules-for-variables)
+[1. 변수와 상수](#variables-and-constants)               
+[1.1 변수란](#what-is-variables)          
+[1.2 변수의 선언과 초기화](#declaration-and-initialization-of-variables)        
+[1.3 변수의 명명규칙](#naming-rules-for-variables)
 
 2. 변수의 타입               
 2.1 기본형
