@@ -1,18 +1,16 @@
-[1. 자바](#java)
-[1.1 자바란](#what-is-java)
-[1.2 자바의 역사](history-of-java)
-[1.3 자바의 특징](#features-of-java)
-[1.4 JVM(Java Virtual Machine)](#java-virtual-machine)
+[1. 자바](#java)         
+[1.1 자바란](#what-is-java)                
+[1.2 자바의 역사](history-of-java)               
+[1.3 자바의 특징](#features-of-java)                 
+[1.4 JVM(Java Virtual Machine)](#java-virtual-machine)             
 
-2. 자바개발환경 구축
-2.1 자바 개발도구(JDK) 설치
-2.2 Java API문서 설치
+[2. 자바개발환경 구축](#establishment-of-java-development-environment)           
+[2.1 자바 개발도구(JDK)]설치(#install-java-development-tools-jdk)                
+[2.2 Java API문서 설치](#install-java-api-document)               
 
-3. 자바로 프로그램 작성
-3.1 프로그램 작성
-3.2 자주 발생하는 에러와 해결방법
-3.3 자바 프로그램의 
-3.4 주석
+[3. 자바로 프로그램 작성](#create-a-java-program)              
+[3.1 프로그램 작성](#create-program)                              
+[3.2 자바 프로그램의 실행과정](#the-execution-process-of-a-java-program)                    
 
 # Java
 
@@ -88,11 +86,53 @@ Java Virtual Machine은 JVA라고도 불린다. 이는 '자바를 실행하기 �
 
 Java는 JVM을 한 번 더 거치면서 하드웨어에 맞게 완전히 컴파일된 상태가 아니라, 실행 시 해석되기 때문에 속도가 느리다는 단점이 있다. 하지만 요즘 바이트코드(컴파일된 자바코드)를 하드웨어의 기계어로 바로 변환해주는 JIT 컴파일러와 향상된 최적화 기술이 이러한 단점을 보완해주고 있다. 
 
+# Establishment of Java Development Environment
 
+1. JDK설치
+2. 설치된 디렉토리의 bin에 path를 추가
 
+## Install Java Development Tools JDK
 
+[Java 사이트](http://java.sun.com/)에서 다운받는 JDK는 JVM과 Java API를 비롯한 자바 개발 프로그램들을 설치해준다.     
+JDK가 설치가 되면 Java 디렉토리가 생성이 되는데 이 디렉토리 중 bin이라는 디렉토리 안에 path라는 디렉토리를 추가해 주어야 한다. 이 디렉토리는 OS가 파일의 위치를 파악하는데 사용된다.
 
+## Install Java API document
 
+[Java 사이트](http://java.sun.com/)에서 다운받는 Java API는 ZIP 방식으로 압축되어 있고, 압축을 풀면 html 문서로 자바와 관련된 정보들이 수록되어 있다. 다운받아 참고하면서 프로그래밍하기 좋다. 
+
+# Create a Java program
+
+## Create program
+
+클래스 생성
+```Java
+class Class_Name {
+    /*
+        주석을 제외한 모든 코드는 클래스의 블록{} 내에 작성되어야 한다.
+    */
+}
+```
+
+main 메서드 선언부
+```Java
+class Class_Name {
+    public static void main(String[] args) // main 메서드의 선언부
+    {
+        // 실행될 문장들을 적는다.
+    }
+}
+```
+
+Java 에플리케이션은 main 메서드의 호출로 시작해서 main 메서드의 첫 문장부터 마지막 문장까지 수행하면 종료된다. 모든 클래스가 main 메서드를 가지고 있어야 하는 것은 아니지만, Java 에플리게이션에는 main 메서드를 포함한 클래스가 반드시 하나는 있어야한다.  
+
+## The execution process of a Java program
+
+프로그램이 실행되면 main 메서드의 첫 줄부터 코드가 실행되기 시작하며 마지막 코드까지 모두 실행되면 프로그램이 종료되고, 지금까지 사용했던 자원들을 모두 반환한다. 코드의 내부적인 실행과정은 다음과 같다.
+```markdown
+1. 프로그램의 실행에 필요한 클래스(.class 파일)를 로드한다.
+2. 클래스 파일을 검사한다.(파일 형식, 악성코드 검사)
+3. 지정된 클래스에서 main(Strint[] args)를 호출한다.
+```
 
 
 
