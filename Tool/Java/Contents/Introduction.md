@@ -5,7 +5,7 @@
 [1.4 JVM(Java Virtual Machine)](#java-virtual-machine)             
 
 [2. 자바개발환경 구축](#establishment-of-java-development-environment)           
-[2.1 자바 개발도구(JDK)]설치](#install-java-development-tools-jdk)                
+[2.1 자바 개발도구(JDK)설치](#install-java-development-tools-jdk)                
 [2.2 Java API문서 설치](#install-java-api-document)               
 
 [3. 자바로 프로그램 작성](#create-a-java-program)              
