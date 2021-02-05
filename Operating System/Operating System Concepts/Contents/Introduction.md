@@ -72,7 +72,7 @@
 [1.11.3 GNU/Linux](#gnu-linux)           
 [1.11.4 BSD Unix](#bsd-unix)            
 [1.11.5 Solaris](#solaris)                   
-[1.11.6 학습 도구로서 오픈 소스 시스템](#open-source-systems-as- learning-tools)             
+[1.11.6 학습 도구로서 오픈 소스 시스템](#open-source-systems-as-learning-tools)             
 
 
 
