@@ -1,7 +1,7 @@
 [1. 서론](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Introduction.md)               
-<br>[1.1 자바](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Introduction.md)                 
-<br>[1.2 자바개발환경 구축](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Introduction.md)               
-<br>[1.3 자바로 프로그램 작성](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Introduction.md)             
+ [1.1 자바](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Introduction.md)                 
+ [1.2 자바개발환경 구축](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Introduction.md)               
+ [1.3 자바로 프로그램 작성](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Introduction.md)             
 
 2. 변수                 
 2.1 변수와 상수               
