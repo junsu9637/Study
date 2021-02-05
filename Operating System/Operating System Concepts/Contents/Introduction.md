@@ -33,24 +33,47 @@
 [1.3.2 다중 처리기 시스템](#multiprocessor-systems)             
 [1.3.3 클러스터형 시스템](#clustered-systems)             
 
-[1.4 운영체제의 작동](#Operating-System-Operations)             
-[1.4.1 다중 프로그래밍과 다중 태스킹](#multiprogramming-and-multitasking)              
-[1.4.2 이중모드와 다중모드 운용](#dualmode-and-multimode-operation)             
+[1.4 운영체제의 작동](#operating-system-operations)             
+[1.4.1 멀티 프로그래밍과 멀티 태스킹](#multiprogramming-and-multitasking)              
+[1.4.2 이중모드와 멀티모드 운용](#dualmode-and-multimode-operation)             
 [1.4.3 타이머](#timer)             
            
-[1.5 자원 관리](#Resource Management)
+[1.5 자원 관리](#resource-management)
+[1.5.1 프로세스 관리](#process-management)
+[1.5.2 메모리 관리](#memory-management)
+[1.5.3 파일 시스템 관리](#file-system-management)
+[1.5.4 대용량 저장장치 관리](#mass-storage-management)
+[1.5.5 캐시 관리](#cache-management)
+[1.5.6 입출력 시스템 관리](#io-system-management)
 
-[1.6 보안과 보안](#Security and Protection)
+[1.6 보안과 보안](#security-and-protection)
 
-[1.7 가상화](#Virtulization)
+[1.7 가상화](#virtulization)
 
-[1.8 분산 시스템](#Distributed-Systems)
+[1.8 분산 시스템](#distributed-systems)
 
-[1.9 커널 자료구조](#Kernel_Data-Structures)
+[1.9 커널 자료구조](#kernel-data-structures)
+[1.9.1 리스트, 스택, 큐](#lists-stacks-queues)
+[1.9.2 트리](#trees)
+[1.9.3 해시 함수와 맵](#hash-functions-and-maps)
+[1.9.4 비트맵](#bitmaps)
 
-[1.10 계산 환경](#Computing Environments)
+[1.10 컴퓨팅 환경](#Computing Environments)
+[1.10.1 전통적인 컴퓨팅](#tranditional-computing)
+[1.10.2 모바일 컴퓨팅](#mobile-computing)
+[1.10.3 클라이언트-서버 컴퓨팅](#client-server-computing)
+[1.10.4 피어 간 컴퓨팅](#peer-to-peer-computing)
+[1.10.5 클라우딩 컴퓨팅](#cloud-computing)
+[1.10.6 실시간 내장형 시스템](#real-time-embedded-systems)
 
-[1.11 무료 및 공개 소스 운영체제](#Free-and-OpenSource-Operating-Systems)
+[1.11 무료 및 공개 오픈 운영체제](#free-and-opensource-operating-systems)
+[1.11.1 역사](#history)
+[1.11.2 무료 운영체제](#free-operation-systems)
+[1.11.3 GNU/Linux](#gnu-linux)
+[1.11.4 BSD Unix](#bsd-unix)
+[1.11.5 Solaris](#solaris)
+[1.11.6 학습 도구로서 오픈 소스 시스템](#open-source-systems-as- learning-tools)
+
 
 
 
@@ -375,13 +398,101 @@ SAN(스토리지 전용 네트워크)를 사용하여 한 클러스터 내에 �
 
 ## Dualmode and Multimode Operation
 
+### 이중 모드
+운영체제와 사용자는 컴퓨터 시스템의 자원을 공유하기 때문에 잘못된 프로그램으로 인해 다른 프로그램 또는 운영체제 자체가 잘못 실행될 수 있다. 따라서 운영체제는 사용자 정의 코드 실행을 구분 지어야한다. 이를 위해 **사용자 모드**와 **커널 모드(관리자 모드, 특권 모드)** 로 구분한다. 이 두가지 모드는 **모드 비트**라고 하는 하나의 비트를 추가하며 구분한다. 커널모드는 0, 사용자 모드는 1을 부여한다. 
 
+```markdown
+1. 시스템 부팅
+2. 커널 모드 실행
+3. 운영체제 적재
+4. 사용자 모드에서 사용자 프로세스가 실행
+5. 인터럽트나 트랩이 발생할 때마다 사용자 모드에서 커널 모드로 전환
+6. 사용자 프로그램으로 제어를 넘기기 전에 커널 모드에서 사용자 모드로 전환
+```
 
+이중 모드는 운영체제와 사용자를 보호하기 위해 일부 명령을 **Privileged Instruction(특권 명령)** 으로 지정한다. 하드웨어는 특권 명령이 커널 모드에서만 수행되도록 허용한다. 사용자 모드에서 특권 명령을 수행하려고 시도하면, 하드웨어는 이를 실행하지 않고 운영체제로 트랩을 건다. 
+
+### 다중 모드
+모드의 개념은 두 가지 모드 이상으로 확장할 수 있다. 
+> Intel : 4개의 보호링(0 : 커널 모드, 1,2 : 다양한 운영체제 서비스, 3: 사용자 모드)           
+  ARMv8 : 7개의 모드
+  
+가상화를 지원하는 CPU는 종종 **VMM(Vartual Machine Manager)** 이 시스템을 제어하는 시점을 표시하기 위한 별도의 모드를 가진다. 이 모드에서 VMM은 사용자 프로세스보다 많은 권한을 가지지만 커널보다는 적은 권한을 갖는다. 
+
+### 시스템 콜
+시스템 코른 사용자 프로그램이 자신을 대신하여 운영체제가 수행하도록 지정되어 있는 작업을 운영체제에 요청할 수 있는 방법을 제공한다. 시스템 콜은 컴퓨터 시스템의 처리기가 지원하는 기능에 따라 다양한 방법으로 호출된다. 
+
+시스템 콜이 수행될 때, 시스템 콜은 하드웨어에 의해 하나의 소프트웨어 인터럽트로 취급된다. 
+```markdown
+1. 제어가 인터럽트 벡터를 통해 운영체제 내의 서비스 루틴으로 전달
+2. 모드 비트가 커널 모드로 설정
+```
+즉 시스템 콜 서비스 루틴은 운영체제의 일부이다. 커널은 인터럽트를 발생시킨 명령을 검사하여 어떤 시스템 콜이 발생했는지를 결정한다. 이 때 전달된 인수가 사용자 프로그램이 요청하는 서비스 유형을 표시한다. 
+
+### 하드웨어 보호
+하드웨어 보호 기능은 모드 규칙을 위반하는 오류를 하드웨어에 의해 탐지한다. 이러한 오류는 일반적으로 운영체제가 처리한다. 
+```
+1. 사용자 프로그램이 불법적인 접근 시도
+2. 하드웨어는 운영체제로 트랩 발생
+3. 트랩은 인터럽트 벡터를 통해 제어를 운영체제로 넘김
+4. 프로그램 오류가 발생할 때마다 운영체제는 프로그램 종료
+5. 적절한 오류 메세지가 주어지고, 프로그램의 메모리가 덤프된다.
+6. 덤프된 메모리는 사용자가 조사하여, 통상 파일에 기록한다. 
+```
+ 
 ## timer
 
+타이머는 운영체제가 CPU에 대한 제어를 유지할 수 있도록 다음과 같은 기능을 제공한다.
+> 프로그램이 무한 루프에 빠지지 않게 한다.        
+  시스템 서비스 호출에 실패하여 제어가 운영체제로 복귀하지 않는 경우 방지
+ 
+타이머는 지정된 시간이 지나면 컴퓨터를 강제로 인터럽트 하도록 설정할 수 있다. 타이머 값을 설정하는 명령은 특권 명령이다. 
 
+운영체제는 사용자에게 제어를 양도하기전에 타이머가 인터럽트 할 수 있도록 설정되었는지를 확인한다. 만약 타이머가 인터럽트를 발생하면 제어는 자동으로 운영체제에 넘어간다. 이때 운영체제는 이 인터럽트를 오류로 취급하거나 프로그램에 더 많은 시간을 할당할 수 있다. 
+ 
+**가변 타이머**는 일반적으로 고정률의 클록과 계수기로 구현한다.
+```markdown
+1. 운영체제는 계수기 값을 설정
+2. 클록이 진행됨에 따라 계수기 갑소
+3. 계수기가 0이되면 인터럽트 발생
+```
 
+# Resource Management
 
+[1.5.1 프로세스 관리](#process-management)
+[1.5.2 메모리 관리](#memory-management)
+[1.5.3 파일 시스템 관리](#file-system-management)
+[1.5.4 대용량 저장장치 관리](#mass-storage-management)
+[1.5.5 캐시 관리](#cache-management)
+[1.5.6 입출력 시스템 관리](#io-system-management)
+
+[1.6 보안과 보안](#security-and-protection)
+
+[1.7 가상화](#virtulization)
+
+[1.8 분산 시스템](#distributed-systems)
+
+[1.9 커널 자료구조](#kernel-data-structures)
+[1.9.1 리스트, 스택, 큐](#lists-stacks-queues)
+[1.9.2 트리](#trees)
+[1.9.3 해시 함수와 맵](#hash-functions-and-maps)
+[1.9.4 비트맵](#bitmaps)
+
+[1.10 컴퓨팅 환경](#Computing Environments)
+[1.10.1 전통적인 컴퓨팅](#tranditional-computing)
+[1.10.2 모바일 컴퓨팅](#mobile-computing)
+[1.10.3 클라이언트-서버 컴퓨팅](#client-server-computing)
+[1.10.4 피어 간 컴퓨팅](#peer-to-peer-computing)
+[1.10.5 클라우딩 컴퓨팅](#cloud-computing)
+[1.10.6 실시간 내장형 시스템](#real-time-embedded-systems)
+
+[1.11 무료 및 공개 오픈 운영체제](#free-and-opensource-operating-systems)
+[1.11.1 역사](#history)
+[1.11.2 무료 운영체제](#free-operation-systems)
+[1.11.3 GNU/Linux](#gnu-linux)
+[1.11.4 BSD Unix](#bsd-unix)
+[1.11.5 Solaris](#solaris)
+[1.11.6 학습 도구로서 오픈 소스 시스템](#open-source-systems-as- learning-tools)
 
 
 
