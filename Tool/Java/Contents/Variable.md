@@ -3,33 +3,33 @@
 [1.2 변수의 선언과 초기화](#declaration-and-initialization-of-variables)        
 [1.3 변수의 명명규칙](#naming-rules-for-variables)
 
-2. 변수의 타입               
-2.1 기본형
-2.2 상수와 리터럴
-2.3 형식화된 출력
-2.4 화면에서 입력받기
+[2. 변수의 타입](#type-of-variable)               
+[2.1 기본형](#fundamental-form)
+[2.2 상수와 리터럴](#constant-and-literal)
+[2.3 형식화된 출력](#formatted-output)
+[2.4 입력받기](#receive-inputs)
 
-3. 진법               
-3.1 10빈법과 2진법
-3.2 비트와 바이트
-3.3 8진법과 16진법
-3.4 정수의 진법 변환
-3.5 실수의 진법 변환
-3.6 음수의 2진 표현
+[3. 진법](#system)               
+[3.1 10진법과 2진법](#decimal-and-binary)
+[3.2 비트와 바이트](#bit-and-byte)
+[3.3 8진법과 16진법](#octal-and-hexadecimal)
+[3.4 정수의 진법 변환](#genetic-transformation-of-integers)
+[3.5 실수의 진법 변환](#genetic-transformation-of-real-number)
+[3.6 음수의 2진 표현](#negative-binary-representation)
 
-4. 기본형               
-4.1 논리형
-4.2 문자형
-4.3 정수형
-4.4 실수형
+[4. 기본형](#fundamental-form)               
+[4.1 논리형](#logical-type)
+[4.2 문자형](#character-type)
+[4.3 정수형](#integer-type)
+[4.4 실수형](#real-number-type)
 
-5. 형변환              
-5.1 형변환이란
-5.2 형변환 방법
-5.3 정수형 간의 형변환
-5.4 실수형 간의 형변환
-5.5 정수형과 실수형 간의 형변환
-5.6 자동 형변환
+[5. 형변환](#shape-conversion)              
+[5.1 형변환이란](#what-is-shape-conversion)
+[5.2 형변환 방법](#shape-conversion-method)
+[5.3 정수형 간의 형변환](#transform-between-integers)
+[5.4 실수형 간의 형변환](#transform-between-real-number)
+[5.5 정수형과 실수형 간의 형변환](#transform-between-integers-real-number)
+[5.6 자동 형변환](Automatic-transformation)
 
 # Variables and Constants
 
@@ -97,7 +97,33 @@ int age = 22; //age라는 이름의 int 타입 변수를 선언하고, 25로 초
 5. 이름은 그 객체의 특성을 잘 나타내는 이름으로 작성한다 
 ```
 
+2. 변수의 타입(#type-of-variable)               
+2.1 기본형(#fundamental-form)
+2.2 상수와 리터럴(#constant-and-literal)
+2.3 형식화된 출력(#formatted-output)
+2.4 입력받기(#receive-inputs)
 
+3. 진법(#system)               
+3.1 10진법과 2진법(#decimal-and-binary)
+3.2 비트와 바이트(#bit-and-byte)
+3.3 8진법과 16진법(#octal-and-hexadecimal)
+3.4 정수의 진법 변환(#genetic-transformation-of-integers)
+3.5 실수의 진법 변환(#genetic-transformation-of-real-number)
+3.6 음수의 2진 표현(#negative-binary-representation)
+
+4. 기본형(#fundamental-form)               
+4.1 논리형(#logical-type)
+4.2 문자형(#character-type)
+4.3 정수형(#integer-type)
+4.4 실수형(#real-number-type)
+
+5. 형변환(#shape-conversion)              
+5.1 형변환이란(#what-is-shape-conversion)
+5.2 형변환 방법(#shape-conversion-method)
+5.3 정수형 간의 형변환(#transform-between-integers)
+5.4 실수형 간의 형변환(#transform-between-real-number)
+5.5 정수형과 실수형 간의 형변환(#transform-between-integers-real-number)
+5.6 자동 형변환(Automatic-transformation)
 
 
 
