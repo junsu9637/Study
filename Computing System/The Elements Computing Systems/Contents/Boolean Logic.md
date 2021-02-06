@@ -76,8 +76,6 @@ Truth table(진리표)는 불 함수를 정의하는 가장 쉬운 방법으로 
 > 내부 : 게이트의 내부 아키텍쳐로 **Inplementation(구현)** 에 해당한다         
   외부 : 바깥에 노출된 입력 핀과 출력 핀으로 구성된 블랙박스로 **Interface(인터페이스)** 에 해당한다
 
-![1.1](https://github.com/junsu9637/Study/blob/main/Computing%20System/The%20Elements%20Computing%20Systems/Image/1-1.png?raw=true)
-
 내부 아키텍쳐는 직접 게이트를 설계하려는 사람에게만 의미가 있고, 게이트 내부 구조를 신경쓰지 않고 추상적인 구격 부품으로만 활용하려는 사람에게는 인터페이스 단계만으로 충분하다. 
 
 게이트 인터페이스는 보통 진리표, 불 표현식으로 표현되며 본질적인 내용은 유일하다. 하지만 이 인터페이스를 구현하는 방식은 여러 가지가 있다. 따라서 기능적 관점에서 논리 설계에 가장 기본적으로 '어떤 방식으로든 정해진 인터페이스를 따르는 게이트를 구현한다'라는 요구사항과 효율성 관점에서 '최소 비용으로 최대 효과를 내야한다'라는 요구사항이 존재한다.
@@ -97,8 +95,6 @@ Truth table(진리표)는 불 함수를 정의하는 가장 쉬운 방법으로 
 HDL은 헤더 부분과 파트 부분으로 구성된다.
 > 헤더 : 칩 인터페이스를 정의하는 부분으로 칩 이름과 입력 및 출력 이름 명시         
   파트 : 칩을 구성하는 아래 단계 파트들의 이름과 연결방식을 정의
-
-![1.2](https://github.com/junsu9637/Study/blob/main/Computing%20System/The%20Elements%20Computing%20Systems/Image/1-2.png?raw=true)
 
 HDL을 사용해서 Xor(a,b) = Or(And(a, Not(b)), And(Not(a),b))를 작성해 보자
 ```hdl
@@ -154,8 +150,6 @@ set a 1, set b 1, eval, output;
 
 ### Basic Logic Gate
 
-![1.3](https://github.com/junsu9637/Study/blob/main/Computing%20System/The%20Elements%20Computing%20Systems/Image/1-3.png?raw=true)
-
 **And** : 입력값이 둘 다 1일 경우 1을, 그 외에는 0을 반환한다.
 ```markdown
 **칩 이름 : And         
@@ -163,8 +157,6 @@ set a 1, set b 1, eval, output;
 **출력 : out                      
 **기능 : If a = b = 1 then out = 1, else out = 0  
 ```
-
-![1.4](https://github.com/junsu9637/Study/blob/main/Computing%20System/The%20Elements%20Computing%20Systems/Image/1-4.png?raw=true)
 
 **Or** : 입력값 중 적어도 하나가 1일 때 1을, 그 외에는 0을 반환한다.
 ```markdown
@@ -174,8 +166,6 @@ set a 1, set b 1, eval, output;
 기능 : If a = b = 0 then out = 0, else out = 1  
 ```
 
-![1.5](https://github.com/junsu9637/Study/blob/main/Computing%20System/The%20Elements%20Computing%20Systems/Image/1-5.png?raw=true)
-
 **Xor** : *Exclusive or(베타적 논리합)* 이라고도 불리며 두 입력값이 다를 경우 1, 그 외에는 0을 반환한다.
 ```markdown
 칩 이름 : Xor         
@@ -184,8 +174,6 @@ set a 1, set b 1, eval, output;
 기능 : If a != b then out = 1, else out = 0  
 ```
 
-![1.6](https://github.com/junsu9637/Study/blob/main/Computing%20System/The%20Elements%20Computing%20Systems/Image/1-6.png?raw=true)
-
 **Not** : *Converter(컨버터)* 라고도 불리며 입력값을 0에서 1 또는 1에서 0으로 바꿔서 반환한다.
 ```markdown
 칩 이름** : Not         
@@ -193,8 +181,6 @@ set a 1, set b 1, eval, output;
 출력 : out                      
 기능 : If in = 0 then out = 1, else out = 0
 ``` 
-
-![1.7](https://github.com/junsu9637/Study/blob/main/Computing%20System/The%20Elements%20Computing%20Systems/Image/1-7.png?raw=true)
 
 **Multiplexor** : 3-입력 게이트의 멀티플렉서는 Selection bit(선택 비트)를 입력받아 나머지 2개의 Data bit(데이터 비트) 중 하나를 선택한다. 따라서 Selector이라는 이름으로도 불린다.
 ```markdown
@@ -243,8 +229,6 @@ set a 1, set b 1, eval, output;
 출력 : out[16]
 기능 : For i = 0...15 out[i] = Not(in[i])
 ```
-
-![1.8](https://github.com/junsu9637/Study/blob/main/Computing%20System/The%20Elements%20Computing%20Systems/Image/1-8.png?raw=true)
 
 **멀티비트 Multiplexor** : n 비트 Multiplexor는 입력 비트가 n 비트라는 것을 제외하면 기존과 동일하다. 선택 비트는 여전히 1비트다.
 ```markdown
