@@ -4,10 +4,10 @@
 [1.3 변수의 명명규칙](#naming-rules-for-variables)
 
 [2. 변수의 타입](#type-of-variable)               
-[2.1 기본형](#fundamental-form)
-[2.2 상수와 리터럴](#constant-and-literal)
-[2.3 형식화된 출력](#formatted-output)
-[2.4 입력받기](#receive-inputs)
+[2.1 기본형](#fundamental-form)           
+[2.2 상수와 리터럴](#constant-and-literal)             
+[2.3 형식화된 출력](#formatted-output)             
+[2.4 입력받기](#receive-inputs)            
 
 [3. 진법](#system)               
 [3.1 10진법과 2진법](#decimal-and-binary)        
