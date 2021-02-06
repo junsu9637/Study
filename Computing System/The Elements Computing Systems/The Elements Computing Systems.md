@@ -45,6 +45,8 @@
 
 ![0.1](https://github.com/junsu9637/Study/blob/main/Computing%20System/The%20Elements%20Computing%20Systems/Image/0.1.png?raw=true)
 
+컴퓨팅 시스템의 대략적인 구조는 다음과 같다.
+
 ![0.2](https://github.com/junsu9637/Study/blob/main/Computing%20System/The%20Elements%20Computing%20Systems/Image/0.2.png?raw=true)
 
 
