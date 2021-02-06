@@ -155,6 +155,7 @@ set a 1, set b 1, eval, output;
 ### Basic Logic Gate
 
 ![1.3](https://github.com/junsu9637/Study/blob/main/Computing%20System/The%20Elements%20Computing%20Systems/Image/1-3.png?raw=true)
+
 **And** : 입력값이 둘 다 1일 경우 1을, 그 외에는 0을 반환한다.
 ```markdown
 **칩 이름 : And         
@@ -164,6 +165,7 @@ set a 1, set b 1, eval, output;
 ```
 
 ![1.4](https://github.com/junsu9637/Study/blob/main/Computing%20System/The%20Elements%20Computing%20Systems/Image/1-4.png?raw=true)
+
 **Or** : 입력값 중 적어도 하나가 1일 때 1을, 그 외에는 0을 반환한다.
 ```markdown
 칩 이름 : Or         
