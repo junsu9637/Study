@@ -10,13 +10,13 @@
 [2.4 기본형](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Variable.md)               
 [2.5 형변환](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Variable.md)                
 
-[3. 연산자](https://github.com/junsu9637/Study/blob/main/Computing%20System/The%20Elements%20Computing%20Systems/Contents/Operator.md)             
-[3.1 연산자](https://github.com/junsu9637/Study/blob/main/Computing%20System/The%20Elements%20Computing%20Systems/Contents/Operator.md)              
-[3.2 단항 연산자](https://github.com/junsu9637/Study/blob/main/Computing%20System/The%20Elements%20Computing%20Systems/Contents/Operator.md)             
-[3.3 산술 연산자](https://github.com/junsu9637/Study/blob/main/Computing%20System/The%20Elements%20Computing%20Systems/Contents/Operator.md)            
-[3.4 비교 연산자](https://github.com/junsu9637/Study/blob/main/Computing%20System/The%20Elements%20Computing%20Systems/Contents/Operator.md)           
-[3.5 논리 연산자](https://github.com/junsu9637/Study/blob/main/Computing%20System/The%20Elements%20Computing%20Systems/Contents/Operator.md)            
-[3.6 그 외 연산자](https://github.com/junsu9637/Study/blob/main/Computing%20System/The%20Elements%20Computing%20Systems/Contents/Operator.md)            
+[3. 연산자](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Operator.md)                  
+[3.1 연산자](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Operator.md)                    
+[3.2 단항 연산자](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Operator.md)                   
+[3.3 산술 연산자](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Operator.md)                  
+[3.4 비교 연산자](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Operator.md)                  
+[3.5 논리 연산자](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Operator.md)                   
+[3.6 그 외 연산자](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Operator.md)            
 
 4.조건문과 반복문           
 4.1 조건문             
