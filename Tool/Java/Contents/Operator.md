@@ -180,11 +180,12 @@ class OperatorEx{
 다음과 같은 상황에서는 에러가 발생하지 않는다.
 ```Java
 class OperatorEx{
- public static void main(String[] args){
-  char a = a;
-  char b = b;
-  System.out.printf("'%c'", b-a);
- }
+   public static void main(String[] args)
+   {
+      char a = a;
+      char b = b;
+      System.out.printf("'%c'", b-a);
+   }
 }
 ```
 
