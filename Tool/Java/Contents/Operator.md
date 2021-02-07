@@ -164,11 +164,12 @@ b의 경우
 
 ```Java
 class OperatorEx{
- public static void main(String[] args){
-  byte a = 10;
-  byte b = 20;
-  byte c = a + b;
- }
+   public static void main(String[] args)
+   {
+      byte a = 10;
+      byte b = 20;
+      byte c = a + b;
+   }
 }
 ```
 
@@ -192,12 +193,13 @@ class OperatorEx{
 이러한 특징을 이용해서 다음과 같이 연속된 문자를 출력하는 프로그램이 가능하다.
 ```Java
 class OperatorEx{
- public static void main(String[] args){
-  char c = 'a';
-  for(int i=0; i < 26; i++){ // 블록 안의 문장을 26번 반복
-   System.out.print(c++); // 'a'부터 연속된 26개의 문자를 출력(a~z)
-   }
- } 
+   public static void main(String[] args)
+   {
+      char c = 'a';
+      for(int i=0; i < 26; i++){ // 블록 안의 문장을 26번 반복
+         System.out.print(c++); // 'a'부터 연속된 26개의 문자를 출력(a~z)
+      }
+   } 
 }
 ```
 
