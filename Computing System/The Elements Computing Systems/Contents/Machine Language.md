@@ -6,7 +6,7 @@
 
 [4.2 명세](#specification)      
 개요(#outline)
-[A-명령어](a-command)
+[A-명령어](#a-command)
 C-명령어
 기호
 입출력 조작
