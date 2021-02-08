@@ -18,9 +18,9 @@
 [3.5 논리 연산자](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Operator.md)                   
 [3.6 그 외 연산자](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Operator.md)            
 
-4.조건문과 반복문           
-4.1 조건문             
-4.2 반복문            
+4.조건문과 반복문(https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Conditional%20and%20Recurring%20Statements.md#conditional-statement)           
+4.1 조건문(https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Conditional%20and%20Recurring%20Statements.md#conditional-statement)             
+4.2 반복문(https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Conditional%20and%20Recurring%20Statements.md#conditional-statement)            
 
 5. 배열            
 5.1 배열           
