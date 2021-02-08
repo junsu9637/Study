@@ -177,13 +177,15 @@ class OperatorEx{
 
 위와 같은 상황에서는 리터럴의 값이 작기 때문에 문제가 생기지 않았지만 int 타입에서 크기가 작은 byte 타입으로 변환하는 과정에서 값이 변형되는 문제가 발생할 수 있으므로 타입을 설정할 때는 적절한 타입으로 설정해서 오버플로우를 방지하는 것이 중요하다.
 
+### 문자형
+
 다음과 같은 상황에서는 에러가 발생하지 않는다.
 ```Java
-class OperatorEx{
+class OperatorEx1{
    public static void main(String[] args)
    {
-      char a = a;
-      char b = b;
+      char a = 'a';
+      char b = 'b';
       System.out.printf("'%c'", b-a);
    }
 }
@@ -191,18 +193,93 @@ class OperatorEx{
 
 위 코드를 실행하면 3이라는 값이 출력된다. 이렇게 3이 출력되는 이유는 문자의 유니코드와 관련이 있다. 문자 'b'는 유니코드로 변환하면 100이고, 문자 'a'는 유니코드로 변환하면 97이 된다. char 타입은 메모리에 문자 그대로 저장하는 것이 아니라 유니코드의 형태로 저장한다. 따라서 **문자에 사칙 연산자를 사용하면 유니코드의 연산 결과가 출력된다.** 
 
-이러한 특징을 이용해서 다음과 같이 연속된 문자를 출력하는 프로그램이 가능하다.
+하지만 아래 코드를 작동시키면 에러가 발행한다.
 ```Java
-class OperatorEx{
+class OperatorEx2{
    public static void main(String[] args)
    {
-      char c = 'a';
+      char c1 = 'a';
+      char c2 = c1 + 1;
+      System.out.printf(c2); // error
+      char c2 = (char)(c2 + 1);
+      System.out.printf(c2); // b
+   }
+}
+```
+
+이런 에러가 발생하는 이유는 'a'+1이 리터럴 간의 연산이기 때문이다. 상수 또는 리터럴 간의 연산은 실행 과정동안 변하는 값이 아니기 때문에 컴파일 시 컴파일러가 계산하여 그 결과로 대체함으로써 코드를 보다 효율적으로 만든다. 즉 `char c2 = c1 + 1`은 `char c2 = 'a' + 1`이 아니라 `char c2 = 97 + 1`이기 때문에 타입이 맞지 않기 때문에 문제가 생긴다. 이러한 문제를 해결하기 위해서는 `char c2 = (char)(c1 + 1)`로 코드를 변경해야 한다. 
+
+이러한 특징들을 고려하면 다음과 같이 연속된 문자를 표현하는 코드도 구현할 수 있다. 
+
+```Java
+class OperatorEx3{
+   public static void main(String[] args)
+   {
+      char a = 10;
+      char b = 3;
+      System.out.printf("'%c'", a/b); // 3
+   }
+}
+```
+
+
+
+### 실수형
+
+int 타입 간의 나눗셈은 소숫점 아래 숫자는 버림을 진행하면서 int 값을 출력한다. 이러한 특징은 아래 코드에서 확인할 수 있다.
+```Java
+class OperatorEx1{
+   public static void main(String[] args)
+   {
+      int c = 10;
+      int b = 3;
       for(int i=0; i < 26; i++){ // 블록 안의 문장을 26번 반복
          System.out.print(c++); // 'a'부터 연속된 26개의 문자를 출력(a~z)
-      }
    } 
 }
 ```
+
+그리고 다음과 같이 나눗셈 연산자의 성질을 이용해서 실수형 변수의 값의 소수점을 제어할 수 있다. 
+```Java
+class OperatorEx2{
+   public static void main(String[] args)
+   {
+      float pi = 3.141592f;
+      float shortPi = (int)(pi*1000) / 1000f;
+         System.out.print(shortPi); // 3.141
+   } 
+}
+```
+
+위 코드에서 변수 shortPi는 연산의 우선순위로 인해 다음과 같은 순서로 연산이 진행된다
+```markdown
+1. (int)(pi\*1000)/1000f;
+2. (int)(3141.592f)/1000f;
+3. 3141/1000f;
+4. 3.141f
+```
+
+이러한 성질을 응용하면 다음과 같이 반올림을 수행하는 코드를 구현할 수 있다.
+```Java
+class OperatorEx3{
+   public static void main(String[] args)
+   {
+      double pi = 3.141592;
+      float shortPi = (int)(pi*1000+0.5) / 1000.0;
+         System.out.print(shortPi); // 3.142
+   } 
+}
+```
+
+위 코드는 실수형 예제 2와 거의 유사하지만 shortPi 연산에서 +0.5가 추가된 모습을 보여준다. 이로 인해 다음과 같은 연산이 진행된다.
+```markdown
+1. (int)(pi\*1000+0.5)/1000.0;
+2. (int)(3141.592+0.5)/1000.0;
+3. (int)(3142.092)/1000.0
+4. 3142/1000.0;
+5. 3.142
+```
+Java에서 이러한 기능을 제공하는 Math.round라는 메서드가 있다. 이 기능을 사용하면 `float shortPi = (int)(pi\*1000+0.5) / 1000.0;`를 `float shortPi = Math.round(pi\*1000) / 1000.0;`와 같이 표현하면 된다.
 
 3.2 나머지 연산자(#other-operator)
 
