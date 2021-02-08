@@ -23,7 +23,7 @@
 
 [6. 그 외의 연산자](#the-other-operator)           
 [6.1 조건 연산자](#condition-operators)             
-[6.2 대입](#substitution)          
+[6.2 대입 연산자](#substitution-operator)          
 
 
 # Operator
@@ -279,18 +279,124 @@ class OperatorEx3{
 4. 3142/1000.0;
 5. 3.142
 ```
-Java에서 이러한 기능을 제공하는 Math.round라는 메서드가 있다. 이 기능을 사용하면 `float shortPi = (int)(pi\*1000+0.5) / 1000.0;`를 `float shortPi = Math.round(pi\*1000) / 1000.0;`와 같이 표현하면 된다.
+Java에서 이러한 기능을 제공하는 Math.round라는 메서드가 있다. 이 기능을 사용하면 `float shortPi = (int)(pi*1000+0.5) / 1000.0;`를 `float shortPi = Math.round(pi*1000) / 1000.0;`와 같이 표현하면 된다.
 
-3.2 나머지 연산자(#other-operator)
+## Other Operator
 
-4. 비교 연산자(#comparison-operators)
-4.1 대소비교 연산자(#consumption-bridge-operator)
-4.2 등가비교 연산자(#equivalent-comparison-operator)
+%연산자는 왼쪽의 피연산자를 오른쪽 피연산자로 나누고 난 나머지 값을 결과로 반환하는 연산자이다. 즉 10 % 3의 연산을 진행하면 1이 반환된다. 
 
-5. 논리 연산자(#logical-operator)
-5.1 논리 연산자(#logical-operators)
-5.2 비트 연산자(#bit-operator)
+# Comparison Operators
 
-6. 그 외의 연산자(#the-other-operator)
-6.1 조건 연산자(#condition-operators)
-6.2 대입(#substitution)
+**비교 연산자**는 두 피연산자를 비교하는데 사용되는 연산자다. 주로 조건문과 반복문의 조건식에 사용되고, 연산결과는 오직 true와 false 둘 중 하나이다. 
+
+## Consumption Bridge Operator
+
+**대소비교 연산자**는 두 피연산자의 값의 크기를 비교하는 연산자로 **<, >, <=, >=** 가 있다. boolean과 참조형 타입을 제외한 모든 타입에 사용할 수 있다.
+
+## Equivalent Comparison Operator
+
+**등가비교 연산자**는 두 피연산자의 값이 같은지, 다른지를 비교하는 연산자로 **==, !=** 가 있다. 모든 자료형에 사용할 수 있다. 단, 기본형과 참조형 간의 관계처럼 서로 형변환이 불가능한 경우에는 등가비교 연산자를 사용할 수 없다. ~~대입 연산자'='와 등가비교 연산자 '=='를 구분해야한다.~~
+
+[앞 문서의 형변형](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Variable.md#automatic-casting)에서 언급한 바와 같이 float와 double간의 형변형 과정에서 미세한 값의 차이가 발생하기 때문에 이러한 두 타입에 등가비교 연산자를 진행하면 다음과 같은 문제가 발생할 수 있다.
+
+```Java
+class OperatorEx{
+   public static void main(String[] args)
+   {
+      float f = 0.1f;
+      double d1 = 0.1;
+      float d2 = (double)f;
+      System.out.print(10.0 == 10.0f); // true
+      System.out.print(0.1 == 0.1f); // false
+      System.out.print(d1 == f); // false
+      System.out.print(d2 == f); // false
+      System.out.print(d1 == d2); // true
+      System.out.print((float)d1 == f); // true
+   } 
+}
+```
+
+### 문자열
+
+두 문자열을 비교하기 위해서는 '=='가 아니라 **equals()** 라는 메서드를 사용해야한다. 이 메서드는 다음과 같이 사용한다.
+```Java
+String str = new String("abc")
+
+boolean result = str.equals("abc") // true
+```
+
+# Logical Operator
+
+**논리 연산자**는 둘 이상의 조건을 AND, OR을 연결하여 하나의 식으로 표현하기 위해 사용한다. '논리 연산자'와 '비트 연산자'가 있다.
+
+## Logical Operators
+
+**논리 연산자**는 다음과 같다
+
+> **&& (AND)** 피연산자 양쪽 모두 true이어야 true       
+  **\|\| (OR)** : 피연산자 중 어느 한 쪽만 true이면 true            
+  **! (NOT)** : 논리를 반대로 변환한다.
+
+## Bit Operator
+
+**비트 연산자**는 피연산자를 비트단위로 논리 연산한다. 피연산자를 이진수로 표현했을 때의 각 자리를 아래의 규칙에 따라 연산한다. 피연산자로 실수는 허용하지 않는다.
+
+> & (AND) : 피연산자 중 한 쪽의 값이 1이면, 1을 결과로 반환한다. 그 외에는 0을 반환한다.            
+  \| (OR) : 피연산자 양 쪽이 모두 1이어야만 1을 결과로 반환한다. 그 외에는 0을 반환한다.             
+  ^ (XOR) : 피연산자의 값이 서로 다를 때만 1을 결과로 반환한다. 그 외에는 0을 반환한다.         
+  ~ (NOT) : 비트를 반대로 전환한다. 0은 1로, 1은 0으로 변환한다.   
+
+
+### 쉬프트 연산자
+
+**쉬프트 연산자**는 2진수로 표현된 피연산자의 각 자리를 오른쪽(>>) 또는 왼쪽(<<)으로 이동하는 연산자이다. 예를 들어 8<<2은 다음과 같은 작업을 수행한다.
+```markdown
+1. 10진수 8을 2진수로 변환하면 00001000이다(8 bit).
+2. <<2로 인해 전체 비트를 왼쪽으로 2자리 이동한다.
+3. 00|001000__|와 같이 2개의 공백이 생성된다.
+4. 공백에 0을 추가하고, 저장범위를 벗어난 비트는 삭제한다.
+00100000
+```
+
+# The Other Operator
+
+## Condition Operators
+
+**조건 연산자**는 조건식, 식1, 식2가 필요한 삼항 연산자에 해당한다. 조건식은 다음과 같이 구현한다.
+```Java
+result = x>y ? x : y;
+```
+
+> 조건식이 참이면 x 반환        
+  조건식이 거짓이면 y 반환
+
+이러한 조건식을 사용해서 다음과 같이 음수를 양수로 변환하는 코드를 구현할 수 있다.
+```Java
+class OperatorEx
+{
+   public static void main(String args[])
+   {
+      int x = 10;
+      TransformX = x>=0 ? x : -x 
+   }
+}
+```
+
+## Substitution Operator
+
+**대입 연산자**는 변수와 같은 저장공간에 값 또는 수식의 연산결과를 저장하는데 사용한다. 대입 연산자의 왼쪽의 피연산자를 'lvalue', 오른쪽의 피연산자를 'rvalue'라고 한다. (left와 right)    
+` lvalue = rvalue`
+
+대입 연산자는 다른 연산자(op)와 결합하여 'op='의 형태로 사용할 수 있다. 이런 형태로 사용하면 추가된 op의 기능을 사용한 후 대입 연산을 진행한다.
+| op= | = |
+|:-:|:-:|
+| i += 3; | i = i + 3 |
+| i -= 3; | i = i - 3 |
+| i \*= 3; | i = i \* 3 |
+| i /= 3; | i = i / 3 |
+| i %= 3; | i = i % 3 |
+| i <<= 3; | i = i << 3 |
+| i >>= 3; | i = i >> 3 |
+| i &= 3; | i = i & 3 |
+| i ^= 3; | i = i ^ 3 |
+| i \|= 3; | i = i \| 3 |
