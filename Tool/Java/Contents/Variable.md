@@ -271,8 +271,8 @@ n진수를 10진수로 변환하기 위해서는 각 자리의 수에 해당하�
 
 예를 들어 8진수 1420와 2진수 10을 10진수로 변환하면 다음과 같다.
 
-1 * 8<sup>3</sup> + 4 * 8<sup>2</sup> + 2 * 8<sup>1</sup> + 0 * 8<sup>0</sup> = 800
-2 * 2<sup>1</sup> + 0 * 2<sup>0</sup> = 2
+1 * 8<sup>3</sup> + 4 * 8<sup>2</sup> + 2 * 8<sup>1</sup> + 0 * 8<sup>0</sup> = 800            
+1 * 2<sup>1</sup> + 0 * 2<sup>0</sup> = 2
 
 ## Genetic Transformation of Real-Number
 
