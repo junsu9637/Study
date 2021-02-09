@@ -20,9 +20,33 @@
 
 # Array
 
+## What is Array
 
-1.1 배열이란](#what-is-array)
-1.2 배열의 선언과 생성](#declaration-and-creation-of-array)
+**배열**은 같은 타입의 여러 변수를 하나의 묶음으로 다루는 방식이다. 여기서 중요한 것은 '같은 타입'이어야 한다는 것이다. 배열은 다음과 같이 생성한다.
+```Java
+type[] array_name = new type[ARRAY_SIZE]; // type 타입의 ARRAY_SIZE 크기의 배열 생성
+```
+
+| array |
+|:-:|
+
+| array[0] | array[1] | ... | array[ARRAY_SIZE-1] |
+|:-:|:-:|:-:|:-:|
+
+## Declaration and Creation of Array
+
+### 배열의 선언
+```Java
+type[] array_name;
+```
+### 배열의 생성
+```Java
+array_name = new type[ARRAY_SIZE];
+```
+
+
+
+
 1.3 배열의 길이와 인덱스](#length-and-index-of-array)
 1.4 배열의 초기화](#initialize-of-array)
 1.5 배열의 복사](#copy-of-array)
