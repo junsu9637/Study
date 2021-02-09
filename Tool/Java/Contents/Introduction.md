@@ -88,8 +88,10 @@ Java는 JVM을 한 번 더 거치면서 하드웨어에 맞게 완전히 컴파�
 
 # Establishment of Java Development Environment
 
+```markdown
 1. JDK설치
 2. 설치된 디렉토리의 bin에 path를 추가
+```
 
 ## Install Java Development Tools JDK
 
