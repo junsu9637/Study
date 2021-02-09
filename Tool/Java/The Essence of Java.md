@@ -22,10 +22,10 @@
 [4.1 조건문](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Conditional%20and%20Recurring%20Statements.md#conditional-statement)             
 [4.2 반복문](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Conditional%20and%20Recurring%20Statements.md#conditional-statement)            
 
-5. 배열            
-5.1 배열           
-5.2 String 배열             
-5.3 다차원 배열             
+[5. 배열](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Array.md)            
+[5.1 배열](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Array.md)           
+[5.2 String 배열](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Array.md)             
+[5.3 다차원 배열](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Array.md)             
 
 6. 객체지향 프로그래밍의 기본            
 6.1 객체지향언어            
