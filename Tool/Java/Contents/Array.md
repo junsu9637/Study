@@ -379,11 +379,85 @@ array[2] = new int[1]
 | **array[1][0]** | **array[1][1]** | **array[1][2]** |
 | **array[2][0]** |  |  |
 
-3.4 다차원 배열의 활용](#utilization-of-multi-dimensional-array)
+## Utilization of Multi-Dimensional Array
+
+다차원 배열은 다음과 같이 여러가지 방법으로 활용할 수 있다.
 
 
+### 행렬의 곱셈
 
+```Java
+class MultiArrayEx1
+{
+    public static void main(String[] args)
+    {
+        // 배열 생성
+        int[][] ,1 =
+        {
+            {1, 2, 3},
+            {4, 5, 6}
+        };
+        
+        int[][] ,1 =
+        {
+            {1, 2},
+            {3, 4}, 
+            {5, 6}
+        };
+        
+        final int M1_ROW = m1.length; // m1의 행 길이
+        final int M2_ROW = m2.length; // m2의 행 길이
+        final int COL = m2[0].length; // m2의 열 길이
+        
+        int[][] m3 = new int[M1_ROW][COL];
+        
+        // 행렬곱 m1*m2의 결과를 m3에 저장
+        for (int i=0; i < M1_ROW; i++)
+        {
+            for (int j=0; j < COL; j++)
+            {
+                for (int k=0; k < M2_ROW; k++)
+                {
+                    m3[i][j] += m1[i][k] * m2[k][j];
+                }
+            }
+        }
+    }
+}
+```
 
+### 단어 맞추기
 
-
-
+```Java
+class MultiArrayEx2
+{
+    public static void main(String[] args)
+    {
+        String[][] words = 
+        {
+            {"juk", "죽"}
+            {"yeo", "여"}
+            {"jwo", "줘"}
+        };
+        
+        Scanner scanner = new Scanner(System.in) // 키보드로부터 입력 받기 시작
+        
+        for (int i=0; i < words.length; i++)
+        {
+            System.out.printf("Q%d. %s을(를) 읽으면?", i+1, word[i]0); // ~~~을(를) 읽으면?
+            
+            String tmp = scanner.nextLine() // 입력받은 값 저장
+            
+            if (tmp.equals(words[i][1]))
+            {
+                System.out.printf("정답입니다.%n%n")
+            }
+            else
+            {
+                System.out.printf("오답입니다. 정답은 %s입니다.%n%n", words[i][1])
+            }
+        }
+    }
+    
+}
+```
