@@ -3,7 +3,7 @@
 [2. 불 연산](https://github.com/junsu9637/Study/blob/main/Computing%20System/The%20Elements%20Computing%20Systems/Contents/Boolean%20operations.md)           
 [3. 순차 논리](https://github.com/junsu9637/Study/blob/main/Computing%20System/The%20Elements%20Computing%20Systems/Contents/Sequential%20Logic.md)            
 [4. 기계어](https://github.com/junsu9637/Study/blob/main/Computing%20System/The%20Elements%20Computing%20Systems/Contents/Machine%20Language.md)               
-5. 컴퓨터 아키텍쳐            
+[5. 컴퓨터 아키텍쳐](https://github.com/junsu9637/Study/blob/main/Computing%20System/The%20Elements%20Computing%20Systems/Contents/Computer%20Architecture.md)            
 6. 어셈블러              
 7. 가상 머신의 스택 산술            
 8. 가상 머신의 프로그램 제어             
