@@ -339,7 +339,7 @@ string 클래스는 char 배열에 여러가지 기능을 추가해서 확장한
 | 타입 변수이름[][] | int array[][]; |
 | 타입[]변수이름[] | int[] array[]; |
 
-### 2차원 배열은 Index
+### 2차원 배열의 Index
 
 배열을 선언하고 추상화하면 다음과 같다.
 ```Java
@@ -352,8 +352,33 @@ int[][] array = new int[4][3];
 | **array[2][0]** | **array[2][1]** | **array[2][2]** |
 | **array[3][0]** | **array[3][1]** | **array[3][2]** |
 
-3.2 2차원 배열의 초기화](#initialize-of-two-dimensional-array)
-3.3 가변 배열](#variable-array)
+## Initialize of Two-Dimensional Array
+
+2차원 배열의 초기화는 다음과 같이 진행된다.
+
+```Java
+int[][] array = new int[][]{ {1,2,3}, {4,5,6} };
+int[][] array = { {1,2,3}, {4,5,6} }; // new int[][] 생략 가능
+```
+
+위 코드를 보면 배열 안에 배열을 넣는 방식으로 배열은 차원을 늘리는 것을 확인할 수 있다.
+
+## Variable Array
+
+**가변 배열**은 2차원 이상의 배열을 '배열의 배열'의 형태로 처리하는 것을 바탕으로 만든 자유로운 형태의 배열이다. 가변 배열을 선언하고 추상화하면 다음과 같다.
+
+```Java
+int[][] array = new int[3][];
+array[0] = new int[2]
+array[1] = new int[3]
+array[2] = new int[1]
+```
+
+| **array[0][0]** | **array[0][1]** |  |
+|:-:|:-:|:-:|
+| **array[1][0]** | **array[1][1]** | **array[1][2]** |
+| **array[2][0]** |  |  |
+
 3.4 다차원 배열의 활용](#utilization-of-multi-dimensional-array)
 
 
