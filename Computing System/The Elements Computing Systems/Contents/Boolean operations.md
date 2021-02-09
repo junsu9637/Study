@@ -1,5 +1,7 @@
-[2. 불 연산](#boolean-operations)           
-[2.1 배경](#background)              
+[2. 불 연산](#boolean-operations)   
+
+[2.1 배경](#background)
+
 [2.2 명세](#specification)             
 [2.2.1 가산기](#adder)              
 [2.2.2 산술 논리 연산 장치](#arithmetic-logical-unit)            
