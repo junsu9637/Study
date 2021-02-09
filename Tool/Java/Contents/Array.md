@@ -291,10 +291,43 @@ class ArrayEx6
 }
 ```
 
-2. String 배열](#string-array)
-2.1 String 배열의 선언과 생성](#declaration-and-creation-of-string-array)
-2.2 String 배열의 초기화](#initialize-of-string-array)
-2.3 char 배열과 String 클래스](#char-array-and-string-class)
+# String Array
+
+## Declaration and Creation of String Array
+
+문자열 타입의 원소를 담는 배열은 다음과 같이 생성된다.
+```Java
+String[] array_name = new String[ARRAY_SIZE]
+```
+
+## Initialize of String Array
+
+다음과 같이 String 배열은 일반 배열과 초기화 과정이 같다.
+
+```Java
+String[] array = new String[3];
+array[0] = "juk";
+array[1] = "yeo";
+array[2] = "jwo";
+
+```
+
+```Java
+String[] array = new String[]{ "juk", "yeo", "jwo" };
+```
+
+## char Array and string Class
+
+string 클래스는 char 배열에 여러가지 기능을 추가해서 확장한 클래스다. 따라서 다음과 같이 기능을 수행하는 여러 메서드가 존재한다.
+
+| 메서드 | 설명 |
+|:-:|:-:|
+| char charAt(int index) | 문자열에서 해당 위치(index)에 있는 문자 반환 |
+| int length() | 문자열의 길이 반환 |
+| String substring(int from, int to) | 문자열에서 해당 범위(from~to)에 있는 문자열 반환 |
+| boolean equals(Object obj) | 문자열의 내용이 obj와 같은지 확인한다. 같으면 true, 다르면 false 반환 |
+| char[] toCharArray() | 문자열을 문자배열로 변환해서 반환 |
+
 2.4 커맨드 라인을 통해 입력받기](#receive-input-via-command-line)
 
 3. 다차원 배열](#multi-dimensional-array)
