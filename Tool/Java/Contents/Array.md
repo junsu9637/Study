@@ -321,7 +321,7 @@ String[] array = new String[]{ "juk", "yeo", "jwo" };
 string 클래스는 char 배열에 여러가지 기능을 추가해서 확장한 클래스다. 따라서 다음과 같이 기능을 수행하는 여러 메서드가 존재한다.
 
 | 메서드 | 설명 |
-|:-:|:-:|
+|:-|:-|
 | char charAt(int index) | 문자열에서 해당 위치(index)에 있는 문자 반환 |
 | int length() | 문자열의 길이 반환 |
 | String substring(int from, int to) | 문자열에서 해당 범위(from~to)에 있는 문자열 반환 |
