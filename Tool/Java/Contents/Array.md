@@ -9,8 +9,7 @@
 [2. String 배열](#string-array)                               
 [2.1 String 배열의 선언과 생성](#declaration-and-creation-of-string-array)           
 [2.2 String 배열의 초기화](#initialize-of-string-array)             
-[2.3 char 배열과 String 클래스](#char-array-and-string-class)            
-[2.4 커맨드 라인을 통해 입력받기](#receive-input-via-command-line)               
+[2.3 char 배열과 String 클래스](#char-array-and-string-class)                         
 
 [3. 다차원 배열](#multi-dimensional-array)               
 [3.1 2차원 배열의 선언과 인덱스](#declaration-and-creation-of-two-dimensional-array)             
@@ -328,10 +327,27 @@ string 클래스는 char 배열에 여러가지 기능을 추가해서 확장한
 | boolean equals(Object obj) | 문자열의 내용이 obj와 같은지 확인한다. 같으면 true, 다르면 false 반환 |
 | char[] toCharArray() | 문자열을 문자배열로 변환해서 반환 |
 
-2.4 커맨드 라인을 통해 입력받기](#receive-input-via-command-line)
+# Multi-Dimensional Array
 
-3. 다차원 배열](#multi-dimensional-array)
-3.1 2차원 배열의 선언과 인덱스](#declaration-and-creation-of-two-dimensional-array)
+## Declaration and Creation of Two-Dimensional Array
+
+**2차원 배열**을 선언하는 방법은 다음과 같다.
+
+| 선언 방법 | 선언 예|
+|:-:|:-:|
+| 타입[][]변수이름 | int[][] array; |
+| 타입 변수이름[][] | int array[][]; |
+| 타입[]변수이름[] | int[] array[]; |
+
+### 2차원 배열은 Index
+
+배열을 선언하고 추상화하면 다음과 같다.
+```Java
+int[][] array = new int[4][3];
+```
+
+| array |  |  |
+
 3.2 2차원 배열의 초기화](#initialize-of-two-dimensional-array)
 3.3 가변 배열](#variable-array)
 3.4 다차원 배열의 활용](#utilization-of-multi-dimensional-array)
