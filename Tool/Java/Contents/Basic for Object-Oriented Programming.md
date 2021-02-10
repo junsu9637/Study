@@ -188,10 +188,125 @@ class TVTest
 프로그래밍언어에서 제공하는 자료형 외에 프로그래머가 서로 관련된 변수들을 묶어서 만든 새로운 타입을 **사용자정의 타입**이라고 한다. 
 
 # Variable and Method
-3.1 선언위치에 다른 변수의 종류(## Type of Other Variable in Declaration Location
-3.2 클래스 변수와 인스턴스 변수(## Class Variable and Instance Variable
-3.3 메서드(## Method
-3.4 메서드의 선언과 구현(## Creating and Using Method
+
+## Type of Other Variable in Declaration Location
+
+변수는 **클래스 변수(공유 변수)**, **인스턴스 변수**, **지역 변수**로 나뉘어진다. 이렇게 변수의 종류를 결정짓는 요소는 '변수가 선언된 위치'다. 
+
+| 변수의 종류 | 선언 위치 | 생성 시기 |
+|:-:|:-:|:-:|
+| 클래스 변수 | 클래스 영역 | 클래스가 메모리에 적재될 때 |
+| 인스턴스 변수 | 클래스 영역 | 인스턴스가 생성될 때 |
+| 지역 변수 | 클래스 영역 이외의 영역 | 변수 선언문이 수행될 때 |
+
+맴버 변수를 제외한 모든 변수는 지역 변수에 해당하고, 맴버 변수 중 static이 붙는다면 클래스 변수, 없으면 인스턴트 변수에 해당한다.
+```Java
+class Variables
+{
+    int iv; // 인스턴스 변수
+    static int cv; // 클래스 변수
+    
+    void method()
+    {
+        int lv; // 지역 변수
+    }
+}
+```
+
+### 인스턴스 변수
+
+클래스 영역에서 선언되어 클래스의 인스턴스를 생성할 때 생성된다. 따라서 인스턴스 변수의 값을 읽거나 저장하기 위해서는 먼저 인스턴스를 생성해야 한다. 
+
+인스턴스는 독립적인 저장공간을 가지므로 서로 다른 값을 가질 수 있다. 따라서 인스턴스마다 고유한 상태를 유지해야하는 속성을 인스턴스 변수로 선언한다. 
+
+### 클래스 변수
+
+클래스 변수는 인스턴스가 공통된 저장공간(변수)을 공유하게 된다. 즉 인스턴스마다 독립적인 공간을 갖는 인스턴스 변수와는 달리 한 클래스의 모든 인스턴스 들의 공통적인 값을 유지해야하는 속성을 클래스 변수로 선언한다.
+
+클래스 변수는 언제든지 사용할 수 있고, `Class_Name.Class_Variable`위 형식으로 사용한다. 
+
+클래스가 메모리에 적재될 때 생성되어 프로그램이 종료될 때 까지 유지된다. 그리고 앞에 public을 붙이면 같은 프로그램 내에서 어디서나 접근 가능한 **전역 변수**의 성격을 갖는다.
+
+### 지역 변수
+
+메서드 내에 선언되어 메서드 내에서만 사용 가능하다. 메서드가 종료되면 소멸되어 사용할 수 없게 된다. 
+
+## Class Variable and Instance Variable
+
+클래스 변수와 인스턴스 변수의 차이를 이해하기 위해 다음의 예제를 보자
+```Java
+class Card
+{
+    String kind;
+    int number;
+    static int width = 100;
+    static int height = 250;
+}
+
+class CardTest
+{
+    public static void main(String[] args)
+    {
+        System.out.println("Card.width = " + Card.width);
+        System.out.println("Card.height = " + Card.height);
+        
+        Card c1 = new Card();
+        c1.kind = "Spade";
+        c1.number = 1;
+        
+        Card c2 = new Card()'
+        c2.kind = "Heart"
+        c2.number = 2;
+        
+        System.out.println(c1.kind + ", " + c1.number + c1.width + ", " + c1.height); // Spade, 1, 100, 250
+        System.out.println(c2.kind + ", " + c2.number + c2.width + ", " + c2.height); // Heart, 2, 100, 250
+        
+        c1.width = 50;
+        c1.height = 100;
+        
+        System.out.println(c1.kind + ", " + c1.number + c1.width + ", " + c1.height); // Spade, 1, 50, 100
+        System.out.println(c2.kind + ", " + c2.number + c2.width + ", " + c2.height); // Heart, 2, 50, 100
+        
+    }
+}
+```
+
+Card 인스턴스는 자신만의 형태(kind)와 숫자(number)를 유지하고 있어야 하기 때문에 이들을 **인스턴스 변수**로 선언했고, 카드의 폭(width)과 높이(height)는 모든 인스턴스가 공통적으로 같은 값을 유지해야하기 때문에 **클래스 변수**로 선언했다.
+
+## Method
+
+**메서드**는 특정 작업을 수행하는 일련의 문장들을 하나로 묶은 것이다. 메서드는 다음과 같은 3가지 이점으로 인해 사용한다.
+
+### 높은 재사용성
+
+메서드는 한 번 만들면 다른 프로그램에서도 사용이 가능하다. 우리가 사용하는 System.out.printf와 같은 것들이 메서드에 해당한다.
+
+### 중복된 코드 제거
+
+프로그램을 작성하다 보면 같은 내용의 문장이 여러 곳에 반복되는 경우가 존재한다. 이렇게 반복되는 문장을 메서드로 작성하면 반복되는 문장들을 메서드 호출로 대신할 수 있다. 이를 통해 코드의 길이를 줄일 수 있다. 
+
+### 프로그램의 구조화
+
+메서드를 통해 한줄 한줄 작성되는 프로그램을 구조화할 수 있다. 짧은 프로그램의 경우 구조화가 필요하지 않지만 운영체제와 같이 100만 줄이 넘어가는 대규모 프로그램에서는 문장들을 작업단위로 나눠서 여러 개의 메서드에 담아 프로그을 구조화 하는 작업이 필수적이다.
+
+## Creating and Using Method
+
+메서드는 다음과 같이 **선언부**와 **구현부**로 이루어져있다.
+```Java
+Type Mathed_Name (Type Variable_Name ...) // 선언부
+{
+    // 
+}
+```
+```Java
+int add(int a, int b)
+{
+    int result = a + b;
+    return result;
+}
+```
+
+
 3.5 메서드의 호출(## Call of Method
 3.6 return 문(## Return
 3.7 JVM의 메모리구조(## Memory Structure of JVM
