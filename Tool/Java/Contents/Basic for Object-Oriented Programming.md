@@ -293,7 +293,7 @@ Card 인스턴스는 자신만의 형태(kind)와 숫자(number)를 유지하고
 
 메서드는 다음과 같이 **선언부**와 **구현부**로 이루어져있다.
 ```Java
-Type Mathed_Name (Type Variable_Name ...) // 선언부
+Type Method_Name (Type Variable_Name ...) // 선언부
 {
     // 
 }
@@ -303,13 +303,55 @@ int add(int a, int b)
 {
     int result = a + b;
     return result;
+    // 위의 두 줄을 return a + b로 간단히 표현할 수 있다.
 }
 ```
 
+## Call of Method
 
-3.5 메서드의 호출(## Call of Method
-3.6 return 문(## Return
-3.7 JVM의 메모리구조(## Memory Structure of JVM
+메서드를 호출하는 방법은 다음과 같다.
+```
+Method_Name(value1, value2, ...)
+```
+
+메서드를 호출할 때 ()안에 지정해준 값들을 **인자**라고 한다. 인자의 개수와 순서는 호출된 매서드에 선언된 매개변수와 일치해야한다. 
+```Java
+class Math
+{
+    int add(int a, int b) { return a+b; }
+    int subtract(int a, int b) { return a-b; }
+    int multiply(int a, int b) { return a*b; }
+    float divide(float a, float b) { return a/b; }
+}
+
+class Ex
+{
+    public static void main(String[] args)
+    {
+        Math m = new Math();
+        int value = m.add(1, 2);
+    }
+}
+```
+
+위 프로그램을 실행하면 다음과 같은 순서로 작업이 진행된다. 
+```markdown
+1. 메서드 add를 호출한다.
+2. add를 호출할 때 지정된 1과 2를 메서드 add의 매개변수 a, b에 복사한다.
+3. 메서드 add의 {}안에 있는 문장을 수행한다.
+4. 메서으 add의 모든 문장을 수행하거나 return 문을 만나면 원래 메서드로 돌아간다.
+```
+
+## Return
+
+**return 문**은 현재 실행중인 메서드를 종료하고 호출한 메서드로 되돌아가는 명령어다. 모든 메서드에는 반환값이 없더라도 return 문이 있어야 한다. 하지만 반환타입이 void인 경우 컴파일러가 자동적으로 return 문을 추가해주기 때문에 없어도 에러가 되지 않는다. 
+
+## Memory Structure of JVM
+
+
+
+
+
 3.8 기본형 매개변수와 참조형 매개변수(## Basic and Reference Parameter
 3.9 참조형 변환타입(## Referential Conversion Type
 3.10 재귀호출(## Recursive Call
