@@ -1,4 +1,5 @@
-[1. 배열](#array)             
+[1. 배열](#array)      
+
 [1.1 배열이란](#what-is-array)               
 [1.2 배열의 선언과 생성](#declaration-and-creation-of-array)           
 [1.3 배열의 길이와 인덱스](#length-and-index-of-array)            
