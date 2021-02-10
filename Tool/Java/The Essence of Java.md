@@ -27,13 +27,13 @@
 [5.2 String 배열](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Array.md)             
 [5.3 다차원 배열](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Array.md)             
 
-6. 객체지향 프로그래밍의 기본            
-6.1 객체지향언어            
-6.2 클래스와 객체            
-6.3 변수와 메서드           
-6.4 오버로딩            
-6.5 생성자               
-6.6 변수와 초기화         
+[6. 객체지향 프로그래밍의 기본](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Basic%20for%20Object-Oriented%20Programming.md)            
+[6.1 객체지향언어](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Basic%20for%20Object-Oriented%20Programming.md)            
+[6.2 클래스와 객체](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Basic%20for%20Object-Oriented%20Programming.md)            
+[6.3 변수와 메서드](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Basic%20for%20Object-Oriented%20Programming.md)           
+[6.4 오버로딩](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Basic%20for%20Object-Oriented%20Programming.md)            
+[6.5 생성자](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Basic%20for%20Object-Oriented%20Programming.md)               
+[6.6 변수와 초기화](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Basic%20for%20Object-Oriented%20Programming.md)         
 
 7. 객체지향 프로그래밍의 심화             
 7.1 상속            
