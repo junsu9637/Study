@@ -275,7 +275,8 @@ class ArrayEx6
     public static void main(String[] args)
     {
         int array = new int[10];
-        int counter = new int[10];
+        ARRAY_SIZE = array.length;
+        int counter = new int[ARRAY_SIZE];
         
         for (int i=0; i < array.length; i++)
         {
