@@ -370,7 +370,20 @@ class Ex
 |  | **first** | first | first | first | **first** |  |
 | **main** | main | main | main | main | main | **main** |
 
-
+```markdown
+0. JVM에 의해 main 메서드가 호출되며 프로그램 시작
+1. main 메서드를 위한 메모리 공간이 할당되며 main 메서드의 코드 수행
+2. main 메서드에서 first 메서드 호출
+3. main 메서드는 대기상태로 변경하고, first 메서드 메모리 공간 할당 및 코드 수행
+4. frist 메서드에서 second 메서드 호출
+5. first 메서드는 대기상태로 변경하고, second 메서드 메모리 공간 할당 및 코드 수행
+6. second 메서드에서 println 메서드 호출
+7. second 메서드는 대기상태로 변경하고, println 메서드 메모리 공간 할당 및 코드 수행
+8. println 종료 시 second 메서드로 복귀
+9. second 종료 시 first 메서드로 복귀
+10. first 종료 시 main 메서드로 복귀
+11. main 종료 시 프로그램 종료
+```
 
 3.8 기본형 매개변수와 참조형 매개변수(## Basic and Reference Parameter
 3.9 참조형 변환타입(## Referential Conversion Type
