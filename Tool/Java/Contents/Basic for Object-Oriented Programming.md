@@ -385,10 +385,168 @@ class Ex
 11. main 종료 시 프로그램 종료
 ```
 
-3.8 기본형 매개변수와 참조형 매개변수(## Basic and Reference Parameter
-3.9 참조형 변환타입(## Referential Conversion Type
-3.10 재귀호출(## Recursive Call
-3.11 클래스 메서드와 인스턴스 메서드(## Class Method and Instance Method
+## Basic and Reference Parameter
+
+Java에서 메서드를 호출할 때 매개변수로 지정한 값을 메서드의 매개변수로 복사해서 넘겨준다. 이 때, 매개변수의 타입이 기본형 일 때는 기본형 값이 목사되겠지만 참조형 일 때는 인스턴스 주소가 복사된다. 즉 매개변수가 기본형이라면 단순히 지정된 값만 얻지만, 참조형이라면 값이 지정된 주소를 알 수 있기 때문에 값을 읽어오고 변경도 가능하다.
+
+> **기본형 매개변수** : read only
+  **참조형 매개변수** : read & write
+
+### 기본형 매개변수
+
+```Java
+class Data
+{
+    int x;
+}
+
+class PrimitiveParameterEx
+{
+    public static void main(String[] args)
+    {
+        Data d = new Data(); // 클래스 Data의 x에 대한 주소를 d에 저장
+        d.x = 10; // 클래스 Data의 x에 10을 저장
+        System.out.println(d.x); // 10
+        
+        change(d.x); // 1000
+        System.out.println(d.x); // 10
+    }
+    static void change (int x) // 기본형 매개변수
+    {
+        // 클래스 Data의 주소를 모르기 때문에 Data의 x가 아닌 change의 x를 만들어서 그 x에 값 저장
+        x = 1000;
+        System.out.println(x);
+    }
+}
+```
+```markdonw
+0. 프로그램이 시작되면서 스텍에 main이 적재된다.
+1. change 메서드가 호출되면서 스텍에 change를 적재하고, d.x가 change 메서드의 매개변수 x에 복사된다.
+2. change 메서드에서 x 값을 1000으로 변경
+3. change 메서드가 종료되면서 매개변수 x는 스텍에서 제거된다.
+```
+
+### 참조형 매개변수
+
+```Java
+class Data
+{
+    int x;
+}
+
+class ReferenceParameterEx
+{
+    public static void main(String[] args)
+    {
+        Data d = new Data(); // 클래스 Data의 x에 대한 주소를 d에 저장
+        d.x = 10; // 클래스 Data의 x에 10을 저장
+        System.out.println(d.x); // 10
+        
+        change(d); // 1000
+        System.out.println(d.x); // 1000
+    }
+    static void change (Data d) // 참조형 매개변수
+    {
+        // 클래스 Data의 주소를 매개변수로 받으면서 Data의 x에 접근해서 값 변경 가능
+        d.x = 1000; 
+        System.out.println(d.x);
+    }
+}
+```
+```markdown
+0. 프로그램이 시작되면서 스텍에 main이 적재된다.
+1. change 메서드가 호출되면서 스텍에 change를 적재하고, 참조변수 d의 값(주소)이 매개변수 d에 복사된다.
+2. change 메서드가 매개변수 d에 저장된 주소값으로 x에 접근 가능해진다.
+3. change 메서드에서 매개변수 d로 x의 값을 1000으로 변경
+4. chagne 메서드가 종료되면서 매개변수 d는 스텍에서 제거된다.
+```
+
+## Referential Conversion Type
+
+매개변수 뿐만 아니라 반환 타입도 참조형이 될 수 있다. 반환 타입이 참조형이라는 것은 반환하는 값의 모든 타입이 참조형이 된다는 뜻이다.
+
+```Java
+class Data
+{
+    int x;
+}
+
+class ReferenceReturnEx
+{
+    public static void main(String[] args)
+    {
+        Data d = new Data();
+        d1.x = 10;
+        
+        Data d2 = copy(d1);
+        System.out.println(d1.x + ", " + d2.x); // 10, 10
+    }
+    static Data copy(Data d)
+    {
+        Data tmp = new Data()
+        tmp.x = d.x;
+        
+        return tmp;
+    }
+}
+```
+
+```markdown
+1. copy 매개변수를 호출하면서 참조변수 d의 값이 매개변수 d에 복사된다.
+2. 새로운 객체를 생성한 다음 d.x에 저장된 값을 tmp.x에 복사한다.
+3. copy 메서드가 종료되면서 반환한 tmp의 값은 참조변수 d2에 저장된다.
+4. copy 메서드가 종료되어 tmp는 사라졌지만 d2로 새로운 객체를 다룰 수 있다. 
+```
+
+## Recursive Call
+
+메서드를 내분에서 자신을 다시 호출하는 것을 **재귀호출**이라고 한다.
+```Java
+void method
+{
+    method();
+}
+```
+
+재귀 호출을 사용하면 논리적 간결함을 얻을 수 있다. 몇 겹의 반복문과 조건문으로 구성된 코드 보다는 재귀 호출로 구성된 코드가 보다 단순한 구조가 된다. 다음과 같이 펙토리얼을 구하는 코드를 통해 살펴보자. 펙토리얼을 구하는 수학적 공식은 `f(n) = n * f(n-1), 단 f(1) = 1`
+
+```Java
+class Factorial
+{
+    public static void main(String[] args)
+    {
+        int result = factorial(4);
+        
+        System.out.println(result); // 24
+    }
+    static int factorial (int n)
+    {
+        int result = 0;
+        
+        if (n == 1);
+        {
+            result = 1;
+        }
+        else
+        {
+            result = n * factorial(n-1); // 재귀호출
+        }
+        return resilt;
+    }
+}
+```
+
+```markdown
+1. factorial(4)를 호출하면 매개변수 n에 4가 복사된다.
+2. 메서드 factorial이 필요에 의해 factorial(3)을 호출한다.
+3. 메서드 factorial이 필요에 의해 factorial(2)을 호출한다.
+4. 메서드 factorial이 필요에 의해 factorial(1)을 호출한다.
+```
+
+## Class Method and Instance Method
+
+
+
 3.12 클래스 맴버와 인스턴스 맴버간의 참조와 호출(## Reference and Call between Class Member and Instance Member
 
 4. 오버로딩(# Overloading
