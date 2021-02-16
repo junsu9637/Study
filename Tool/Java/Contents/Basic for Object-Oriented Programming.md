@@ -545,30 +545,374 @@ class Factorial
 
 ## Class Method and Instance Method
 
+변수와 같이 메서드 앞에 static을 붙이면 **클래스 메서드**가 된다. 반대로 static을 붙이지 않으면 **인스턴스 메서드**가 된다.
+
+인스턴스 메서드는 인스턴스 변수와 관련된 작업을 하는 메서드이다. 즉 메서드의 작업을 수행하는데 인스턴스 변수를 필요로 하는 메서드이다. 
+
+클래스 메서드는 인스턴스 변수나 인스턴스 메서드를 사용하지 않는 메서드이다. 
+
+보편적으로 인스턴스 메서드와 클래스 메서드 중 결정하는 방법은 상황들을 고려하면서 결정한다.
+
+```markdown
+1. 클래스를 생성할 때, 맴버변수 중 모든 인스턴스에 공통으로 사용하는 것에 static을 붙인다. 
+2. 작성한 메서드 중에서 인스턴스 변수나 인스턴스 메서드를 사용하지 않는 메서드라도 호출시간이 짧아야 하거나 높은 성능이 요구되는 메서드에 static을 붙인다. 
+```
+
+## Reference and Call between Class Member and Instance Member
+
+같은 클래스에 속한 맴버들 간에는 별도의 인스턴스 생성 없이도 서로 참조와 호출이 가능하다. 단, **클래스 맴버는 존재하지만 인스턴스 맴버는 존재하지 않을 수 있기 때문에 클래스 맴버가 인스턴스 맴버를 참조나 호출하기 위해서는 인스턴스를 생성해야 한다.** 하지만 인스턴스 메서드가 실행된다는 것은 이미 인스턴스 변수가 생성되었다는 것을 의미하기 때문에 인스턴스 맴버 간의 호출에는 아무 문제가 발생하지 않는다. 
+
+```Java
+class Ex
+{
+    void instancemethod() {} // 인스턴스 메서드
+    static void staticmethod // 클래스 메서드
+    
+    void instancemethod_Ex()
+    {
+        instancemethod(); // 인스턴스 메서드 호출
+        staticmethod(); // 클래스 메서드 호출
+    }
+    
+    static void staticmethod_Ex()
+    {
+        instancemethod(); // 인스턴스 메서드 호출 에러
+        staticmethod(); // 클래스 메서드 호출
+        
+        Ex e = new Ex(); // 인스턴스 생성
+        e.instancemethod(); // 인스턴스 생성으로 인해 인스턴스 메서드 호출 성공
+    }
+}
+```
+
+# Overloading
+
+## What is Overloading
+
+메서드도 변수와 마찬가지로 같은 클래스 내에서 서로 구별될 수 있어야 하기 때문에 각자 다른 이름을 가져야한다. **오버로딩**은 한 클래스 내에 같은 이름의 메서드를 여러 개 정의하는 것을 말한다. 즉, 보통 하나의 메서드 이름에 하나의 기능만을 구현해야 하는데 하나의 메서드 이름으로 여러 기능을 구현한다.
+
+## Condition for Overloading
+
+같은 이름의 메서드를 정의한다고 해서 무조건 오버로딩이 되는 것은 아니다. 오버로딩이 성립하기 위해서는 다음과 같은 조건을 만족해야한다.
+```markdown
+1. 메서드 이름이 같아야 한다.
+2. 매개변수의 개수 또는 타입이 달라야한다. 
+```
+
+비록 메서드의 이름이 같더라도, 매개변수가 다르면 서로 구별되어 오버로딩이 가능하다. 위의 조건을 만족하지 않는다면 컴파일 시 에러가 발생하낟. 그리고 오버로딩된 메서드들은 매개변수에 의해서만 구별 될 수 있기 때문에 **반환 타입은 오버로딩을 구현하는데 아무런 영향을 주지 못한다.**
+
+## Example of Overloading
+
+Java에서 제공하는 메서드 중 println은 대표적인 오버로딩의 예시가 된다. 사용자가 println을 사용할 때는 어떤 입력값을 주어도 화면에 출력하는데 어려움이 없었다. 하지만 실제로는 println 메서드를 호출할 때 매개변수로 지정하는 값의 타입에 따라서 호출되는 println 메서드가 달라진다. println이 포함되어있는 PrintStream 클래스는 다음과 같이 구성되어 있다.
+```Java
+class PrintStream
+{
+    void println()
+    void println(boolean x)
+    void println(char x)
+    void println(char[] x)
+    void println(double x)
+    void println(float x)
+    void println(int x)
+    void println(long x)
+    void println(Object x)
+    void println(String x)
+}
+```
+
+PrintStream에 있는 println들은 모두 이름은 같지만 매개변수의 타입이 모두 다르기 때문에 오버로딩이 해당한다.
+
+```Java
+class math
+{
+    int add(int a, int b) {return a+b;}
+    int add(int x, int y) {return x+y;}
+}
+```
+
+하지만 위와 같이 메서드의 이름이 같지만 매개변수의 타입도 같다면 이는 오버로딩에 해당하지 않아 에러가 발생한다. 즉 매개변수의 이름은 오버로딩에 영향을 주지 않는다. 다음과 같이 매개변수의 수나 타입을 다르게 만들어야 에러가 발생하지 않는다.
+
+```Java
+class math
+{
+    int add(int a, int b) {return a+b;}
+    int add(int a, int b, int c) {return a+b+c;}
+    long add(long a, long b) {return a+b;}
+}
+```
+
+## Advantage of Overloading
+
+이러한 오버로딩을 사용하면 다음과 같은 이점을 얻을 수 있다.
+```markdown
+1. 기능에 비해 외워야하는 명령어 이름이 줄어든다.
+2. 매서드의 이름을 짓는 고민을 줄일 수 있다. 
+3. 이름의 종류가 줄어들어 하나의 이름으로 그 명령어의 작업 종류를 예측할 수 있다.
+```
+
+## Variable Factor and Overloading
+
+기존 Java에서는 매개변수의 개수를 고정적으로 사용해야 했다. 하지만 JDK1.5 이후로부터는 동적으로 매개변수를 설정할 수 있는 **가변인자**가 추가되었다. 가변인자는 다음과 같이 `타입...변수명`으로 지정한다.
+
+```Java
+class Ex
+{
+    public static void main(String[] args)
+    {
+        System.out.printf(Overloading("a")) // a
+        System.out.printf(Overloading("a", "b")) // ab
+        System.out.printf(Overloading("a", "b", "c")) // abc
+    }
+    
+    static String Overloading(String...str)
+    {
+        return Overloading("", str);
+    }
+}
+```
+
+# Generator
+
+## What is Generator
+
+**생성자**는 인스턴스가 생성될 때 호출되는 '인스턴스 초기화 매서드'이다. 즉 인스턴스 변수의 초기화 작업에 주로 사용된다. 생성자도 메서드처럼 클래스 내에 선언되고, 구조도 return이 없는 메서드와 동일하다. 생성자의 조건은 다음과 같다.
+```markdown
+1. 생성자의 이름은 클래스의 이름과 같아야 한다.
+2. 생성자는 리턴 값이 없어야 한다.
+```
+
+생성자는 다음과 같이 정의하낟. 생성자도 오버로딩이 가능하기 때문에 하나의 클래서의 여러 생성자가 존재할 수 있다. 
+```Java
+class CLASS_NAME
+{
+    CLASS_NAME() // 매개변수가 있다면 매개변수를 포함한다.
+    {
+        // 인스턴스 생성 시 수행할 코드
+        // 인스턴스 변수 초기화 코드
+    }
+}
+```
+
+그동안 인스턴스를 생성하기 위해 `name n = new name()`의 코드를 사용했다. 여기서 name()이 생성자이다.  `name n = new name()`코드를 통해 name 클래스의 인스턴스를 생성하는 과정을 단계별로 나누어 보면 다음과 같다.
+```markdown
+1. 연산자 new에 의해 heap 메모리에 name 클래스의 인스턴스가 생성된다.
+2. 생성자 name()이 호출되어 수행된다.
+3. 연산자 new의 결과로 생성된 name 인스턴스의 주소가 반환되어 참조변수 n에 저장된다.
+```
+
+즉 모든 클래스에는 반드시 하나 이상의 생성자가 정의되어 있어야한다. 
+
+## Default Constructor
+
+지금까지 코드를 구성할 때 클래스 내에 생성자를 정의하지 않았지만 코드는 정상적으로 작동되었다. 이는 컴파일러가 제공하는 **기본 생성자** 덕분이다. 컴파일 할 때, 클래스에 생성자가 하나도 정의되지 않은 경우 컴파일러는 자동적으로 기본 생성자를 추가하여 컴파일한다. 
+
+컴파일러가 추가해주는 기본 생성자는 매개변수와 내용이 없는 아주 간단한 구조로 되어있다. 따라서 특별한 초기화 작업이 필요하지 않는 코드의 경우 생성자를 정의하지 않고, 기본 생성자를 사용해도 된다.
+
+## Generator with Parameter
+
+생성자도 메서드처럼 매개변수를 선언하고, 호출 시 값을 넘겨받아서 인스턴스의 초기화 작업에 사용할 수 있다. 다음과 같이 Car 인스턴스와 Car() 생성자를 정의해 보자.
+```Java
+class Car
+{
+    String color;
+    String gearType;
+    int door;
+    
+    Car() {} // 생성자
+    Car(String c, String g, int d) // 생성자
+    {
+        color = c;
+        gearType = g;
+        door = d;
+    }
+}
+```
+
+Car 인스턴스를 생성할 때, 생성자 `Car()`을 사용하면 인스턴스를 생성한 다음에 인스턴스 변수들을 따로 초기화해야 한다. 하지만 생성자 `Car(String c, String g, int d)`을 사용하면 인스턴스를 생성하는 동시에 원하는 값으로 초기화할 수 있다. 
+
+## Call Another Constructor from Constructor
+
+다음의 조건을 만족시키면 생성자 간에도 서로 호출이 가능하다.
+```markdown
+1. 생성자 내에 자신을 사용할 때는 생성자의 이름으로 this를 사용한다.
+2. 한 생성자에서 다른 생성자를 호출할 때는 반드시 첫 줄에서만 호출이 가능하다.
+```
+
+```Java
+class Ex()
+{
+    Ex() {}
+    Example()
+    {
+        Ex(); // 다른 생성자를 호출할 때는 첫 번째 줄에 호출한다.
+        this(); // 자신을 호출할 때는 이름 대신 this를 사용한다.
+    }
+}
+```
+
+this를 통해 다음과 같이 생성자를 간단하게 표기할 수 있다.
+```Java
+Car()
+{
+   color = "white";
+   gearType = "auto";
+   door = 4;
+}
+```
+```Java
+Car()
+{
+   this("white", "auto", 4);
+}
+```
+
+this를 통해 다음과 같이 매개변수와 인스턴스 변수간의 이름 구별을 통해 가독성을 높일 수 있다.
+```Java
+Car(String c, String g, int d)
+{
+    color = c;
+    gearType = g;
+    door = d;
+}
+```
+
+```Java
+Car(String color, String gearType, int door)
+{
+    this.color = color;
+    this.gearType = gearType;
+    this.door = door;
+}
+```
 
 
-3.12 클래스 맴버와 인스턴스 맴버간의 참조와 호출(## Reference and Call between Class Member and Instance Member
+## Copy Instance Using the Constructor
 
-4. 오버로딩(# Overloading
-4.1 오버로딩이란(## What is Overloading
-4.2 오버로딩의 조건(## Condition for Overloading
-4.3 오버로딩의 예(## Example of Overloading
-4.4 오버로딩의 장점(## Advantage of Overloading
-4.5 가변인자와 오버로딩(## Variable Factor and Overloading
+생성자를 사용해서 현재 사용하고 있는 인스턴스와 같은 상태(인스턴스의 모든 인스턴스 변수가 동일한 값을 갖는 상태)를 갖는 인스턴스를 하나 더 생성할 수 있다. 생성자를 통한 복제는 다음과 같이 진행된다. 
 
-5. 생성자(# Generator
-5.1 생성자란(## What is Generator
-5.2 기본 생성자(## Default Constructor
-5.3 매개변수가 있는 생성자(## Generator with Parameter
-5.4 생성자에서 다른 생성자 호출(## Call Another Constructor from Constructor
-5.5 생성자를 이용한 인스턴스 복사(## Copy Instance Using the Constructor
+```Java
+class Car
+{
+    String color;
+    String gearType;
+    door = door;
+    
+    Car() // 인스턴스 초기화를 위한 생성자
+    {
+        this("white", "auto", 4);
+    }
+    
+    Car(Car c) // 인스턴스 복제를 위한 생성자
+    {
+        this(c.color, c.gearType, c.door);
+    }
+    
+    Car(String color, String gearType, int door) // 매개변수를 통한 초기화를 위한 생성자
+    {
+        this.color = color;
+        this.gearType = gearType;
+        this.door = door;
+    }
+    
+class Ex
+{
+    public static void main (String[] args)
+    {
+        Car c1 = new Car();
+        Car c2 = new Car(c1); // c1의 복사본 c2를 생성한다
+        
+        System.out.println(c1.color + ", " + c1.gearType + ", " + c1.door); // white, auto, 4
+        System.out.println(c2.color + ", " + c2.gearType + ", " + c2.door); // white, auto, 4
+        
+        c1.door = 100;
+        
+        System.out.println(c1.color + "," + c1.gearType + "," + c1.door); // white, auto, 100
+        System.out.println(c2.color + "," + c2.gearType + "," + c2.door); // white, auto, 4
+    }
+}
+}
+```
 
-6. 변수의 초기화(# Initialize Variable
-6.1 변수의 초기화(## Initialize Variables
-6.2 명시적 초기화(## Explicit Initialization
-6.3 초기화 블록(## Initialization Block
-6.4 맴버변수의 초기화 시기와 순서(## Initialization of Member Variable
+# Initialize Variable
 
+## Initialize Variables
+
+변수를 선언하고 처음으로 값을 저장하는 것을 **변수 초기화**라고 한다. 맴버변수는 초기화를 진행하지 않아도 자동적으로 적절한 기본값으로 초기화가 이루어지기 때문에 변수 초기화를 진행하지 않아도 된다. 하지만 지역 변수는 사용하기 전에 반드시 초기화를 진행해야한다. 각 타입의 기본값은 다음과 같다.
+
+| 자료형 | 기본값 | 
+|:-:|:-:|
+| boolean | false |
+| char | '\u0000' |
+| byte, short, int | 0 |
+| long | 0L |
+| float | 0.0f |
+| double | 0.0d |
+| 참조 변수 | null |
+
+지역 변수 초기화는 위와 같은 기본값이나 사용자가 원하는 값으로 진행하면 된다. 하지만 맴버 변수의 초기화는 다음과 같은 명시적 초기화, 생성자, 초기화 블록을 사용해야 한다.
+
+## Explicit Initialization
+
+변수를 선언과 동시에 초기화하는 방법을 명시적 초기화라고 한다. 다장 기본적이면서도 간단한 초기화 방법으로 다음과 같이 진행한다.
+```Java
+class Car
+{
+    int door = 4; // 기본형 변수의 초기화
+    Engine e = new Engine(); // 참조현 변수의 초기화
+}
+```
+
+간단한 초기화는 명시적 초기화로도 가능하지만 복잡한 초기화는 초기화 블록을 사용해야한다.
+
+## Initialization Block
+
+**초기화 블록**에는 클래스 초기화 블록과 인스턴스 초기화 블록이 있다.
+> **클래스 초기화 블록** : 클래스변수의 복잡한 초기화의 사용      
+  **인스턴스 초기화 블록** : 인스턴스 변수의 복잡한 초기화에 사용
+  
+초기화 블록은 다음과 같이 작성한다.
+```Java
+class InitBlock
+{
+    static { // 클래스 초기화 블록 }
+    
+    { //인스턴스 초기화 블록 }
+}
+```
+
+위와 같이 초기화 블록은 클래스 내에 만들고 {}안에 코드를 작성하면 된다. 인스턴스 초기화 블록은 그냥 작성하고, 클래스 초기화 블록은 static을 앞에 작성한다. 초기화 블록 내에는 조건문, 반복문, 예외처리구문 등을 사용할 수 있어서 복잡한 초기화도 가능해 진다. 
+
+## Initialization of Member Variable
+
+지금까지 알아본 맴버변수를 초기화하는 방법은 다음과 같은 시기에 사용되고, 다음과 같은 순서로 진행된다.
+
+### 클래스 변수
+**초기화 시점** : 클래스가 처음 로딩될 때 단 한번 초기화
+**초기화 순서** : 기본값 -> 명시적 초기화 -> 클래스 초기화 블록
+
+### 인스턴스 변수
+**초기화 시점** : 인스턴스가 생성될 때마다 각 인스턴스별로 초기화
+**초기화 순서** : 기본값 -> 명시적 초기화 -> 인스턴스 초기화 블록 -> 생성자
+
+다음 코드를 통해 초기화 과정을 살펴본다.
+```Java
+class InitEx
+{
+    // 명시적 초기화
+    static int cv = 1; 
+    int iv = 1;
+    
+    static { cv = 2; } // 클래스 초기화 블록
+    { iv = 2; } // 인스턴스 초기화 블록
+    
+    InitEx() { iv = 3; } // 생성자
+}
+
+```
+|  | 기본값 | 명시적 초기화 | 클래스 초기화 블록 | 기본값 | 명시적 초기화 | 인스턴스 초기화 블록 | 생성자 |
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| cv | 0 | 1 | 2 | 2 | 2 | 2 | 2 |
+| iv |  |  |  | 0 | 1 | 2 | 3 |
 
 
 
