@@ -15,9 +15,8 @@
 [3. package와 import](#package-and-import)          
 [3.1 package](#package)             
 [3.2 package의 선언](#declaration-of-package)               
-[3.3 import 문](#import)              
-[3.4 import 문의 선언](#declaration-of-import)             
-[3.5 static import 문](#static-import)              
+[3.3 import 문](#import)                          
+[3.4 static import 문](#static-import)              
 
 [4. 제어자](#modifier)              
 [4.1 제어자란](#what-is-modifier)            
@@ -281,20 +280,100 @@ class Point3D extends Point
 9. main 메서드 복귀
 ```
 
+# Package and Import
 
-3. package와 import](# Package and Import
-3.1 package](## Package
-3.2 package의 선언](## Declaration of Package
-3.3 import 문](## Import
-3.4 import 문의 선언](## Declaration of Import
-3.5 static import 문](## Static Import
+## Package
 
-4. 제어자](# Modifier
-4.1 제어자란](## What is Modifier
-4.2 static](## Static
-4.3 final](## Final
-4.4 abstract](## Abstract
-4.5 접근 제어자](## Access Modifier
+**패키지**는 클래스 집합이다. 패키지에는 클래스 또는 인터페이스를 포함시킬 수 있고, 서로 관련된 클래스들끼리 그룹 단위로 묶어 높음으로써 클래스를 효율적으로 관리할 수 있다. 
+
+패키지는 일종의 디렉토리로 다양한 클래스 파일들이 .을 통해 계층구조를 이룬다. 예를 들어 String의 경우 실제 표현은 java.lang.String이 된다. 이는 java 디렉토리 안에 있는 lang 디렉토리 안에 String이라는 클래스를 의미한다. 
+
+## Declaration of Package
+
+패키지 선언은 다음과 같이 작성한다.
+```Java
+package PACKAGE_NAME;
+```
+
+## Import
+
+코드를 작성할 때 다른 패키지의 클래스를 사용하려면 패키지 명이 포함된 클래스 이름을 사용해야 한다. 하지만 매번 패키지 명을 붙여서 작성하는 것은 효율적인 작업은 아니다. 따라서 **import 문**을 사용하여 사용하고자 하는 클래스의 패키지를 미리 명시하여 코드에서 사용할 때 패키지 명을 생략한다. 
+
+```Java
+package java.text.SimpleDataFormat
+
+SimpleDataFormat date = new java.text.SimpleDataFormat()
+```
+
+```Java
+import java.text.SimpleDataFormat
+
+SimpleDataFormat date = new SimpleDataFormat()
+```
+
+## Static Import
+
+**static import 문**을 사용하면 다음과 같이 static 맴버를 호출할 때 클래스 이름을 생략할 수 있다. 
+
+```Java
+import java.lang.System.out.println
+
+system.out.println();
+```
+
+# Modifier
+
+## What is Modifier
+
+**제어자**는 클래스, 변수, 메서드의 선언부에 함께 사용되어 부가적인 의미를 부여한다. 제어자는 다음과 같이 접근 제어자와 그외 제어자로 나눈다.
+> **접근 제어자** : public, protected, default, private           
+  **그 외 제어자** : static, final, abstract, native, transient, synchronized, volatile, strictfp
+
+접근 제어자는 한 번에 하나만 선택해서 사용해야 한다. 
+
+## Static
+
+static은 '클래스의', '공통적인'의 의미를 가지고 있다. 따라서 static이 붙은 맴버변수와 메서드, 초기화 블록은 인스턴스가 아닌 클래스에 관계된 것이기 때문에 인스턴스를 생성하지 않고도 사용 가능한 것이다. 
+
+## Final
+
+final은 '마지막의', '변경될 수 없는'의 의미를 가지고 있다. 따라서 거의 모든 대상에 사용할 수 있고, 변경 불가능한 상태로 만든다.
+
+## Abstract
+
+abstract는 '미완성'의 의미를 가지고 있다. 따라서 메서드 선언부에서 작성되어 아직 구현하지 않은 추상 메서드를 선언하는데 사용한다. 
+
+## Access Modifier
+
+**접근 제어자**는 맴버 또는 클래스에 사용되어 해당 맴버 또는 클래스를 외부에서 접근 불가능하도록 제한한다. 접근 제한을 위해서 4가지의 명령어를 사용한다. 이 명령어들은 다음과 같이 접근 범위를 제한한다.
+| 제어자 | 같은 클래스 | 같은 패키지 | 자손 클래스 | 전체 |
+|:-:|:-:|:-:|:-:|:-:|
+| public | o | o | o | o |
+| protected | o | o | o |  |
+| default | o | o |  |  |
+| private | o |  |  |  |
+
+```Java
+class Private {private int a;}
+
+class test
+{
+    public static void main(String args[])
+    {
+        Private p = new Private();
+        p.a = 1; // 클래스 Private의 a가 private 상태이기 때문에 에러 
+    }
+}
+```
+
+이 중 default는 생략 가능하다.
+
+접근 제어자는 주로 **캡슐화**를 위해 사용한다. 캡슐화는 객체지향개념의 대표적인 기능으로 다음과 같은 기능을 위해 사용한다.
+```markdown
+1. 외부로부터 데이터를 보호
+2. 외부에 내용을 숨김
+```
+
 4.6 제어자의 조합](## Combination of Modifier
 
 5. 다형성](# Polymorphism
