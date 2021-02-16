@@ -35,15 +35,15 @@
 [6.5 생성자](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Basic%20for%20Object-Oriented%20Programming.md)               
 [6.6 변수와 초기화](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Basic%20for%20Object-Oriented%20Programming.md)         
 
-7. 객체지향 프로그래밍의 심화             
-7.1 상속            
-7.2 오버라이딩           
-7.3 package와 import            
-7.4 제어자            
-7.5 다형성            
-7.6 추상클래스            
-7.7 인터페이스           
-7.8 내부 클래스          
+[7. 객체지향 프로그래밍의 심화](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Deepening%20Object-Oriented%20Programming.md)             
+[7.1 상속](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Deepening%20Object-Oriented%20Programming.md)            
+[7.2 오버라이딩](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Deepening%20Object-Oriented%20Programming.md)           
+[7.3 package와 import](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Deepening%20Object-Oriented%20Programming.md)            
+[7.4 제어자](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Deepening%20Object-Oriented%20Programming.md)            
+[7.5 다형성](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Deepening%20Object-Oriented%20Programming.md)            
+[7.6 추상클래스](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Deepening%20Object-Oriented%20Programming.md)            
+[7.7 인터페이스](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Deepening%20Object-Oriented%20Programming.md)           
+[7.8 내부 클래스](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Deepening%20Object-Oriented%20Programming.md)          
 
 8. 예외처리          
 8.1 예외처리                  
