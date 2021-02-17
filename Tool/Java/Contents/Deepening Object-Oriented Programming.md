@@ -414,8 +414,56 @@ class CaptionTV extends TV
 
 참조변수도 형변환이 가능하지만 서로 상속관계에 있는 클래스 사이에서만 가능하다. 따라서 다음과 같은 형변환만 가능하다.
 ```markdown
+자손타입 -> 조상타입 : Up-casting 형변환 생략가능
+조상타입 -> 자손타입 : Down-casting 형변화 생략불가
+```
 
-5.3 instanceof 연산자](## Instanceoof Operator
+형변환은 참조변수의 타입을 변환하는 것이지 인스턴스를 변환하는 것은 아니기 때문에 참조변수 형변환은 인스턴스에 아무런 영향을 주지 않는다. 단지 참조변수의 형변환을 통해 참조하고 있는 인스턴스에 서 사용할 수 있는 맴버의 개수를 조절하는 것 뿐이다. 
+
+```Java
+class CastingEx
+{
+    public static void main(String args[])
+    {
+        Car car = null;
+        FireEngine fe1 = new FireEngine();
+        FireEngine fe2 = null;
+        
+        fe1.water();
+        car = fe1; // car = (Car)fe1; 생략
+        car.water(); // error Car 타입의 참조변수로는 water() 호출 불가능 
+        fe2 = (FireEngine)car; // 조상타입 -> 자손타입
+        fe2.water();
+    }
+}
+
+class Car
+{
+    String color;
+    int door;
+    
+    void drive() {}
+    void stop() {}
+}
+
+class FireEngine extends Car
+{
+    void water() {}
+}
+```
+
+## Instanceoof Operator
+
+**instanceof 연산자**는 참조변수가 참조하고 있는 인스턴스의 실제 타입을 알아보기 위해 사용한다. instanceof 왼쪽에는 참조변수를, 오른쪽에는 타입(클래스명)이 피연산자로 위치한다. 연산의 결과는 true, false로 반환된다. instanceof는 다음과 같이 주로 조건문에 사용한다. 
+
+```Java
+void Work(Car c)
+{
+    if(c instanceof FireEngine) {}
+    else if(c instanceof Albulance) {}
+}
+```
+
 5.4 참조변수와 인스턴스의 연결](## Association of Reference Variables and Instances
 5.5 매개변수의 다형성](## Polymorphism of Parameters
 5.6 여러 종류의 객체를 배열로 다루기](## Treat Multiple Types of Objects as Arrays
