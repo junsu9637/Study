@@ -329,7 +329,7 @@ system.out.println();
 > **접근 제어자** : public, protected, default, private           
   **그 외 제어자** : static, final, abstract, native, transient, synchronized, volatile, strictfp
 
-접근 제어자는 한 번에 하나만 선택해서 사용해야 한다. 
+접근 제어자는 한 번에 하나만 선택해서 사용해야 한다. 다양한 제어자가 있지만 그 중에서 가장 많이 사용하는 static, final, abstract, 접근 제어자에 대해 간단하게 알아보자.
 
 ## Static
 
@@ -374,11 +374,47 @@ class test
 2. 외부에 내용을 숨김
 ```
 
-4.6 제어자의 조합](## Combination of Modifier
+## Combination of Modifier
 
-5. 다형성](# Polymorphism
-5.1 다형성이란](## What is Polymorphism
-5.2 참조변수의 형변환](## Conversion of Reference Variable
+제어자는 다양하게 존재하는 데 이런 제어자들을 조합해서 사용할 때는 다음과 같은 사항을 주의해야한다.
+```
+1. 메서드에 static과 abstract를 함께 사용할 수 없다.
+2. 클래스에 abstract와 final을 동시에 사용할 수 없다.
+3. abstract 메서드의 접근 제어자가 private일 수 없다.
+4. 메서드에 private와 final을 같이 사용할 필요 없다.
+```
+
+# Polymorphism
+
+## What is Polymorphism
+
+**다형성**은 여러 가지 형태를 가질 수 있는 능력을 의미한다. Java에서는 한 타입의 참조변수로 여러 타입의 객체를 참조할 수 있도록 함으로써 다형성을 프로그래밍적으로 구현한다. 이는 다음과 같이 조상 클래스 타입의 참조변수로 자손클래스의 인스턴스를 참조할 수 있도록 코드를 작성한다.
+
+```Java
+class TV
+{
+    boolean power;
+    int channel;
+    
+    void power(); { power = !power; }
+    void channelUp(); { ++channel; }
+    void channelDown(); { --channel; }
+}
+
+class CaptionTV extends TV
+{
+    String text;
+    void caption() { ~~~ }
+}
+```
+
+이런 방식으로 다형성을 구현하면 조상타입의 참조변수로 자손타입의 인스턴스를 참조할 수 있다. 하지만 자손타입의 참조변수로는 조상타입의 인스턴스를 참조할 수 없다. 
+
+## Conversion of Reference Variable
+
+참조변수도 형변환이 가능하지만 서로 상속관계에 있는 클래스 사이에서만 가능하다. 따라서 다음과 같은 형변환만 가능하다.
+```markdown
+
 5.3 instanceof 연산자](## Instanceoof Operator
 5.4 참조변수와 인스턴스의 연결](## Association of Reference Variables and Instances
 5.5 매개변수의 다형성](## Polymorphism of Parameters
