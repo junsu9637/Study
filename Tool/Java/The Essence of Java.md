@@ -48,9 +48,9 @@
 [8. 예외처리](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Exception%20Handling.md#chained-exception)          
 [8.1 예외처리](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Exception%20Handling.md#chained-exception)                  
 
-9. Java.lang 패키지와 유용한 클래스              
-9.1 Java.lang 패키지            
-9.2 유용한 클래스              
+[9. Java.lang 패키지와 유용한 클래스](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Java%20Package%20&%20Class.md)              
+[9.1 Java.lang 패키지](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Java%20Package%20&%20Class.md)            
+[9.2 유용한 클래스](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Java%20Package%20&%20Class.md)              
 
 10. 날짜와 시간 & 형식화           
 10.1 날짜와 시간              
