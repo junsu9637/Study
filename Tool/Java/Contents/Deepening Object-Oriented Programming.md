@@ -30,32 +30,27 @@
 [5.1 다형성이란](#what-is-polymorphism)               
 [5.2 참조변수의 형변환](#conversion-of-reference-variable)            
 [5.3 instanceof 연산자](#instanceoof-operator)                     
-[5.4 참조변수와 인스턴스의 연결](#association-of-reference-variables-and-instances)              
-[5.5 매개변수의 다형성](#polymorphism-of-parameters)                 
-[5.6 여러 종류의 객체를 배열로 다루기](#treat-multiple-types-of-objects-as-arrays)         
+[5.4 참조변수와 인스턴스의 연결](#association-of-reference-variables-and-instances)                            
+[5.5 여러 종류의 객체를 배열로 다루기](#treat-multiple-types-of-objects-as-arrays)         
 
 [6. 추상클래스](#abstract-class)            
 [6.1 추상클래스란](#what-is-abstract-class)          
 [6.2 추상메서드](#abstract-method)             
-[6.3 추상클래서의 작성](#create-of-abstract-class)              
+[6.3 추상클래스 작성](#create-of-abstract-class)              
 
 [7. 인터페이스](#interface)             
 [7.1 인터페이스란](#what-is-interface)            
 [7.2 인터페이스의 작성](#create-of-interface)             
 [7.3 인터페이스의 상속](#inheritance-of-interface)              
-[7.4 인터페이스의 구현](#implementation-of-interface)            
-[7.5 인터페이스를 이용한 다중상속](#multiple-inheritance-with-interface)             
-[7.6 인터페이스를 이용한 다형성](#polymorphism-with-interface)                  
-[7.7 인터페이스의 장점](#advantage-of-interface)             
-[7.8 인터페이스의 이해](#understand-of-interface)              
-[7.9 디폴트 메서드와 static 메서드](#default-method-and-static-method)                  
+[7.4 인터페이스의 구현](#implementation-of-interface)                      
+[7.5 인터페이스를 이용한 다형성](#polymorphism-with-interface)                  
+[7.6 인터페이스의 장점](#advantage-of-interface)                            
 
 [8. 내부 클래스](#inner-class)             
 [8.1 내부 클래스란](#what-is-inner-class)            
 [8.2 내부 클래스의 종류와 특징](#types-and-characteristics-of-inner-class)         
-[8.3 내부 클래스의 선언](#declaration-of-inner-class)                 
-[8.4 내부 클래스의 제어자와 접근성](#modifier-and-accessibility-of-inner-class)                   
-[8.5 익명](#anonymous)                
+[8.3 내부 클래스의 선언](#declaration-of-inner-class)                                
+[8.4 익명](#anonymous)                
 
 
 # Inheritance
@@ -464,46 +459,285 @@ void Work(Car c)
 }
 ```
 
-5.4 참조변수와 인스턴스의 연결](## Association of Reference Variables and Instances
-5.5 매개변수의 다형성](## Polymorphism of Parameters
-5.6 여러 종류의 객체를 배열로 다루기](## Treat Multiple Types of Objects as Arrays
+instanceof 연산자가 true값이 출력되는 것은 참조변수가 검사한 타입으로 형변환이 가능하다는 것을 의미한다.
 
-6. 추상클래스](# Abstract class
-6.1 추상클래스란](## What is Astract Class
-6.2 추상메서드](## Abstract Method
-6.3 추상클래서의 작성](## Create of Abstract Class
+## Association of Reference Variables and Instances
 
-7. 인터페이스](# Interface
-7.1 인터페이스란](## What is Interface
-7.2 인터페이스의 작성](## Create of Interface
-7.3 인터페이스의 상속](## Inheritance of Interface
-7.4 인터페이스의 구현](## Implementation of Interface
-7.5 인터페이스를 이용한 다중상속](## Multiple Inheritance with Interface
-7.6 인터페이스를 이용한 다형성](## Polymorphism with Interface
-7.7 인터페이스의 장점](## Advantage of Interface
-7.8 인터페이스의 이해](## Understand of Interface
-7.9 디폴트 메서드와 static 메서드](## Default Method and Static Method
+**참조변수와 인스턴스를 연결할 때** 조상 클래스에 선언된 맴버변수와 같은 이름의 인스턴트 변수를 자손 클래스에 중복으로 정의된 경우, 다음과 같은 두 상황에서 다른 결과를 얻는다
+```markdown
+1. 조상타입 참조변수로 자손 인스턴스 참조
+2. 자손타입 참조변수로 자손 인스턴스 참조
+```
 
-8. 내부 클래스](# Inner-class
-8.1 내부 클래스란](## What is Inner Class
-8.2 내부 클래스의 종류와 특징](## Types and Characteristics of Inner Class
-8.3 내부 클래스의 선언](## Declaration of Inner Class
-8.4 내부 클래스의 제어자와 접근성](## Modifier and Accessibility of Inner Class
-8.5 익명](## Anonymous
+맴버변수가 조상 클래스와 자손 클래스에 중복으로 정의된 경우, 다음과 같이 작업이 진행된다.
+```markdown
+조상타입 참조변수를 사용 : 조상 클래스에 선언된 맴버변수 사용
+자손타입 참조변수를 사용 : 자손 클래스에 선언된 맴버변수 사용
+```
 
+하지만 중복 정의가 아닌 경우, 조상타입의 참조변수를 사용했을 때와 자손타입의 참조변수를 사용했을 때의 차이가 없다. 
 
+```Java
+class Ex
+{
+    public static void main(String args[])
+    {
+        Parent p = new Child // Child 인스턴스를 참조하는 Parent 타입 참조변수 p
+        Child c = new Child // Child 인스턴스를 참조하는 Child 타입 참조변수 c
+        
+        // 조상타입 참조변수를 사용하기 때문에 조상 클래스에서 선언된 맴버변수 사용
+        System.out.println(p.x) // 100
+        // 자손타입 참조변수를 사용하기 때문에 자손 클래스에서 선언된 맴버변수 사용
+        System.out.println(c.x) // 200
+        
+        p.method(); // Child
+        c.method(); // Child
+    }
+}
 
+class Parent
+{
+    int x = 100;
+    
+    void method()
+    {
+        System.out.println("Parent")
+    }
 
+class Child
+{
+    int x = 200;
+    
+    void method()
+    {
+        System.out.println("Child")
+    }
+}
+```
 
+## Treat Multiple Types of Objects as Arrays
 
+**Vector 클래스**는 내부적으로 Object 타입의 배열을 가지고 있다. 따라서 이 배열에 객체를 추가하거나 제거할 수 있게 작성되어 여러 종류의 객체를 배열로서 다룰 수 있게 된다. 그리고 배열의 크기를 알아서 관리해주기 때문에 저장할 인스턴스의 개수에 신경 쓰지 않아도 된다.
 
+```Java
+import java.util.*; // vector 클래스 사용을 위한 호출
 
+Vector v = new Vector();
+```
 
+# Abstract class
 
+## What is Astract Class
 
+**추상 클래스**는 완성되지 못한 클래스를 뜻한다. 미완성 클래스는 클래스가 미완성 메서드를 포함한다는 뜻으로 맴버의 개수와는 관계 없다. 추상 클래스로는 인스턴스를 생성할 수 없고, 상속을 통해 자손클래스에서만 완성할 수 있다.
 
+추상클래스 자체로는 클래스의 역할을 수행할 수 없다. 하지만 새로운 클래스를 작성하는 조상 클래스의 역할을 수행하면서 어느정도 새로운 클래스의 틀을 만들어주는 역할은 수행할 수 있다. 
 
+다음과 같이 클래스 선언 앞에 abstract를 추가하면 추상 클래스가 된다. 
+```Java
+abstract class CLASS_NAME {}
+```
 
+## Abstract Method
 
+**추상 메서드**는 선언부만 작성하고 구현부는 작성하지 않은 메서드를 의미한다. 추상 메서드를 사용하는 이유는 상속받는 클래스에 따라 메서드의 내용이 달라질 수 있기 때문에 사용한다. 이 때, 주석을 덧붙여 어떤 기능을 수행할 목적으로 작성되었는지 알려주고, 실제 내용은 상속받은 클래스에서 구현하면 된다. 
 
+다음과 같이 메서드 선언 앞에 abstract를 추가하면 추상 메서드가 된다.
+```Java
+/* 주석을 통해 어떤 기능을 수행할 목적으로 작성하였는지 설명 */
+abstract RETURN_TYPE METHOD_NAME();
+```
 
+## Create of Abstract Class
+
+추상 클래스를 작성하는 법을 알아보기 전에 프로그램 개념에서 추상화와 구체화의 개념에 대해 이해해야한다. 이 두 개념은 다음과 같다.
+
+> **추상화** : 클래스 간의 공통점을 찾아내 공통의 조상을 만드는 작업
+  **구체화** : 상속을 통해 클래스를 구현, 확장하는 작업
+  
+```Java
+abstract class Player // 추상 클래스 Player 정의
+{
+    boolean pause;
+    int currentPos;
+    
+    player() // 추상 클래스도 생성자가 있어야 한다.
+    {
+        pause = false;
+        currentPos = 0;
+    }
+    
+    /* 지정된 위치(pos)에서 재생을 시작하는 기능이 수행하도록 작성 */
+    abstract void play (int pos); // 추상 메서드
+    
+    void play()
+    {
+        play(currentPos) // 추상 메서드 사용
+    }
+}
+```
+
+# Interface
+
+## What is Interface
+
+**인터페이스**는 일종의 추상 클래스로 추상클래스처럼 추상 메서드를 갖지만 추상클래스보다 추상화 정도가 높다. 따라서 추상클래스와 달리 일반 메서드나 맴버변수를 가질 수 없다. 즉 추상메서드와 상수만 맴버로 가질 수 있다. 
+
+추상 클래스가 '미완성 설계도'라면 인터페이스는 '기본 설계도'라고 이해하면 된다. 인터페이스 자체로는 특별한 기능을 구현할 수 없지만 다른 클래스를 작성하는데 도움을 줄 수 있다. 
+
+## Create of Interface
+
+인터페이스를 작성할 때는 다음과 같은 제약이 있다.
+```markdown
+1. 모든 맴버변수는 public static final 이어야 하고, 이는 생략할 수 있다.
+2. 모든 메서드는 public abstract 이어야 하고, 이를 생략할 수 있다.
+```
+
+인터페이스는 다음과 같이 작성된다.
+```Java
+interface INTERFACE_NAME
+{
+    public static final TYPE NAME = VALUE; // 상수
+    // public static final int A = 1;
+    // final int A = 1;
+    // static int A = 1;
+    // int A = 1;
+    public abstract METHOD_NAME(); // 추상 메서드
+    // public abstract String METHOD();
+    // String METHOD();
+}
+```
+
+## Inheritance of Interface
+
+인터페이스 간의 상속이 가능하고, 클래스와 달리 다중상속이 가능하다. 
+```Java
+interface A {}
+interface B {}
+interface C {}
+
+interface Child extends A, B, C {}
+```
+
+## Implementation of Interface
+
+인터페이스는 추상 클래스와 같이 그 차제로는 사용할 수 없고, 자신에 정의된 추상메서드의 내용을 완성시켜주는 클래스를 작성해야 사용할 수 있다. 다만 추상 클래스는 상속을 위해 'extends'를 사용하지만 인터페이스는 'implements'를 사용한다. 
+
+```Java
+class CLASS_NAME implements INTERFACE_NAME
+{
+    // 인터페이스에 정의 된 추상메서드 구현
+}
+
+class Fighter implements Fightable
+{
+    public void move() {}
+    public void attack() {}
+}
+```
+
+## Polymorphism with Interface
+
+앞서 다형성은 자손클래스의 인스턴스를 조상타입의 참조변수로 참조하는 것이 가능하다고 언급했다. 인터페이스를 이용해서 다형성을 구현할 수 있다. 인터페이스 Fightable을 클래스 Fighter가 구현했다고 가정하면 다음과 같이 Fighter 인스턴스를 Fightable 타입의 참조변수로 참조하는 것이 가능하다.
+```Java
+Fightable f = (Fightable)new Fighter();
+```
+
+따라서 인터페이스는 다음과 같이 메서드의 매개변수의 타입으로 사용될 수 있다.
+```Java
+void attack (Fightable f) {}
+```
+
+그리고 다음과 같이 메서드의 리턴타입으로 인터페이스 타입을 지정할 수 있다.
+```Java
+Fightable method()
+{
+    Fightable f = new Fighter;
+    return f;
+}
+```
+
+여기서 리턴타입이 인터페이스라는 것은 메서드가 해당 인터페이스를 구현한 클래스의 인터페이스를 반환한다는 것을 의미한다. 
+
+## Advantage of Interface
+
+인터페이스를 사용하면 다음과 같은 장점을 얻을 수 있다.
+```markdown
+1. 개발 시간 단축
+2. 표준화
+3. 관계없는 클래스들간 관계 형성
+4. 독립적 프로그래밍
+```
+
+### 개발 시간 단축
+
+인터페이스를 사용하면 메서드를 호출하는 쪽에서 메서드의 내용과 관계없이 선언부만 알면 되기 때문에 개발 시간이 단축된다. 그리고 인터페이스와 관련된 메서드를 2개 작성해야 하는 경우, 2명이 각각 동시에 개발이 가능해서 개발 시간이 단축된다.
+
+### 표준화
+
+프로젝트에 사용되는 기본 틀을 인터페이스로 작성한 후 개발자들이 프로그램을 작성한다면 개발자의 수가 많아져도 정량화된 프로그램이 개발된다.
+
+### 관계없는 클래스들간 관계 형성
+
+서로 상속관계에 있지 않고, 같은 조상클래스를 갖고 있지 않는 클래스들에게 하나의 인터페이스를 공통적으로 구현해주면 서로 관계를 만들어 줄 수 있다.
+
+### 독립적 프로그래밍
+
+인터페이스를 사용하면 클래스의 선언부와 구현부를 분리시킬 수 있기 때문에 실제 구현에서 독립적인 프로그램 작성이 가능하다. 즉 한 클래스의 변경이 관련된 다른 클래스에 영향을 미치지 않는 독립적인 프로그래밍이 가능하다. 
+
+# Inner-class
+
+## What is Inner Class
+
+**내부 클래스**는 클래스 내에 선언된 클래스다. 클래스에 다른 클래스를 선언하는 이유는 다음과 같다.
+```Java
+1. 내부 클래스에서 외부 클래스의 맴버들을 쉽게 파악할 수 있다.
+2. 코드의 복잡성을 줄일 수 있다(캡슐화).
+```
+
+## Types and Characteristics of Inner Class
+
+내부 클래스의 종류와 특징은 다음과 같다.
+
+| 내부 클래스 | 특징 |
+|:-:|:-|
+| 인스턴스 클래스 | 외부 클래스의 맴버변수 선언위치에 선언. 외부 클래스의 인스턴스 맴버처럼 다뤄진다. 주로 외부 클래스의 인스턴스 맴버들과 관련된 작업에 사용될 목적으로 선언된다.|
+| static 클래스 | 외부 클래스의 맴버변수 선언위치에 선언. 외부 클래스의 static 맴버처럼 다뤄진다. 주로 외부 클래스의 static 맴버, static 메서드에서 사용될 목적으로 선언된다. |
+| 지역 클래스 | 외부 클래스의 메서드나 추기화블록 안에 선언. 선언된 영역 내부에서만 사용될 수 있다. |
+| anonymous 클래스 | 클래스의 선언과 객체의 생성을 동시에 하는 이름없는 클래스(일회용) |
+
+## Declaration of Inner Class
+
+내부 클래스는 다음과 같이 선언할 수 있다. 다음의 두 코드는 같은 코드로, 첫 번째 코드는 일반 코드이고, 두 번째 코드는 내부 클래스를 선언한 코드이다. 
+```Java
+class Outer
+{
+    int iv = 0;
+    static int cv = 0;
+    
+    void Method()
+    {
+        int lv = 0;
+    }
+}
+```
+```Java
+class Outer
+{
+    class InstaceInner {}
+    static class StaticInner {}
+    
+    void Method()
+    {
+        class LocalInner {}
+    }
+}
+```
+
+## Anonymous
+
+**익명 클래스**는 이름이 없는 클래스다. 클래스의 선언과 객체 생성을 동시에 하기 때문에 단 한번만 사용할 수 있고, 하나의 객체만 생성할 수 있다. 이름이 없기 때문에 생성자도 가질 수 없고, 단 하나의 클래스 상속이나 인터페이스 구현만 가능하다. 익명 클래스는 다음과 같이 작성된다.
+```Java
+new PARENT_CLASS_NAME() {} // 클래스 상속 익명 클래스
+new INTERFACE_NAME() {} // 인터페이스 구현 익명 클래스
+```
