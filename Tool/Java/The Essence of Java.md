@@ -56,8 +56,8 @@
 [10.2 형식화 클래스](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Date,%20Time%20&%20Formatting.md)           
 [10.3 Java.time 패키지](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Date,%20Time%20&%20Formatting.md)              
 
-11. 컬렉션 프레임워크            
-11.1 컬렉션 프레임워크             
+[11. 컬렉션 프레임워크](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Collection%20Framework.md#core-interface-of-collection-framework)            
+[11.1 컬렉션 프레임워크](https://github.com/junsu9637/Study/blob/main/Tool/Java/Contents/Collection%20Framework.md#core-interface-of-collection-framework)             
 
 12. 제네릭스, 열거형, 에너테이션            
 12.1 제네릭스             
