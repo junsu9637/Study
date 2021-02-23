@@ -504,7 +504,7 @@ class Parent
         System.out.println("Parent")
     }
 
-class Child
+class Child extends Parent
 {
     int x = 200;
     
